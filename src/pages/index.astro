@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Home from '../components/home/HomePage.astro';
+import { getImage } from 'astro:assets';
+import imgHeroBg from '../assets/images/hero-background-blue.png';
+
+const optimizedHeroBg = await getImage({ src: imgHeroBg, format: 'webp', width: 800 });
 
 const schema = {
   "@context": "https://schema.org",
@@ -35,7 +39,7 @@ const schema = {
 <BaseLayout>
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
-    <link rel="preload" as="image" href="/images/hero-background-blue.png" fetchpriority="high" />
+    <link rel="preload" as="image" href={optimizedHeroBg.src} fetchpriority="high" />
   </Fragment>
   <Home />
 </BaseLayout>
