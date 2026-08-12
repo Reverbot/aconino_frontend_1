@@ -1,15 +1,23 @@
 ---
+import { Image } from 'astro:assets';
+import imgProgramasHero from '../../assets/images/programas-hero.jpg';
+import imgIntervention from '../../assets/images/programas-intervention.jpg';
+import imgAtencionTemprana from '../../assets/images/programa-atencion-temprana.jpg';
+import imgNeurodesarrollo from '../../assets/images/programa-neurodesarrollo.jpg';
+import imgAprendizaje from '../../assets/images/programa-aprendizaje.jpg';
+import imgPediasuit from '../../assets/images/programa-pediasuit.jpg';
+
 const hero = {
   title: 'Programas',
   subtitle: 'Habilitación & Rehabilitación',
-  backgroundImage: '/images/programas-hero.jpg',
+  backgroundImage: imgProgramasHero,
 };
 
 const interventionModel = {
   mainTitle: '“Nos centramos más en la actividad y menos en la discapacidad”',
   subtitle: '“Potenciar habilidades, no solo tratar dificultades”',
   introText: 'En Aconiño trabajamos desde un enfoque interdisciplinario centrado en el niño y su familia, integrando fisioterapia, terapia ocupacional, fonoaudiología y psicología para promover el desarrollo integral, mejorar la funcionalidad, la comunicación, la autonomía y la participación social del usuario.',
-  image: '/images/programas-intervention.jpg',
+  image: imgIntervention,
   imageAlt: 'Modelo de intervención de Aconiño',
 };
 
@@ -101,7 +109,7 @@ const specificPrograms = [
     id: 'atencion-temprana',
     title: 'Atención temprana de 0 a 3 años',
     description: 'Programa terapéutico integral para apoyar el desarrollo sicomotor a través de la estimulación temprana y adecuada de sistemas multisensoriales (musculoesquelético, neuromotor, vestibular, visual, etc) para mejorar la funcionalidad.\n\nCapacitar a las familias en el manejo y conocimiento de la condición de su bebé.',
-    image: '/images/programa-atencion-temprana.jpg',
+    image: imgAtencionTemprana,
     alt: 'Atención temprana bebé',
     imageLeft: true,
     decoration: 'yellow-bar-heart',
@@ -110,7 +118,7 @@ const specificPrograms = [
     id: 'atencion-ninos-jovenes',
     title: 'Atención a niños y jóvenes de 3 a 18 años',
     description: 'Programa terapéutico integral para apoyar el desarrollo sicomotor y evitar en lo posible la aparición de patrones atípicos, a través de la estimulación de sistemas multisensoriales (musculo-esquelético, neuromotor, vestibular, visual, etc) para mejorar la funcionalidad y propiciar la inclusión social.\n\nCapacitar a la familia en el manejo y conocimiento de la condición de su hijo.',
-    image: '/images/programa-neurodesarrollo.jpg',
+    image: imgNeurodesarrollo,
     alt: 'Visión niños y jóvenes',
     imageLeft: false,
     decoration: 'blue-bar-yellow-bg',
@@ -119,7 +127,7 @@ const specificPrograms = [
     id: 'apoyo-aprendizaje',
     title: 'Apoyo a dificultades en el aprendizaje a niños de 3 a 14 años',
     description: 'Programa terapéutico de apoyo a las actividades escolares para potencializar las habilidades motoras, cognitivas y de lenguaje, con el fin de lograr un mejor desempeño en el aula regular.\n\nEstá dirigido a niños y jóvenes de diversas Entidades Administradoras de Planes de Beneficios- EATB, alumnos de colegios, particulares y usuarios en general.',
-    image: '/images/programa-aprendizaje.jpg',
+    image: imgAprendizaje,
     alt: 'Apoyo en el aprendizaje',
     imageLeft: true,
     decoration: 'yellow-bar-half-heart',
@@ -128,7 +136,7 @@ const specificPrograms = [
     id: 'pediasuit',
     title: 'Protocolo Intensivo Pediasuit Niños y jóvenes de 2 a 18 años',
     description: 'Protocolo Pediasuit es un programa terapéutico intensivo para apoyar el desarrollo sicomotor a través de la estimulación de sistemas multisensoriales (musculoesquelético, neuromotor, etc) para mejorar la funcionalidad y propiciar la inclusión social.\n\nRecomendado a niños y jóvenes con discapacidad física con clasificación de Medida de la Función Motora Gruesa - GMFM entre nivel I y IV.\n\nCapacitar a la familia en el manejo y conocimiento de la condición de su hijo.',
-    image: '/images/programa-pediasuit.jpg',
+    image: imgPediasuit,
     alt: 'Protocolo Intensivo Pediasuit',
     imageLeft: false,
     decoration: 'blue-bar-full-yellow-bg',
@@ -156,7 +164,7 @@ const whyChooseUs = [
 <main class="min-h-screen overflow-x-hidden bg-gray-50 selection:bg-primary/20">
   <section class="relative flex h-[40vh] w-full items-center justify-center overflow-hidden py-24 md:h-[45vh]">
     <div class="absolute inset-0 z-0">
-      <img src={hero.backgroundImage} alt="Programas de Aconiño" class="h-full w-full object-cover" loading="eager" fetchpriority="high" />
+      <Image src={hero.backgroundImage} alt="Programas de Aconiño" class="h-full w-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
       <div class="absolute inset-0 z-10 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/80" style="opacity: 0.6"></div>
       <div class="absolute inset-0 z-10 bg-gradient-to-r from-primary/60 via-transparent to-transparent"></div>
       <div class="absolute inset-0 z-10 bg-gradient-to-b from-primary/70 via-transparent to-primary/80 mix-blend-multiply"></div>
@@ -179,7 +187,7 @@ const whyChooseUs = [
         <div class="order-2 flex w-full justify-center lg:order-1 lg:w-1/2">
           <div class="relative w-full max-w-lg">
             <div class="group relative aspect-video w-full overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] md:aspect-square md:rounded-[2.5rem]">
-              <img src={interventionModel.image} alt={interventionModel.imageAlt} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <Image src={interventionModel.image} alt={interventionModel.imageAlt} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
             </div>
             <div class="absolute -bottom-4 -right-4 z-20 flex flex-col items-center justify-center rounded-2xl border-b-8 border-accent bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.15)] md:bottom-10 md:-right-8 md:rounded-3xl md:p-7">
@@ -297,7 +305,7 @@ const whyChooseUs = [
         {program.decoration === 'blue-bar-full-yellow-bg' && <div class="absolute right-0 top-0 hidden h-[120%] w-[95%] translate-x-[5%] translate-y-[-10%] rounded-l-[5rem] bg-accent -z-10 md:block md:w-[60%]"></div>}
         <div class="mb-12 px-4 pt-8 text-center lg:hidden"><div class="mb-4 flex items-center justify-center gap-3"><div class="h-[2px] w-6 bg-accent"></div><span class="text-[9px] font-bold uppercase tracking-widest text-gray-400 sm:text-xs">Aconiño</span><div class="h-[2px] w-6 bg-accent"></div></div><h3 class="px-2 text-2xl font-black leading-[1.15] text-primary sm:text-4xl">{program.title}</h3></div>
         <div class:list={["flex flex-col items-center gap-10 lg:gap-20", program.imageLeft ? 'lg:flex-row' : 'lg:flex-row-reverse']}>
-          <div class="relative z-10 w-full lg:w-1/2"><div class="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-2xl md:rounded-[3rem]"><img src={program.image} alt={program.alt} class="h-full w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" /></div>
+          <div class="relative z-10 w-full lg:w-1/2"><div class="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-2xl md:rounded-[3rem]"><Image src={program.image} alt={program.alt} class="h-full w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" decoding="async" /></div>
             {program.decoration === 'yellow-bar-heart' && <div class="absolute -right-2 top-1/2 z-20 flex h-[70%] w-2 -translate-y-1/2 flex-col items-center justify-end rounded-full bg-accent shadow-lg sm:-right-4 sm:w-3 md:-right-8 md:w-4"><div class="absolute -bottom-6 h-8 w-8 text-accent md:h-10 md:w-10"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg></div></div>}
             {program.decoration === 'yellow-bar-half-heart' && <div class="absolute -right-2 top-[10%] z-20 flex h-[80%] w-2 flex-col items-center justify-end rounded-full bg-accent shadow-lg sm:-right-4 sm:w-3 md:-right-8 md:w-4"><div class="absolute -bottom-4 -right-2 h-6 w-6 text-accent md:h-8 md:w-8"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg></div></div>}
           </div>
@@ -307,7 +315,7 @@ const whyChooseUs = [
     ))}
   </div></section>
 
-  <section class="relative overflow-hidden bg-white py-24 text-slate-800 md:py-32"><div class="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[100px]"></div><div class="pointer-events-none absolute bottom-0 left-0 h-[500px] w-[500px] -translate-x-1/4 translate-y-1/4 rounded-full bg-blue-50/50 blur-[120px]"></div><div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mb-16 text-center md:mb-24"><div class="mb-4 flex items-center justify-center gap-3 md:gap-4"><div class="h-[2px] w-6 bg-accent md:w-12"></div><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 sm:text-xs md:text-sm">Para Familias</span><div class="h-[2px] w-6 bg-accent md:w-12"></div></div><h2 class="mb-6 px-4 text-3xl font-extrabold leading-tight text-primary md:text-5xl lg:text-6xl">Preguntas Frecuentes</h2><p class="mx-auto max-w-2xl px-6 text-base font-medium text-gray-500 md:text-xl">Resolvemos las dudas más comunes de los padres sobre el inicio y desarrollo del proceso terapéutico.</p></div><div class="flex flex-col items-center gap-16 lg:flex-row lg:gap-24"><div class="w-full shrink-0 lg:w-1/2"><div class="group relative h-[400px] w-full overflow-hidden rounded-[2.5rem] shadow-xl md:h-[500px] md:rounded-[4rem]"><img src="/images/programas-intervention.jpg" alt="Niños en diferentes tratamientos" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" /><div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div></div><div class="mt-8 flex items-start gap-4 rounded-[2rem] border border-blue-100 bg-blue-50/50 p-6"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg" aria-hidden="true"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9.8-1.9 1.2-1.9 2.4"></path><path d="M12 16h.01"></path></svg></div><p class="text-sm font-medium leading-relaxed text-slate-600 md:text-base">Nuestros profesionales acompañan a los niños en diferentes etapas, garantizando un entorno seguro, motivador y <strong class="font-bold text-primary">centrado en su bienestar.</strong></p></div></div><div class="w-full space-y-6 lg:w-1/2">{faqs.map((faq, index) => <details open={index === 0} class="group overflow-hidden rounded-[2rem] border border-gray-100 bg-white transition-all open:border-primary/20 open:bg-blue-50/40 open:shadow-xl hover:border-primary/20 hover:shadow-md md:rounded-[3rem]"><summary class="flex w-full cursor-pointer list-none items-center justify-between p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:p-8 [&::-webkit-details-marker]:hidden"><span class="pr-4 text-lg font-bold leading-snug text-slate-800 group-open:text-primary md:text-xl">{faq.question}</span><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-400 transition-all group-open:rotate-180 group-open:bg-primary group-open:text-white md:h-12 md:w-12"><svg viewBox="0 0 24 24" class="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></span></summary><div class="px-6 pb-8 pt-0 md:px-8"><p class="pb-2 text-base font-medium leading-relaxed text-slate-500 md:text-lg">{faq.answer}</p></div></details>)}</div></div></div></section>
+  <section class="relative overflow-hidden bg-white py-24 text-slate-800 md:py-32"><div class="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[100px]"></div><div class="pointer-events-none absolute bottom-0 left-0 h-[500px] w-[500px] -translate-x-1/4 translate-y-1/4 rounded-full bg-blue-50/50 blur-[120px]"></div><div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mb-16 text-center md:mb-24"><div class="mb-4 flex items-center justify-center gap-3 md:gap-4"><div class="h-[2px] w-6 bg-accent md:w-12"></div><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 sm:text-xs md:text-sm">Para Familias</span><div class="h-[2px] w-6 bg-accent md:w-12"></div></div><h2 class="mb-6 px-4 text-3xl font-extrabold leading-tight text-primary md:text-5xl lg:text-6xl">Preguntas Frecuentes</h2><p class="mx-auto max-w-2xl px-6 text-base font-medium text-gray-500 md:text-xl">Resolvemos las dudas más comunes de los padres sobre el inicio y desarrollo del proceso terapéutico.</p></div><div class="flex flex-col items-center gap-16 lg:flex-row lg:gap-24"><div class="w-full shrink-0 lg:w-1/2"><div class="group relative h-[400px] w-full overflow-hidden rounded-[2.5rem] shadow-xl md:h-[500px] md:rounded-[4rem]"><Image src={imgIntervention} alt="Niños en diferentes tratamientos" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" /><div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div></div><div class="mt-8 flex items-start gap-4 rounded-[2rem] border border-blue-100 bg-blue-50/50 p-6"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg" aria-hidden="true"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9.8-1.9 1.2-1.9 2.4"></path><path d="M12 16h.01"></path></svg></div><p class="text-sm font-medium leading-relaxed text-slate-600 md:text-base">Nuestros profesionales acompañan a los niños en diferentes etapas, garantizando un entorno seguro, motivador y <strong class="font-bold text-primary">centrado en su bienestar.</strong></p></div></div><div class="w-full space-y-6 lg:w-1/2">{faqs.map((faq, index) => <details open={index === 0} class="group overflow-hidden rounded-[2rem] border border-gray-100 bg-white transition-all open:border-primary/20 open:bg-blue-50/40 open:shadow-xl hover:border-primary/20 hover:shadow-md md:rounded-[3rem]"><summary class="flex w-full cursor-pointer list-none items-center justify-between p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:p-8 [&::-webkit-details-marker]:hidden"><span class="pr-4 text-lg font-bold leading-snug text-slate-800 group-open:text-primary md:text-xl">{faq.question}</span><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-400 transition-all group-open:rotate-180 group-open:bg-primary group-open:text-white md:h-12 md:w-12"><svg viewBox="0 0 24 24" class="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></span></summary><div class="px-6 pb-8 pt-0 md:px-8"><p class="pb-2 text-base font-medium leading-relaxed text-slate-500 md:text-lg">{faq.answer}</p></div></details>)}</div></div></div></section>
 
   <section class="border-t border-gray-100 bg-white pb-4 pt-16 md:pb-4 md:pt-24"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto w-full max-w-6xl px-4 py-8 md:px-0 md:py-16"><div class="mb-8 text-center md:mb-16"><span class="mb-2 block text-[10px] font-black uppercase tracking-[0.2em] text-accent md:mb-4 md:text-sm">Nuestra Propuesta</span><h2 class="px-2 text-2xl font-black leading-tight text-primary md:text-5xl lg:text-6xl">¿Por qué elegir a Aconiño?</h2><div class="mx-auto mt-4 h-1 rounded-full bg-accent md:mt-8" style="width: 60px"></div></div><div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">{whyChooseUs.map((item) => <div class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-gray-100 bg-white p-5 shadow-[0_4px_15px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] md:items-start md:gap-5 md:rounded-[2.5rem] md:p-8"><div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div><div class="relative z-10 shrink-0"><div class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-blue-50/50 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:bg-blue-100 md:h-14 md:w-14 md:rounded-2xl"><svg viewBox="0 0 24 24" class="h-5 w-5 text-primary md:h-7 md:w-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.5 2.5L16 9"></path></svg></div></div><p class="relative z-10 text-sm font-bold leading-tight text-gray-700 transition-colors duration-500 group-hover:text-primary md:text-base md:leading-snug">{item}</p></div>)}</div></div></div></section>
 

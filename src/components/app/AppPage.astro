@@ -1,8 +1,15 @@
 ---
+import { Image } from 'astro:assets';
+import imgIntro from '../../assets/images/asociacion-intro.jpg';
+import imgIntervention from '../../assets/images/programas-intervention.jpg';
+import imgQuienes from '../../assets/images/quienes-intro.jpg';
+import imgBerta from '../../assets/images/berta-avatar.jpg';
+import imgAppPhone from '../../assets/images/app-phone.png';
+
 const slides = [
-  { src: '/images/asociacion-intro.jpg', alt: 'Niño en terapia con aconiñoapp', overlayOpacity: 50 },
-  { src: '/images/programas-intervention.jpg', alt: 'Familia utilizando la aplicación', overlayOpacity: 50 },
-  { src: '/images/quienes-intro.jpg', alt: 'Desarrollo infantil con tecnología', overlayOpacity: 50 },
+  { src: imgIntro, alt: 'Niño en terapia con aconiñoapp', overlayOpacity: 50 },
+  { src: imgIntervention, alt: 'Familia utilizando la aplicación', overlayOpacity: 50 },
+  { src: imgQuienes, alt: 'Desarrollo infantil con tecnología', overlayOpacity: 50 },
 ];
 
 const benefits = [
@@ -19,7 +26,7 @@ const benefits = [
     <div class="absolute inset-0 z-0">
       {slides.map((slide, index) => (
         <div data-hero-slide aria-hidden={index === 0 ? 'false' : 'true'} class:list={["absolute inset-0 h-full w-full transition-opacity duration-700 ease-out", index === 0 ? 'opacity-100' : 'pointer-events-none opacity-0']}>
-          <img src={slide.src} alt={slide.alt} class="h-full w-full object-cover object-center" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} />
+          <Image src={slide.src} alt={slide.alt} class="h-full w-full object-cover object-center" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} decoding="async" />
           <div class="absolute inset-0 z-10 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/80" style={`opacity: ${slide.overlayOpacity / 100}`}></div>
           <div class="absolute inset-0 z-10 bg-gradient-to-r from-primary/60 via-transparent to-transparent"></div>
         </div>
@@ -55,7 +62,7 @@ const benefits = [
         <div class="mx-auto mb-8 h-1 w-20 rounded-full bg-accent"></div>
         <h2 class="mb-12 text-center text-3xl font-extrabold leading-tight text-primary md:text-4xl lg:text-5xl">¿Por qué es importante?</h2>
         <div class="flex flex-col items-start gap-8 rounded-3xl border border-gray-100 bg-gray-50 p-8 md:flex-row md:p-10">
-          <div class="mx-auto shrink-0 md:mx-0"><div class="h-24 w-24 overflow-hidden rounded-full border-4 border-white shadow-lg md:h-28 md:w-28"><img src="/images/berta-avatar.jpg" alt="Berta Brunal, directora de la Asociación Aconiño" class="h-full w-full object-cover" loading="lazy" /></div></div>
+          <div class="mx-auto shrink-0 md:mx-0"><div class="h-24 w-24 overflow-hidden rounded-full border-4 border-white shadow-lg md:h-28 md:w-28"><Image src={imgBerta} alt="Berta Brunal, directora de la Asociación Aconiño" class="h-full w-full object-cover" loading="lazy" decoding="async" /></div></div>
           <div class="flex-1">
             <blockquote class="mb-6 text-base italic leading-relaxed text-gray-600 md:text-lg">«Teniendo en cuenta las altas cifras de afectaciones motoras que pueden presentarse en bebés con antecedentes de alto riesgo, es fundamental que cada papá y mamá tenga presente que el primer año de vida es determinante en la salud psicomotriz de las personas. Por eso, el correcto uso de la herramienta puede advertir la necesidad de un acompañamiento terapéutico para corregir movimientos erróneos en las primeras etapas de crecimiento»</blockquote>
             <div class="flex items-center gap-3"><div class="h-[2px] w-8 rounded-full bg-accent"></div><p class="text-sm font-bold text-primary">Berta Brunal, directora de la Asociación Aconiño</p></div>
@@ -90,7 +97,7 @@ const benefits = [
           <div class="relative z-10 w-[260px] md:w-[300px]">
             <div class="relative rounded-[2.5rem] border border-gray-200 bg-gradient-to-b from-gray-100 to-gray-200 p-3 shadow-2xl">
               <div class="absolute left-1/2 top-0 z-20 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100"></div>
-              <div class="relative aspect-[9/19.5] overflow-hidden rounded-[2rem] bg-white"><img src="/images/app-phone.png" alt="Aconiñoapp en dispositivo móvil" class="h-full w-full object-cover" loading="lazy" /><div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-primary/80 via-transparent to-primary/60"><div class="rounded-2xl bg-white/90 px-6 py-4 shadow-lg"><p class="text-lg font-black tracking-tight text-primary">aconiño</p><p class="text-xs font-bold text-secondary">app</p></div></div></div>
+              <div class="relative aspect-[9/19.5] overflow-hidden rounded-[2rem] bg-white"><Image src={imgAppPhone} alt="Aconiñoapp en dispositivo móvil" class="h-full w-full object-cover" loading="lazy" decoding="async" /><div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-primary/80 via-transparent to-primary/60"><div class="rounded-2xl bg-white/90 px-6 py-4 shadow-lg"><p class="text-lg font-black tracking-tight text-primary">aconiño</p><p class="text-xs font-bold text-secondary">app</p></div></div></div>
             </div>
             <div class="mt-4 flex justify-center"><div class="rounded-xl border border-gray-100 bg-white px-4 py-2 shadow-sm"><span class="text-sm font-bold tracking-wider text-secondary">VASED</span></div></div>
           </div>

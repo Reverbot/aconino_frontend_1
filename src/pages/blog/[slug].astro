@@ -1,32 +1,41 @@
 ---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostPage from '../../components/blog/BlogPostPage.astro';
-import { blogPosts } from '../../data/blog';
 
-export function getStaticPaths() {
-  return blogPosts.map(({ slug }) => ({ params: { slug } }));
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map((entry: CollectionEntry<'blog'>) => {
+    const slug = entry.id.replace(/\.md$/, '');
+    return {
+      params: { slug },
+      props: { entry, slug },
+    };
+  });
 }
 
-const { slug } = Astro.params;
-const post = blogPosts.find((p) => p.slug === slug);
+interface Props { entry: CollectionEntry<'blog'>; slug: string; }
+const { entry, slug } = Astro.props;
+const { Content } = await render(entry);
 
-const title = post ? `${post.title} | Asociación Aconiño` : "Artículo | Asociación Aconiño";
-const description = post ? post.excerpt : "Artículo de la Asociación Aconiño.";
-const imageUrl = post ? post.image : undefined;
+const title = `${entry.data.title} | Asociación Aconiño`;
+const description = entry.data.excerpt;
+const imageUrl = entry.data.image.src;
 
-const schema = post ? {
+const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": post.title,
-  "description": post.excerpt,
-  "image": `https://aconino.org${post.image}`,
-  "datePublished": post.publishedAt,
+  "headline": entry.data.title,
+  "description": entry.data.excerpt,
+  "image": `https://aconino.org${entry.data.image.src}`,
+  "datePublished": entry.data.publishedAt,
   "author": {
     "@type": "Organization",
     "name": "Asociación Aconiño",
     "url": "https://aconino.org"
   }
-} : null;
+};
 ---
 <BaseLayout title={title} description={description} image={imageUrl}>
   {schema && (
@@ -34,5 +43,7 @@ const schema = post ? {
       <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
     </Fragment>
   )}
-  <BlogPostPage slug={slug || 'importancia-del-juego-en-el-neurodesarrollo'} />
+  <BlogPostPage entry={entry} slug={slug}>
+    <Content />
+  </BlogPostPage>
 </BaseLayout>

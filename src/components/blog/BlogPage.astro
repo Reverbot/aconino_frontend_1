@@ -1,7 +1,11 @@
 ---
-import { blogCategories, blogPosts, formatBlogDate } from '../../data/blog';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { blogCategories, formatBlogDate } from '../../data/blog';
 
-const [featuredPost, ...gridPosts] = blogPosts;
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime());
+const [featuredPost, ...gridPosts] = sortedPosts;
 ---
 
 <main class="relative min-h-screen overflow-hidden bg-slate-50">
@@ -21,13 +25,13 @@ const [featuredPost, ...gridPosts] = blogPosts;
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-12">
       <div class="lg:col-span-2">
         <div class="group mb-12">
-          <a href={`/blog/${featuredPost.slug}`} class="block">
+          <a href={`/blog/${featuredPost.id.replace(/\.md$/, '')}`} class="block">
             <div class="grid grid-cols-1 overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-500 hover:shadow-xl lg:grid-cols-2">
-              <div class="relative h-64 overflow-hidden lg:h-96"><img src={featuredPost.image} alt={featuredPost.imageAlt} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="eager" /><div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div></div>
+              <div class="relative h-64 overflow-hidden lg:h-96" transition:name={`blog-image-${featuredPost.id.replace(/\.md$/, '')}`}><Image src={featuredPost.data.image} alt={featuredPost.data.imageAlt} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="eager" decoding="async" /><div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div></div>
               <div class="flex flex-col justify-center p-8 md:p-10 lg:p-12">
-                <div class="mb-4 flex items-center gap-2 text-sm font-semibold text-secondary"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg><time datetime={featuredPost.publishedAt}>{formatBlogDate(featuredPost.publishedAt)}</time></div>
-                <h2 class="mb-4 line-clamp-3 text-2xl font-extrabold leading-tight text-primary transition-colors duration-300 group-hover:text-secondary md:text-3xl">{featuredPost.title}</h2>
-                <p class="mb-6 line-clamp-3 text-base leading-relaxed text-gray-500">{featuredPost.excerpt}</p>
+                <div class="mb-4 flex items-center gap-2 text-sm font-semibold text-secondary"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg><time datetime={featuredPost.data.publishedAt.toString()}>{formatBlogDate(featuredPost.data.publishedAt.toString())}</time></div>
+                <h2 class="mb-4 line-clamp-3 text-2xl font-extrabold leading-tight text-primary transition-colors duration-300 group-hover:text-secondary md:text-3xl" transition:name={`blog-title-${featuredPost.id.replace(/\.md$/, '')}`}>{featuredPost.data.title}</h2>
+                <p class="mb-6 line-clamp-3 text-base leading-relaxed text-gray-500">{featuredPost.data.excerpt}</p>
                 <div class="flex items-center gap-2 font-bold text-primary transition-colors group-hover:text-accent"><span>Leer artículo</span><span aria-hidden="true">→</span></div>
               </div>
             </div>
@@ -37,13 +41,13 @@ const [featuredPost, ...gridPosts] = blogPosts;
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
           {gridPosts.map((post) => (
             <article class="group h-full">
-              <a href={`/blog/${post.slug}`} class="block h-full">
+              <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="block h-full">
                 <div class="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
-                  <div class="relative h-48 overflow-hidden bg-gray-100 md:h-52"><img src={post.image} alt={post.imageAlt} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div></div>
+                  <div class="relative h-48 overflow-hidden bg-gray-100 md:h-52" transition:name={`blog-image-${post.id.replace(/\.md$/, '')}`}><Image src={post.data.image} alt={post.data.imageAlt} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" /><div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div></div>
                   <div class="flex flex-1 flex-col p-5 md:p-6">
-                    <div class="mb-3 flex items-center gap-2 text-xs font-semibold text-secondary"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg><time datetime={post.publishedAt}>{formatBlogDate(post.publishedAt)}</time></div>
-                    <h2 class="mb-3 line-clamp-2 text-base font-extrabold leading-tight text-primary transition-colors duration-300 group-hover:text-secondary md:text-lg">{post.title}</h2>
-                    <p class="mb-4 line-clamp-3 flex-1 text-sm leading-relaxed text-gray-500">{post.excerpt}</p>
+                    <div class="mb-3 flex items-center gap-2 text-xs font-semibold text-secondary"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg><time datetime={post.data.publishedAt.toString()}>{formatBlogDate(post.data.publishedAt.toString())}</time></div>
+                    <h2 class="mb-3 line-clamp-2 text-base font-extrabold leading-tight text-primary transition-colors duration-300 group-hover:text-secondary md:text-lg" transition:name={`blog-title-${post.id.replace(/\.md$/, '')}`}>{post.data.title}</h2>
+                    <p class="mb-4 line-clamp-3 flex-1 text-sm leading-relaxed text-gray-500">{post.data.excerpt}</p>
                     <div class="mt-auto flex items-center gap-2 text-sm font-bold text-primary transition-colors group-hover:text-accent"><span>Leer más</span><span aria-hidden="true">→</span></div>
                   </div>
                 </div>
@@ -55,7 +59,7 @@ const [featuredPost, ...gridPosts] = blogPosts;
 
       <aside class="order-first space-y-8 lg:order-last lg:sticky lg:top-36 lg:self-start">
         <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"><form action="/blog" method="GET" class="relative"><label for="blog-search" class="sr-only">Buscar artículos</label><input id="blog-search" type="search" name="s" placeholder="Buscar artículos..." class="w-full rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 pr-10 text-sm text-gray-700 outline-none transition-all placeholder:text-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/10" /><button type="submit" aria-label="Buscar" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 transition-colors hover:text-primary"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg></button></form></div>
-        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"><h2 class="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary"><span class="h-5 w-1 rounded-full bg-accent"></span>Entradas Recientes</h2><div class="space-y-4">{blogPosts.map((post) => <a href={`/blog/${post.slug}`} class="group flex items-start gap-3"><div class="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-gray-100"><img src={post.image} alt={post.imageAlt} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" /></div><div class="min-w-0 flex-1"><h3 class="line-clamp-2 text-sm font-semibold leading-tight text-gray-700 transition-colors group-hover:text-primary">{post.title}</h3><time datetime={post.publishedAt} class="mt-1 block text-xs text-gray-400">{formatBlogDate(post.publishedAt, { month: 'short', day: 'numeric' })}</time></div></a>)}</div></div>
+        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"><h2 class="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary"><span class="h-5 w-1 rounded-full bg-accent"></span>Entradas Recientes</h2><div class="space-y-4">{sortedPosts.map((post) => <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="group flex items-start gap-3"><div class="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-gray-100"><Image src={post.data.image} alt={post.data.imageAlt} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" decoding="async" /></div><div class="min-w-0 flex-1"><h3 class="line-clamp-2 text-sm font-semibold leading-tight text-gray-700 transition-colors group-hover:text-primary">{post.data.title}</h3><time datetime={post.data.publishedAt.toString()} class="mt-1 block text-xs text-gray-400">{formatBlogDate(post.data.publishedAt.toString(), { month: 'short', day: 'numeric' })}</time></div></a>)}</div></div>
         <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"><h2 class="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary"><span class="h-5 w-1 rounded-full bg-accent"></span>Categorías</h2><div class="space-y-1">{blogCategories.map((category) => <a href={`/blog?categoria=${category.slug}`} class="group flex items-center justify-between rounded-xl px-3 py-2.5 text-sm text-gray-600 transition-all duration-200 hover:bg-primary/5 hover:text-primary"><span class="font-medium">{category.title}</span></a>)}</div></div>
         <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-secondary p-6 text-center text-white"><div class="absolute right-0 top-0 h-32 w-32 rounded-full bg-accent/20 blur-[60px]"></div><div class="relative z-10"><svg class="mx-auto mb-2 h-7 w-7 text-accent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-8-4.7-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 10c0 6.3-8 11-8 11Z"></path></svg><h2 class="mb-2 text-lg font-extrabold">¿Quieres apoyar?</h2><p class="mb-4 text-sm text-white/70">Tu aporte transforma vidas.</p><a href="/apoyanos" class="inline-block rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-primary transition-all duration-300 hover:bg-white">Donar ahora</a></div></div>
       </aside>

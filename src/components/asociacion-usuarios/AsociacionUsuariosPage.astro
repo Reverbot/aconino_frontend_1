@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import imgIntro from '../../assets/images/asociacion-intro.jpg';
+import imgBanner from '../../assets/images/asociacion-banner.jpg';
+
 const objetivos = [
   'Fortalecer nuestra capacidad de escucha frente al usuario.',
   'Proteger los derechos en salud.',
@@ -24,7 +28,7 @@ const col2 = objetivos.slice(4);
         </div>
         <div class="flex w-full flex-1 justify-center lg:justify-end">
           <div class="relative aspect-[4/3] w-full max-w-lg overflow-hidden rounded-sm border-b-8 border-secondary shadow-lg">
-            <img src="/images/asociacion-intro.jpg" alt="Manos protegiendo recortes de familia" class="h-full w-full object-cover" loading="eager" />
+            <Image src={imgIntro} alt="Manos protegiendo recortes de familia" class="h-full w-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
           </div>
         </div>
       </div>
@@ -33,7 +37,7 @@ const col2 = objetivos.slice(4);
 
   <section class="relative flex w-full items-center justify-center overflow-hidden py-12 md:py-20">
     <div class="absolute inset-0 z-0">
-      <img src="/images/asociacion-banner.jpg" alt="Niños sonriendo" class="h-full w-full object-cover" loading="lazy" />
+      <Image src={imgBanner} alt="Niños sonriendo" class="h-full w-full object-cover" loading="lazy" decoding="async" />
       <div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
       <div class="absolute inset-0 bg-[#0f1f6a]/90"></div>
     </div>

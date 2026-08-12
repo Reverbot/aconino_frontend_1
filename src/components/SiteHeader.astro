@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import imgLogo from '../assets/images/logo_aconino.png';
 const navLinks = [
   {
     name: 'Inicio',
@@ -106,8 +108,8 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
   </symbol>
 </svg>
 
-<header id="site-header" data-site-header class="sticky top-0 z-50 w-full bg-white">
-  <div class="hidden overflow-hidden bg-primary text-white md:block" data-topbar>
+<!-- Topbar outside of sticky header to prevent layout shift on scroll -->
+<div class="hidden overflow-hidden bg-primary text-white md:block" data-topbar>
     <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-4 py-2.5 text-[11px] sm:px-6 sm:text-xs md:flex-row md:px-8 md:text-sm lg:px-8">
       <div class="flex flex-col items-center gap-4 text-center sm:flex-row sm:gap-8 md:text-left">
         <div class="flex items-center gap-1.5">
@@ -124,20 +126,21 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
         </div>
       </div>
       <div class="hidden h-full items-center gap-4 border-l border-white/20 pl-4 md:flex">
-        <a href="https://web.facebook.com/AsociacionAconino/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-facebook" /></svg></a>
-        <a href="https://www.instagram.com/aconinoacn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-instagram" /></svg></a>
-        <a href="https://www.youtube.com/@asociacionaconino1526" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-youtube" /></svg></a>
-        <a href="https://twitter.com/aconino" target="_blank" rel="noopener noreferrer" aria-label="X" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-x" /></svg></a>
-        <a href="https://co.linkedin.com/company/aconinoacn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-linkedin" /></svg></a>
+        <a href="https://web.facebook.com/AsociacionAconino/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-sm"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#aconino-facebook" /></svg></a>
+        <a href="https://www.instagram.com/aconinoacn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-sm"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#aconino-instagram" /></svg></a>
+        <a href="https://www.youtube.com/@asociacionaconino1526" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-sm"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#aconino-youtube" /></svg></a>
+        <a href="https://twitter.com/aconino" target="_blank" rel="noopener noreferrer" aria-label="X" class="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-sm"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#aconino-x" /></svg></a>
+        <a href="https://co.linkedin.com/company/aconinoacn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-sm"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#aconino-linkedin" /></svg></a>
       </div>
     </div>
   </div>
 
-  <div data-header-main class="relative bg-white transition-[padding,box-shadow] duration-300">
-    <div data-header-inner class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 md:py-3 lg:px-8">
+<header id="site-header" data-site-header class="sticky top-0 z-50 w-full bg-white transition-all duration-300 group">
+  <div data-header-main class="relative bg-white transition-all duration-300">
+    <div data-header-inner class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 md:py-3 lg:px-8 transition-all duration-300">
       <a href="/" class="group relative z-50 flex flex-col items-center justify-center shrink-0" aria-label="Aconiño, inicio">
         <span class="absolute inset-0 scale-100 rounded-full bg-accent/10 blur-xl transition-transform duration-300 group-hover:scale-150 md:scale-150"></span>
-        <img src="/images/logo_aconino.png" alt="Aconiño" width="180" height="180" class="relative h-auto w-12 drop-shadow-sm md:w-14 lg:w-16" loading="eager" fetchpriority="high" />
+        <Image src={imgLogo} alt="Aconiño" class="relative h-auto w-12 drop-shadow-sm md:w-14 lg:w-16" loading="eager" fetchpriority="high" decoding="async" />
       </a>
 
       <nav aria-label="Navegación principal" class="hidden items-center gap-1 text-[13px] font-semibold lg:flex xl:gap-2">
@@ -148,14 +151,14 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
             <a
               href={link.href}
               class:list={[
-                'relative z-10 flex items-center gap-1 px-3 py-2 rounded-lg transition-colors duration-200',
+                'relative z-10 flex items-center gap-1 px-3 py-2 rounded-lg transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent',
                 isActive(link.href) ? 'text-accent' : 'text-primary hover:text-accent hover:bg-primary/5',
               ]}
               aria-current={isActive(link.href) ? 'page' : undefined}
               aria-haspopup={link.subLinks ? 'true' : undefined}
             >
               <span>{link.name}</span>
-              {link.subLinks && <svg class="h-3 w-3 text-gray-400 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"><use href="#aconino-chevron" /></svg>}
+              {link.subLinks && <svg class="h-3 w-3 text-gray-400 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden="true"><use href="#aconino-chevron" /></svg>}
               <span class:list={['absolute bottom-0 left-0 h-[2px] rounded-t-full bg-accent transition-[width,box-shadow] duration-300', isActive(link.href) ? 'w-full shadow-[0_-4px_12px_rgba(248,183,25,0.4)]' : 'w-0 group-hover:w-full group-focus-within:w-full group-hover:shadow-[0_-4px_12px_rgba(248,183,25,0.4)]']}></span>
             </a>
             {link.subLinks && (
@@ -166,7 +169,7 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
                   <div class="absolute right-0 top-0 h-8 w-8 rounded-tr-2xl border-r-2 border-t-2 border-accent/30"></div>
                   <div class="relative flex flex-col">
                     {link.subLinks.map((sub) => (
-                      <a href={sub.href} class:list={['block border-l-4 px-6 py-3 text-sm font-semibold transition-all duration-300', isActive(sub.href) ? 'border-accent bg-primary/5 font-bold text-primary' : 'border-transparent text-gray-600 hover:border-accent hover:bg-gray-50 hover:pl-7 hover:text-primary']}>
+                      <a href={sub.href} class:list={['block border-l-4 px-6 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:-outline-offset-2', isActive(sub.href) ? 'border-accent bg-primary/5 font-bold text-primary' : 'border-transparent text-gray-600 hover:border-accent hover:bg-gray-50 hover:pl-7 hover:text-primary']}>
                         {sub.name}
                       </a>
                     ))}
@@ -181,7 +184,7 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
         <a
           href="/apoyanos"
           class:list={[
-            'ml-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-bold tracking-wide transition-all duration-200 shadow-md active:scale-[0.97]',
+            'ml-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-bold tracking-wide transition-all duration-200 shadow-md active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2',
             isActive('/apoyanos')
               ? 'bg-primary text-white shadow-primary/20'
               : 'bg-accent text-primary hover:bg-primary hover:text-white hover:shadow-primary/30 shadow-accent/30',
@@ -195,8 +198,8 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
 
       {/* Mobile: solo hamburguesa */}
       <div class="relative z-50 flex items-center lg:hidden">
-        <button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="rounded-xl bg-gray-50 p-2.5 text-primary transition-all duration-300 hover:bg-primary hover:text-white">
-          <svg data-menu-open-icon class="h-5 w-5"><use href="#aconino-bars" /></svg>
+        <button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="rounded-xl bg-gray-50 p-2.5 text-primary transition-all duration-300 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent">
+          <svg data-menu-open-icon class="h-5 w-5" aria-hidden="true"><use href="#aconino-bars" /></svg>
           <svg data-menu-close-icon class="hidden h-5 w-5"><use href="#aconino-close" /></svg>
         </button>
       </div>
@@ -208,7 +211,7 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
 <div id="mobile-menu" data-mobile-menu class="mobile-menu-panel fixed inset-0 z-[60] overflow-y-auto bg-white lg:hidden" aria-hidden="true">
   <div class="sticky left-0 top-0 z-[70] flex h-20 items-center justify-between border-b border-gray-100 bg-white px-4 shadow-sm">
     <a href="/" data-mobile-link class="group relative flex items-center" aria-label="Aconiño, inicio">
-      <img src="/images/logo_aconino.png" alt="Aconiño" width="180" height="180" class="relative h-auto w-16 drop-shadow-sm" loading="eager" />
+      <Image src={imgLogo} alt="Aconiño" class="relative h-auto w-16 drop-shadow-sm" loading="eager" decoding="async" />
     </a>
     <button type="button" data-menu-close aria-label="Cerrar menú" class="rounded-xl bg-gray-50 p-3 text-primary transition-all hover:bg-primary hover:text-white active:scale-95">
       <svg class="h-5 w-5"><use href="#aconino-close" /></svg>
@@ -269,6 +272,11 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
   const menuOpenIcon = document.querySelector('[data-menu-open-icon]');
   const menuCloseIcon = document.querySelector('[data-menu-close-icon]');
 
+  // Focus trap logic
+  const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+  let firstFocusableElement;
+  let lastFocusableElement;
+
   const setMenuState = (open) => {
     if (!menuPanel || !menuToggle) return;
     menuPanel.classList.toggle('is-open', open);
@@ -278,6 +286,39 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
     menuOpenIcon?.classList.toggle('hidden', open);
     menuCloseIcon?.classList.toggle('hidden', !open);
     document.body.classList.toggle('menu-open', open);
+
+    if (open) {
+      // Find focusable elements
+      const focusableElements = menuPanel.querySelectorAll(focusableElementsString);
+      if (focusableElements.length > 0) {
+        firstFocusableElement = focusableElements[0];
+        lastFocusableElement = focusableElements[focusableElements.length - 1];
+        // Focus the first element slightly after the transition starts
+        setTimeout(() => firstFocusableElement.focus(), 100);
+      }
+    } else {
+      // Return focus to toggle button
+      menuToggle.focus();
+    }
+  };
+
+  const trapFocus = (e) => {
+    if (!menuPanel?.classList.contains('is-open')) return;
+
+    const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+    if (!isTabPressed) return;
+
+    if (e.shiftKey) { // Shift + Tab
+      if (document.activeElement === firstFocusableElement) {
+        lastFocusableElement.focus();
+        e.preventDefault();
+      }
+    } else { // Tab
+      if (document.activeElement === lastFocusableElement) {
+        firstFocusableElement.focus();
+        e.preventDefault();
+      }
+    }
   };
 
   const updateScrollState = () => {
@@ -288,9 +329,12 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
   menuToggle?.addEventListener('click', () => setMenuState(!menuPanel?.classList.contains('is-open')));
   menuClose?.addEventListener('click', () => setMenuState(false));
   menuPanel?.querySelectorAll('[data-mobile-link]').forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setMenuState(false);
+    trapFocus(event);
   });
+
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 1024) setMenuState(false);
   }, { passive: true });
@@ -316,15 +360,15 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
 </script>
 
 <style>
-  [data-site-header][data-scrolled='true'] [data-topbar] {
-    display: none;
-  }
-
-  [data-site-header][data-scrolled='true'] [data-header-main] {
+  [data-site-header][data-scrolled='true'] {
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(14px) saturate(1.8);
     -webkit-backdrop-filter: blur(14px) saturate(1.8);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(248, 183, 25, 0.12);
+  }
+
+  [data-site-header][data-scrolled='true'] [data-header-main] {
+    background-color: transparent;
   }
 
   [data-site-header][data-scrolled='true'] [data-header-inner] {

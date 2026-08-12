@@ -1,7 +1,32 @@
 ---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CoursesPage from '../../components/cursos/CoursesPage.astro';
+
+const courses = await getCollection('cursos');
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": courses.map((course: CollectionEntry<'cursos'>, index: number) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Course",
+      "name": course.data.title,
+      "description": course.data.description,
+      "provider": {
+        "@type": "Organization",
+        "name": "Asociación Aconiño",
+        "sameAs": "https://aconino.org"
+      }
+    }
+  }))
+};
 ---
 <BaseLayout title="Cursos y Capacitaciones - Asociación Aconiño" description="Cursos de neurodesarrollo y capacitaciones especializadas.">
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  </Fragment>
   <CoursesPage />
 </BaseLayout>
