@@ -181,3 +181,40 @@ const branches = [
     </div>
   </section>
 </main>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const contactForm = document.querySelector('[data-contact-form]');
+    if (contactForm) {
+      const inputs = contactForm.querySelectorAll('input[required], textarea[required], input[type="email"], input[type="tel"]');
+      
+      const validateInput = (input) => {
+        if (input.value.trim() === '') {
+          input.classList.remove('border-green-500', 'focus:border-green-500', 'focus:ring-green-500/20', 'border-red-500', 'focus:border-red-500', 'focus:ring-red-500/20');
+          return;
+        }
+        
+        let isValid = input.checkValidity();
+        
+        // Custom phone validation (optional)
+        if (input.type === 'tel' && input.value.trim() !== '') {
+          const phoneRegex = /^[0-9+\-\s()]{7,15}$/;
+          isValid = phoneRegex.test(input.value);
+        }
+
+        if (isValid) {
+          input.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500/20');
+          input.classList.add('border-green-500', 'focus:border-green-500', 'focus:ring-green-500/20');
+        } else {
+          input.classList.remove('border-green-500', 'focus:border-green-500', 'focus:ring-green-500/20');
+          input.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500/20');
+        }
+      };
+
+      inputs.forEach(input => {
+        input.addEventListener('input', () => validateInput(input));
+        input.addEventListener('blur', () => validateInput(input));
+      });
+    }
+  });
+</script>

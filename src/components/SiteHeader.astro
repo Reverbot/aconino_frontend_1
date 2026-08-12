@@ -140,7 +140,7 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
     <div data-header-inner class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 md:py-3 lg:px-8 transition-all duration-300">
       <a href="/" class="group relative z-50 flex flex-col items-center justify-center shrink-0" aria-label="Aconiño, inicio">
         <span class="absolute inset-0 scale-100 rounded-full bg-accent/10 blur-xl transition-transform duration-300 group-hover:scale-150 md:scale-150"></span>
-        <Image src={imgLogo} alt="Aconiño" class="relative h-auto w-12 drop-shadow-sm md:w-14 lg:w-16" loading="eager" fetchpriority="high" decoding="async" />
+        <Image src={imgLogo} alt="Aconiño" width={256} class="relative h-auto w-12 drop-shadow-sm md:w-14 lg:w-16" loading="eager" fetchpriority="high" decoding="async" />
       </a>
 
       <nav aria-label="Navegación principal" class="hidden items-center gap-1 text-[13px] font-semibold lg:flex xl:gap-2">
@@ -211,7 +211,7 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
 <div id="mobile-menu" data-mobile-menu class="mobile-menu-panel fixed inset-0 z-[60] overflow-y-auto bg-white lg:hidden" aria-hidden="true">
   <div class="sticky left-0 top-0 z-[70] flex h-20 items-center justify-between border-b border-gray-100 bg-white px-4 shadow-sm">
     <a href="/" data-mobile-link class="group relative flex items-center" aria-label="Aconiño, inicio">
-      <Image src={imgLogo} alt="Aconiño" class="relative h-auto w-16 drop-shadow-sm" loading="eager" decoding="async" />
+      <Image src={imgLogo} alt="Aconiño" width={256} class="relative h-auto w-16 drop-shadow-sm" loading="eager" decoding="async" />
     </a>
     <button type="button" data-menu-close aria-label="Cerrar menú" class="rounded-xl bg-gray-50 p-3 text-primary transition-all hover:bg-primary hover:text-white active:scale-95">
       <svg class="h-5 w-5"><use href="#aconino-close" /></svg>

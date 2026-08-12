@@ -12,6 +12,9 @@ const recentPosts = allPosts.filter((item) => item.id !== entry.id);
 ---
 
 <article class="relative min-h-screen overflow-hidden bg-slate-50">
+  <div class="fixed top-0 left-0 w-full h-1.5 z-50 bg-transparent">
+    <div id="reading-progress" class="h-full bg-accent w-0 transition-all duration-150 ease-out"></div>
+  </div>
   <div class="pointer-events-none absolute inset-0 z-0 opacity-40" style="background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 24px 24px"></div>
   <header class="relative overflow-hidden bg-primary pb-16 pt-28 text-white md:pb-20 md:pt-36">
     <div class="pointer-events-none absolute inset-0 overflow-hidden"><div class="absolute -left-20 top-1/4 h-80 w-80 rounded-full bg-accent/15 blur-[100px]"></div><div class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-secondary/30 blur-[120px]"></div></div>
@@ -29,7 +32,28 @@ const recentPosts = allPosts.filter((item) => item.id !== entry.id);
         <div class="prose prose-lg max-w-none">
           <slot />
         </div>
-        <div class="mt-12 flex items-center justify-between border-t border-gray-200 pt-8"><a href="/blog" class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-all hover:bg-secondary"><span aria-hidden="true">←</span>Volver al blog</a></div>
+        <div class="mt-12 border-t border-gray-200 pt-8">
+          <div class="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <h3 class="text-lg font-bold text-primary">Compartir artículo:</h3>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')" class="kowalski-btn inline-flex items-center gap-2 rounded-full bg-[#1877F2]/10 px-4 py-2 text-sm font-bold text-[#1877F2] transition-colors hover:bg-[#1877F2] hover:text-white">
+                Facebook
+              </button>
+              <button onclick="window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(document.title)}`, '_blank')" class="kowalski-btn inline-flex items-center gap-2 rounded-full bg-[#1DA1F2]/10 px-4 py-2 text-sm font-bold text-[#1DA1F2] transition-colors hover:bg-[#1DA1F2] hover:text-white">
+                X (Twitter)
+              </button>
+              <button onclick="window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(document.title)}`, '_blank')" class="kowalski-btn inline-flex items-center gap-2 rounded-full bg-[#0A66C2]/10 px-4 py-2 text-sm font-bold text-[#0A66C2] transition-colors hover:bg-[#0A66C2] hover:text-white">
+                LinkedIn
+              </button>
+              <button onclick="window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(document.title + ' - ' + window.location.href)}`, '_blank')" class="kowalski-btn inline-flex items-center gap-2 rounded-full bg-[#25D366]/10 px-4 py-2 text-sm font-bold text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white">
+                WhatsApp
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <a href="/blog" class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-all hover:bg-secondary"><span aria-hidden="true">←</span>Volver al blog</a>
+          </div>
+        </div>
       </div>
 
       <aside class="space-y-8 lg:sticky lg:top-36 lg:self-start">
@@ -40,4 +64,22 @@ const recentPosts = allPosts.filter((item) => item.id !== entry.id);
       </aside>
     </div>
   </div>
+  <script is:inline>
+    function initProgressBar() {
+      const progressBar = document.getElementById('reading-progress');
+      if (!progressBar) return;
+      
+      const updateProgress = () => {
+        const scrollPosition = window.scrollY;
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = totalHeight > 0 ? (scrollPosition / totalHeight) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+      };
+      
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    }
+    document.addEventListener('astro:page-load', initProgressBar);
+    initProgressBar();
+  </script>
 </article>
