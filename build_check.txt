@@ -1,0 +1,66 @@
+﻿
+> aconino_frontend@1.0.0 build C:\Users\Jose Diaz\Documents\Aconi├▒o\aconino_frontend
+> next build
+
+   Ôû▓ Next.js 15.4.11
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully in 17.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/21) ...
+node.exe : The default export of 
+@sanity/image-url has been deprecated. Use 
+the named export `createImageUrlBuilder` 
+instead.
+En C:\Users\Jose 
+Diaz\AppData\Roaming\npm\pnpm.ps1: 24 
+Carácter: 5
++     & "node$exe"  
+"$basedir/node_modules/pnpm/bin/pnpm.cjs" 
+$args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified 
+   : (The default exp...ilder` instead.:S  
+  tring) [], RemoteException
+    + FullyQualifiedErrorId : NativeComman 
+   dError
+ 
+   Generating static pages (5/21) 
+   Generating static pages (10/21) 
+   Generating static pages (15/21) 
+ Ô£ô Generating static pages (21/21)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                                                                                                       Size  First Load JS  Revalidate  Expire
+Ôöî Ôùï /                                                                                                                                          9.37 kB         190 kB          1m      1y
+Ôö£ Ôùï /_not-found                                                                                                                                   1 kB         102 kB
+Ôö£ Ôùï /apoyanos                                                                                                                                  10.4 kB         187 kB
+Ôö£ Ôùï /app                                                                                                                                       6.37 kB         175 kB
+Ôö£ ãÆ /blog                                                                                                                                      2.23 kB         174 kB
+Ôö£ ÔùÅ /blog/[slug]                                                                                                                                1.9 kB         213 kB
+Ôö£   Ôö£ /blog/indicaciones-para-elaboracion-y-uso-de-rollo-de-toalla-para-ayudar-al-control-de-cuello-en-ninos-con-alteraciones-neuromusculares
+Ôö£   Ôö£ /blog/derechos-de-los-ninos-y-ninas-en-condicion-de-discapacidad
+Ôö£   Ôö£ /blog/vea-la-charla-virtual-hacia-un-mundo-incluyente-visto-desde-el-entorno-familiar
+Ôö£   Ôöö [+6 more paths]
+Ôö£ Ôùï /contacto                                                                                                                                  4.36 kB         173 kB
+Ôö£ Ôùï /cursos                                                                                                                                      13 kB         186 kB
+Ôö£ ãÆ /cursos/[slug]                                                                                                                               512 B         155 kB
+Ôö£ Ôùï /programas                                                                                                                                 9.46 kB         176 kB          1m      1y
+Ôö£ ãÆ /quienes-somos/[slug]                                                                                                                        132 B         101 kB
+Ôö£ Ôùï /quienes-somos/asociacion-de-usuarios                                                                                                        166 B         106 kB
+Ôö£ Ôùï /quienes-somos/nosotros                                                                                                                    15.6 kB         184 kB         10s      1y
+Ôöö ãÆ /studio/[[...tool]]                                                                                                                        1.62 MB        1.81 MB
++ First Load JS shared by all                                                                                                                   101 kB
+  Ôö£ chunks/4bd1b696-9909f507f95988b8.js                                                                                                        54.1 kB
+  Ôö£ chunks/5964-44ba562cc558ac9a.js                                                                                                            43.9 kB
+  Ôöö other shared chunks (total)                                                                                                                2.52 kB
+
+
+Ôùï  (Static)   prerendered as static content
+ÔùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ãÆ  (Dynamic)  server-rendered on demand
+

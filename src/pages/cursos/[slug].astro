@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CoursePage from '../../app/(app)/cursos/[slug]/page';
+
+export function getStaticPaths() {
+  return ['concepto-bobath', 'movimientos-generales', 'pediasuit-formacion']
+    .map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+---
+<BaseLayout title="Curso | Asociación Aconiño" description="Formación especializada de la Asociación Aconiño.">
+  <CoursePage slug={slug || 'concepto-bobath'} />
+</BaseLayout>

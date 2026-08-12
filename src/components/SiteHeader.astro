@@ -1,0 +1,340 @@
+---
+const navLinks = [
+  {
+    name: 'Inicio',
+    href: '/',
+  },
+  {
+    name: 'Quiénes somos',
+    href: '/quienes-somos/nosotros',
+    subLinks: [
+      { name: 'Nuestra Historia', href: '/quienes-somos/nosotros#historia' },
+      { name: 'Misión y Visión', href: '/quienes-somos/nosotros#mision' },
+    ],
+  },
+  {
+    name: 'Programas',
+    href: '/programas',
+    subLinks: [
+      { name: 'Atención Temprana', href: '/programas#atencion-temprana' },
+      { name: 'PediaSuit', href: '/programas#pediasuit' },
+      { name: 'Apoyo al Aprendizaje', href: '/programas#apoyo-aprendizaje' },
+      { name: 'Neurodesarrollo', href: '/programas#atencion-ninos-jovenes' },
+    ],
+  },
+  {
+    name: 'Apóyanos',
+    href: '/apoyanos',
+  },
+  {
+    name: 'Cursos',
+    href: '/cursos',
+  },
+  {
+    name: 'Contáctanos',
+    href: '/contacto',
+  },
+];
+
+const currentPath = Astro.url.pathname.length > 1
+  ? Astro.url.pathname.replace(/\/$/, '')
+  : '/';
+
+const isActive = (href: string) => {
+  const normalizedHref = href.length > 1 ? href.replace(/\/$/, '') : href;
+  return normalizedHref === '/'
+    ? currentPath === '/'
+    : currentPath === normalizedHref || currentPath.startsWith(`${normalizedHref}/`);
+};
+
+const simpleLinks = navLinks.filter((link) => !link.subLinks);
+const dropdownLinks = navLinks.filter((link) => link.subLinks);
+---
+
+<svg class="absolute h-0 w-0 overflow-hidden" aria-hidden="true" focusable="false">
+  <symbol id="aconino-map" viewBox="0 0 20 20">
+    <path fill="currentColor" d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A2 2 0 0 0 2 4v10c0 .266.105.52.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l3.707 3.707A2 2 0 0 0 18 16.707V4a2 2 0 0 0-.293-.707z" />
+  </symbol>
+  <symbol id="aconino-mail" viewBox="0 0 20 20">
+    <path fill="currentColor" d="M2.003 5.884 10 9.882l7.997-3.998A2 2 0 0 0 16 4H4a2 2 0 0 0-1.997 1.884z" />
+    <path fill="currentColor" d="m18 8.118-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118z" />
+  </symbol>
+  <symbol id="aconino-copy" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9h10v10H9z" />
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+  </symbol>
+  <symbol id="aconino-check" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m5 12 4 4L19 6" />
+  </symbol>
+  <symbol id="aconino-facebook" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.02 4.388 11.006 10.125 11.927v-8.438H7.078v-3.49h3.047V9.41c0-3.017 1.792-4.686 4.533-4.686 1.312 0 2.686.236 2.686.236v2.973H15.83c-1.491 0-1.956.93-1.956 1.887v2.252h3.328l-.532 3.49h-2.796V24C19.612 23.079 24 18.093 24 12.073Z" />
+  </symbol>
+  <symbol id="aconino-instagram" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm-.2 2A3.55 3.55 0 0 0 4 7.55v8.9A3.55 3.55 0 0 0 7.55 20h8.9A3.55 3.55 0 0 0 20 16.45v-8.9A3.55 3.55 0 0 0 16.45 4h-8.9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" />
+  </symbol>
+  <symbol id="aconino-youtube" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.11-2.12C19.52 3.5 12 3.5 12 3.5s-7.52 0-9.39.58A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.11 2.12c1.87.58 9.39.58 9.39.58s7.52 0 9.39-.58a3 3 0 0 0 2.11-2.12A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.6 15.9V8.1l6.3 3.9-6.3 3.9Z" />
+  </symbol>
+  <symbol id="aconino-x" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.804-7.584-6.638 7.584H.47l8.6-9.83L0 1.154h7.594l5.246 6.932 6.061-6.932Zm-1.292 19.69h2.039L6.486 3.077H4.298L17.61 20.843Z" />
+  </symbol>
+  <symbol id="aconino-linkedin" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M5.37 3.5A2.37 2.37 0 1 1 .63 3.5a2.37 2.37 0 0 1 4.74 0ZM.96 8.1h4.82V23H.96V8.1Zm7.84 0h4.62v2.04h.07c.64-1.2 2.21-2.47 4.55-2.47 4.87 0 5.77 3.2 5.77 7.36V23h-4.82v-7.07c0-1.69-.03-3.86-2.35-3.86-2.36 0-2.72 1.84-2.72 3.74V23H8.8V8.1Z" />
+  </symbol>
+  <symbol id="aconino-whatsapp" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M20.52 3.48A11.82 11.82 0 0 0 12.1 0C5.55 0 .22 5.33.22 11.88c0 2.09.55 4.13 1.6 5.93L.12 24l6.34-1.66a11.86 11.86 0 0 0 5.64 1.43h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.18-1.24-6.16-3.47-8.41Zm-8.41 18.24h-.01a9.84 9.84 0 0 1-5.02-1.37l-.36-.21-3.76.99 1-3.66-.23-.38a9.83 9.83 0 0 1-1.5-5.21C2.23 6.45 6.65 2.03 12.1 2.03c2.64 0 5.12 1.03 6.98 2.89a9.82 9.82 0 0 1 2.88 6.99c0 5.45-4.43 9.81-9.85 9.81Zm5.39-7.36c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.18.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.67-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.64-.93-2.25-.24-.59-.49-.51-.68-.52h-.58c-.2 0-.52.07-.8.37-.27.3-1.03 1.01-1.03 2.47s1.05 2.87 1.2 3.07c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.34Z" />
+  </symbol>
+  <symbol id="aconino-bars" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+  </symbol>
+  <symbol id="aconino-close" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" d="m6 6 12 12M18 6 6 18" />
+  </symbol>
+  <symbol id="aconino-chevron" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m6 9 6 6 6-6" />
+  </symbol>
+  <symbol id="aconino-heart" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" />
+  </symbol>
+</svg>
+
+<header id="site-header" data-site-header class="sticky top-0 z-50 w-full bg-white">
+  <div class="hidden overflow-hidden bg-[#1b2b65] text-white md:block" data-topbar>
+    <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-4 py-2.5 text-[11px] sm:px-6 sm:text-xs md:flex-row md:px-8 md:text-sm lg:px-8">
+      <div class="flex flex-col items-center gap-4 text-center sm:flex-row sm:gap-8 md:text-left">
+        <div class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 shrink-0 text-accent sm:h-4 sm:w-4"><use href="#aconino-map" /></svg>
+          <span class="font-medium tracking-wide">Calle 127 B No. 45-28 – Barrio Prado</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 shrink-0 text-accent sm:h-4 sm:w-4"><use href="#aconino-mail" /></svg>
+          <a href="mailto:asistentenorte@aconino.org" class="font-medium transition-colors hover:text-accent">asistentenorte@aconino.org</a>
+          <button type="button" data-copy-email aria-label="Copiar correo" title="Copiar correo" class="ml-1 inline-flex items-center gap-1 text-white/70 transition-colors hover:text-accent">
+            <svg data-copy-icon class="h-3 w-3"><use href="#aconino-copy" /></svg>
+            <span data-copy-label class="hidden text-[10px] font-bold text-accent">¡Copiado!</span>
+          </button>
+        </div>
+      </div>
+      <div class="hidden h-full items-center gap-4 border-l border-white/20 pl-4 md:flex">
+        <a href="https://web.facebook.com/AsociacionAconino/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-facebook" /></svg></a>
+        <a href="https://www.instagram.com/aconinoacn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-instagram" /></svg></a>
+        <a href="https://www.youtube.com/@asociacionaconino1526" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-youtube" /></svg></a>
+        <a href="https://twitter.com/aconino" target="_blank" rel="noopener noreferrer" aria-label="X" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-x" /></svg></a>
+        <a href="https://co.linkedin.com/company/aconinoacn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors hover:text-accent"><svg class="h-3.5 w-3.5"><use href="#aconino-linkedin" /></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div data-header-main class="relative bg-white transition-[padding,box-shadow] duration-300">
+    <div data-header-inner class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 md:py-3 lg:px-8">
+      <a href="/" class="group relative z-50 flex flex-col items-center justify-center" aria-label="Aconiño, inicio">
+        <span class="absolute inset-0 scale-100 rounded-full bg-accent/10 blur-xl transition-transform duration-300 group-hover:scale-150 md:scale-150"></span>
+        <img src="/images/logo_aconino.png" alt="Aconiño" width="180" height="180" class="relative h-auto w-16 drop-shadow-sm md:w-20 lg:w-24" loading="eager" fetchpriority="high" />
+      </a>
+
+      <nav aria-label="Navegación principal" class="hidden items-center gap-6 text-[13px] font-bold lg:flex xl:gap-8 xl:text-[14px]">
+        {navLinks.map((link) => (
+          <div class="group relative">
+            <a
+              href={link.href}
+              class:list={[
+                'relative z-10 flex items-center gap-1 px-2 py-1 transition-colors duration-300 lg:py-2',
+                isActive(link.href) ? 'text-accent' : 'text-primary hover:text-accent',
+              ]}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+              aria-haspopup={link.subLinks ? 'true' : undefined}
+            >
+              <span>{link.name}</span>
+              {link.subLinks && <svg class="h-3 w-3 text-gray-400 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"><use href="#aconino-chevron" /></svg>}
+              <span class:list={['absolute bottom-0 left-0 h-[3px] rounded-t-full bg-accent transition-[width,box-shadow] duration-300', isActive(link.href) ? 'w-full shadow-[0_-4px_12px_rgba(248,183,25,0.4)]' : 'w-0 group-hover:w-full group-focus-within:w-full group-hover:shadow-[0_-4px_12px_rgba(248,183,25,0.4)]']}></span>
+            </a>
+            {link.subLinks && (
+              <div class="invisible absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-4 opacity-0 transition-[opacity,visibility] duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div class="relative overflow-hidden rounded-2xl border border-gray-100 bg-white py-3 shadow-2xl">
+                  <div class="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary via-accent to-secondary"></div>
+                  <div class="absolute left-0 top-0 h-8 w-8 rounded-tl-2xl border-l-2 border-t-2 border-accent/30"></div>
+                  <div class="absolute right-0 top-0 h-8 w-8 rounded-tr-2xl border-r-2 border-t-2 border-accent/30"></div>
+                  <div class="relative flex flex-col">
+                    {link.subLinks.map((sub) => (
+                      <a href={sub.href} class:list={['block border-l-4 px-6 py-3 text-sm font-semibold transition-all duration-300', isActive(sub.href) ? 'border-accent bg-primary/5 font-black text-primary' : 'border-transparent text-gray-600 hover:border-accent hover:bg-gray-50 hover:pl-7 hover:text-primary']}>
+                        {sub.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
+
+      <div class="relative z-50 flex items-center gap-3 md:gap-4">
+        <a href="https://wa.me/573133910760" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp" class="group inline-flex items-center rounded-full bg-accent px-3 py-2.5 text-primary shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/40 active:scale-95 sm:px-4 sm:py-3">
+          <span class="flex items-center rounded-full bg-primary/10 p-1 sm:p-1.5">
+            <svg class="h-[14px] w-[14px] text-primary transition-colors group-hover:text-[#25D366] sm:h-4 sm:w-4"><use href="#aconino-whatsapp" /></svg>
+          </span>
+        </a>
+        <button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="rounded-xl bg-gray-50 p-2.5 text-primary transition-all duration-300 hover:bg-primary hover:text-white lg:hidden">
+          <svg data-menu-open-icon class="h-5 w-5"><use href="#aconino-bars" /></svg>
+          <svg data-menu-close-icon class="hidden h-5 w-5"><use href="#aconino-close" /></svg>
+        </button>
+      </div>
+    </div>
+    <div data-accent-line class="absolute bottom-0 left-0 h-[3px] w-full origin-center scale-x-0 bg-gradient-to-r from-primary via-accent to-secondary opacity-0 transition-[opacity,transform] duration-500"></div>
+  </div>
+</header>
+
+<div id="mobile-menu" data-mobile-menu class="mobile-menu-panel fixed inset-0 z-[60] overflow-y-auto bg-white lg:hidden" aria-hidden="true">
+  <div class="sticky left-0 top-0 z-[70] flex h-20 items-center justify-between border-b border-gray-100 bg-white px-4 shadow-sm">
+    <a href="/" data-mobile-link class="group relative flex items-center" aria-label="Aconiño, inicio">
+      <img src="/images/logo_aconino.png" alt="Aconiño" width="180" height="180" class="relative h-auto w-16 drop-shadow-sm" loading="eager" />
+    </a>
+    <button type="button" data-menu-close aria-label="Cerrar menú" class="rounded-xl bg-gray-50 p-3 text-primary transition-all hover:bg-primary hover:text-white active:scale-95">
+      <svg class="h-5 w-5"><use href="#aconino-close" /></svg>
+    </button>
+  </div>
+
+  <div class="flex h-full flex-col overflow-y-auto px-4 pb-24 pt-6 sm:px-6">
+    <div class="mb-3 grid grid-cols-2 gap-2">
+      {simpleLinks.map((link) => (
+        <a href={link.href} data-mobile-link class:list={['flex items-center justify-center rounded-xl border px-3 py-3 text-sm font-bold transition-all', isActive(link.href) ? 'border-accent bg-accent text-primary shadow-md' : 'border-gray-200/60 bg-gray-50 text-primary hover:bg-gray-100']} aria-current={isActive(link.href) ? 'page' : undefined}>
+          {link.name}
+        </a>
+      ))}
+    </div>
+
+    <div class="space-y-2">
+      {dropdownLinks.map((link) => (
+        <details class="mobile-dropdown group" open={isActive(link.href) ? true : undefined}>
+          <summary class:list={['flex cursor-pointer list-none items-center justify-between rounded-xl border px-4 py-3 transition-all [&::-webkit-details-marker]:hidden', isActive(link.href) ? 'border-accent bg-white shadow-sm' : 'border-gray-200/60 bg-gray-50 hover:border-accent/30']}>
+            <span class:list={['text-[15px] font-bold', isActive(link.href) ? 'text-accent' : 'text-primary']}>{link.name}</span>
+            <span class="rounded-md p-1 text-gray-400 transition-colors group-open:bg-accent group-open:text-white"><svg class="mobile-chevron h-3 w-3 transition-transform duration-300 group-open:-rotate-180"><use href="#aconino-chevron" /></svg></span>
+          </summary>
+          <div class="flex flex-col gap-0.5 overflow-hidden py-1 pl-4 ml-3 border-l-2 border-accent/15">
+            {link.subLinks?.map((sub) => (
+              <a href={sub.href} data-mobile-link class:list={['rounded-lg px-3 py-2 text-[13px] transition-all', isActive(sub.href) ? 'bg-accent/5 font-bold text-accent' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-primary']}>
+                {sub.name}
+              </a>
+            ))}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="mt-6 rounded-2xl border border-gray-100 bg-gray-50 p-4">
+      <div class="mb-4 flex flex-col gap-3">
+        <a href="mailto:asistentenorte@aconino.org" class="flex items-center gap-3 transition-transform active:scale-95">
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-accent shadow-sm"><svg class="h-3.5 w-3.5"><use href="#aconino-mail" /></svg></span>
+          <span class="flex min-w-0 flex-col"><span class="text-[9px] font-bold uppercase tracking-widest text-gray-400">Escríbenos</span><span class="truncate text-xs font-bold text-primary">asistentenorte@aconino.org</span></span>
+        </a>
+        <div class="flex items-center gap-3">
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-accent shadow-sm"><svg class="h-3.5 w-3.5"><use href="#aconino-map" /></svg></span>
+          <span class="flex min-w-0 flex-col"><span class="text-[9px] font-bold uppercase tracking-widest text-gray-400">Ubícanos</span><span class="text-[11px] font-medium leading-tight text-gray-600">Calle 127 B No. 45-28 – Barrio Prado, Bogotá</span></span>
+        </div>
+      </div>
+      <a href="/apoyanos" data-mobile-link class="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-sm font-black uppercase tracking-widest text-primary shadow-lg shadow-accent/20 transition-all active:scale-[0.98]">
+        <svg class="h-4 w-4"><use href="#aconino-heart" /></svg>
+        APADRINA UN NIÑO
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const siteHeader = document.querySelector('[data-site-header]');
+  const menuPanel = document.querySelector('[data-mobile-menu]');
+  const menuToggle = document.querySelector('[data-menu-toggle]');
+  const menuClose = document.querySelector('[data-menu-close]');
+  const menuOpenIcon = document.querySelector('[data-menu-open-icon]');
+  const menuCloseIcon = document.querySelector('[data-menu-close-icon]');
+
+  const setMenuState = (open) => {
+    if (!menuPanel || !menuToggle) return;
+    menuPanel.classList.toggle('is-open', open);
+    menuPanel.setAttribute('aria-hidden', String(!open));
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    menuOpenIcon?.classList.toggle('hidden', open);
+    menuCloseIcon?.classList.toggle('hidden', !open);
+    document.body.classList.toggle('menu-open', open);
+  };
+
+  const updateScrollState = () => {
+    const isScrolled = window.scrollY > 50;
+    siteHeader?.setAttribute('data-scrolled', String(isScrolled));
+  };
+
+  menuToggle?.addEventListener('click', () => setMenuState(!menuPanel?.classList.contains('is-open')));
+  menuClose?.addEventListener('click', () => setMenuState(false));
+  menuPanel?.querySelectorAll('[data-mobile-link]').forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMenuState(false);
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) setMenuState(false);
+  }, { passive: true });
+  window.addEventListener('scroll', updateScrollState, { passive: true });
+  updateScrollState();
+
+  document.querySelector('[data-copy-email]')?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('asistentenorte@aconino.org');
+      const button = document.querySelector('[data-copy-email]');
+      const icon = button?.querySelector('[data-copy-icon]');
+      const label = button?.querySelector('[data-copy-label]');
+      if (icon) icon.innerHTML = '<use href="#aconino-check"></use>';
+      label?.classList.remove('hidden');
+      window.setTimeout(() => {
+        if (icon) icon.innerHTML = '<use href="#aconino-copy"></use>';
+        label?.classList.add('hidden');
+      }, 2000);
+    } catch {
+      // El portapapeles puede estar bloqueado por el navegador.
+    }
+  });
+</script>
+
+<style>
+  [data-site-header][data-scrolled='true'] [data-topbar] {
+    display: none;
+  }
+
+  [data-site-header][data-scrolled='true'] [data-header-main] {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(248, 183, 25, 0.1);
+  }
+
+  [data-site-header][data-scrolled='true'] [data-header-inner] {
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+  }
+
+  [data-site-header][data-scrolled='true'] [data-accent-line] {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .mobile-menu-panel {
+    display: none;
+  }
+
+  .mobile-menu-panel.is-open {
+    display: block;
+  }
+
+  .mobile-dropdown[open] .mobile-chevron {
+    transform: rotate(180deg);
+  }
+
+  .mobile-dropdown[open] summary > span:last-child {
+    background-color: #f8b719;
+    color: #ffffff;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-menu-panel,
+    .mobile-menu-panel.is-open {
+      display: none;
+    }
+  }
+</style>

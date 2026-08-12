@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "airweave-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "airweave-mcp-search",
+        "AIRWEAVE_COLLECTION=prueba-2-c16atr"
+      ],
+      "env": {
+        "AIRWEAVE_API_KEY": "-QvlUBgqU1D3IRVAgrLqO59S5Typ4DfdqaZv44_MZ9A"
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+*   e9183b0 Merge branch 'main' of https://github.com/Santirrini/aconino_frontend
+|\  
+| * dc142d0 feat: Create initial homepage layout and add the ImpactSection component.
+* | 82db418 docs: Add gitlog.txt for tracking git command history.
+|/  
+* b6a4cda feat: Initialize Next.js frontend with core pages, layouts, components, and data structures, and remove old payload configuration files.
+* f2ac8ab feat: introduce foundational frontend components and pages for website structure, including footer, contact, courses, and dynamic content sections.
+* 4c3cbcb feat: implement new 'Apóyanos' (Support Us) page including hero section and donation options.
+* 1fe57c1 feat: Implement home page, fetching content from Payload CMS and introducing Payload utility and config shim.
+* 2509b96 feat: integrate Payload CMS with initial configuration, types, utilities, and a news section component.
+* ce09504 feat: Implement blog functionality with sidebar, post pages, and Payload utilities, alongside new CTA and news components.
+* d0b59c4 feat: introduce AboutSection and Hero components with dynamic content, animations, and particle effects.
+* 7bf6f92 chore: Configure ESLint to ignore unused variables prefixed with `_` and exclude specific payload and WP type files from linting.
+* abaa2e8 feat: Add initial UI components for top bar, donation features, about us sections, and a floating chatbot call-to-action.
+* cc0e212 feat: Implement initial website structure and content pages, including Payload CMS integration.
+* 658a429 feat: add new 'quienes-somos' section including page, layout, and various components for team, history, mission, and vision.
+* b7f63a2 feat: Implement dynamic home page with Payload CMS global configuration and dedicated UI components for impact, news, and program procedure.
+*   cc7fd4d Merge branch 'feature/payload-admin-phase1'
+|\  
+| * d380d42 feat: restore block-based Pages collection and base blocks
+* | d17b871 Merge branch 'feature/payload-admin-phase1'
+|\| 
+| * 4caf4c1 feat: add initial global configurations for various pages and the footer.
+* | 654f670 feat: add FloatingDonateCTA and integrate into layout
+* | e6b3fb1 Merge branch 'feature/payload-admin-phase1'
+|\| 
+| * c519559 feat(blog): migrate blog implementation to Payload CMS
+| * f917aee feat: Implement initial PayloadCMS content models for Programs, Courses, Posts, and Categories, including reusable SEO fields and updated configuration.
+* | 330c765 feat: Add local Claude settings with Bash permissions for development tasks.
+* | 28efb92 chore: add .worktrees to gitignore
+|/  
+* 02bbb3d feat: add Phase 1 implementation plan for Payload admin panel
+* 7c7fde4 docs: update spec v2 with reviewer feedback
+* 156c865 docs: add Payload admin panel design specification
+* 33fe46b feat: add ApoyanosHero component featuring an animated hero section, donation call to action, and project statistics.
+* 991ef0d feat: add reusable FAQ component with interactive accordion functionality and default questions.
+* 80a30db feat: add "Support Us" section with hero, donation options, progress, and call-to-action components for the Centro Día project.
+* d84043d feat: add donation widget component with category selection, amount options, and progress bar
+* afd3e8d feat: Add UI and Donation context providers, a mobile menu hook, a floating chatbot CTA, and integrate dynamic header navigation into the main layout.
+* b979661 feat: Add `ProgramsProcedure` component to display the multi-step methodology with interactive cards and animations.
+* d8993ab feat: create home page, integrating Payload CMS data and a new ProgramsProcedure component.
+* 8b389b2 feat: Implement initial home page with Hero, About, and Programs sections.
+* 01272cc feat: Add dynamic page rendering from Payload CMS and disable ESLint during builds.
+* 758c3e9 feat: Add initial Gemini settings for MCP servers, including Supabase configuration.
+* 506033c chore: add eslint configuration
+* 498e6d2 feat(frontend): implement catch-all route with BlockRenderer

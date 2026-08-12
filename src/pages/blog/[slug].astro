@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPostPage from '../../app/(app)/blog/[slug]/page';
+
+export function getStaticPaths() {
+  return [
+    'importancia-del-juego-en-el-neurodesarrollo',
+    'derechos-de-los-ninos-con-discapacidad',
+    'mundo-incluyente-desde-el-entorno-familiar',
+  ].map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+---
+<BaseLayout title="Artículo | Asociación Aconiño" description="Artículo de la Asociación Aconiño.">
+  <BlogPostPage slug={slug || 'importancia-del-juego-en-el-neurodesarrollo'} />
+</BaseLayout>

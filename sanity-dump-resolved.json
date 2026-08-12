@@ -1,0 +1,38 @@
+{
+  "pageBuilder": [
+    {
+      "_key": "ca6d32fd2dad",
+      "_type": "recognitions",
+      "items": [
+        {
+          "_key": "10e4d631f5e4",
+          "description": "Por 15 años de significativo aporte a nuestra Institución.\nSeguimos trabajando juntos por la sociedad que queremos",
+          "image": {
+            "_type": "image",
+            "asset": {
+              "_ref": "image-d9d4a89ff06c7e612dc35c223f3b53936b69b407-744x922-png",
+              "_type": "reference"
+            }
+          },
+          "meta": "Noviembre 2017",
+          "title": "compensar"
+        },
+        {
+          "_key": "b2a8e1176659",
+          "description": "Ascendió al nivel DESPEGUE durante su\nparticipación en el programa Aflora en el\naño 2017",
+          "image": {
+            "_type": "image",
+            "asset": {
+              "_ref": "image-fcb647663c51e3b8149a23f2f2f2a95290c1f7b9-744x922-png",
+              "_type": "reference"
+            }
+          },
+          "meta": "Noviembre de 2017",
+          "title": "Aflora"
+        }
+      ],
+      "text": "Nuestros reconomientos"
+    }
+  ],
+  "title": "  Recognitions Section"
+}

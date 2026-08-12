@@ -1,0 +1,45 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'Asociación Aconiño | Apoyando la inclusión',
+  description = 'Más de 35 años apoyando la inclusión y mejorando la calidad de vida.',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, 'https://aconino.org').toString();
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/images/logo_aconino.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="antialiased min-h-screen flex flex-col font-sans bg-white text-primary">
+    <div class="w-full max-w-full" style="overflow-x: clip">
+      <SiteHeader />
+      <WhatsAppButton />
+      <main class="flex-1 w-full relative" style="overflow-x: clip">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

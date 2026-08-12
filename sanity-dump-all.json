@@ -1,0 +1,122 @@
+[
+  {
+    "_createdAt": "2026-03-14T18:45:02Z",
+    "_id": "d252b292-5a03-46e3-a667-46af88310a08",
+    "_rev": "hfcBCYtN4It7nSxHThkHnl",
+    "_system": {
+      "base": {
+        "id": "d252b292-5a03-46e3-a667-46af88310a08",
+        "rev": "hfcBCYtN4It7nSxHThjQCI"
+      }
+    },
+    "_type": "home",
+    "_updatedAt": "2026-03-14T18:53:39Z",
+    "pageBuilder": [
+      {
+        "_key": "ca6d32fd2dad",
+        "_type": "recognitions",
+        "items": [
+          {
+            "_key": "10e4d631f5e4",
+            "description": "Por 15 años de significativo aporte a nuestra Institución.\nSeguimos trabajando juntos por la sociedad que queremos",
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-d9d4a89ff06c7e612dc35c223f3b53936b69b407-744x922-png",
+                "_type": "reference"
+              }
+            },
+            "meta": "Noviembre 2017",
+            "title": "compensar"
+          },
+          {
+            "_key": "b2a8e1176659",
+            "description": "Ascendió al nivel DESPEGUE durante su\nparticipación en el programa Aflora en el\naño 2017",
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-fcb647663c51e3b8149a23f2f2f2a95290c1f7b9-744x922-png",
+                "_type": "reference"
+              }
+            },
+            "meta": "Noviembre de 2017",
+            "title": "Aflora"
+          }
+        ],
+        "text": "Nuestros reconomientos"
+      }
+    ],
+    "title": "  Recognitions Section"
+  },
+  {
+    "_createdAt": "2026-03-14T16:46:52Z",
+    "_id": "home",
+    "_rev": "tM0fuzrTCgIPVxZVDfI7WR",
+    "_system": {
+      "base": {
+        "id": "home",
+        "rev": "tM0fuzrTCgIPVxZVDfI6gH"
+      }
+    },
+    "_type": "home",
+    "_updatedAt": "2026-03-14T18:57:01Z",
+    "pageBuilder": [
+      {
+        "_key": "hero_1",
+        "_type": "hero",
+        "backgroundType": "video",
+        "backgroundVideo": {
+          "_type": "file",
+          "asset": {
+            "_ref": "file-38027a9f1ae6071783cd5b3d2c3eabb09c78e570-mp4",
+            "_type": "reference"
+          }
+        },
+        "impact": "+36 años apoyando la inclusión!",
+        "slogan": "36 años apoyando la inclusión"
+      },
+      {
+        "_key": "programs_1",
+        "_type": "programs",
+        "clinicalFocus": "Tratamientos y terapias con el Modelo de Práctica Contemporáneo de Neurodesarrollo y protocolo intensivo PediaSuit.",
+        "ctaLabel": "CONTÁCTANOS",
+        "familySupport": "Orientación y apoyo a familias.",
+        "items": [
+          {
+            "_key": "p1",
+            "description": "Enfocado en el desarrollo psicomotor grueso y fino.",
+            "title": "Programa de Desarrollo Psicomotor"
+          },
+          {
+            "_key": "p2",
+            "description": "Intervención integral para niños con retos pedagógicos.",
+            "title": "Apoyo a Dificultades en el Aprendizaje"
+          },
+          {
+            "_key": "p3",
+            "description": "Dirigido a niños y jóvenes (terapia intensiva con traje ortopédico dinámico).",
+            "title": "Protocolo Intensivo PediaSuit"
+          },
+          {
+            "_key": "p4",
+            "description": "Programa especializado para la primera infancia.",
+            "title": "Atención Temprana"
+          }
+        ],
+        "subtitle": "36 años trabajando por mejorar la calidad de vida de niños, niñas y jóvenes en condición de discapacidad."
+      },
+      {
+        "_key": "news_1",
+        "_type": "newsSection",
+        "ctaLabel": "VER TODO",
+        "title": "Últimas noticias"
+      },
+      {
+        "_key": "recog_1",
+        "_type": "recognitions",
+        "text": "Menciona aliados y reconocimientos institucionales (Ej: Compensar)."
+      }
+    ],
+    "title": "Página de Inicio"
+  }
+]

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación de Soldadura de Texto</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --text-white: rgba(255, 255, 255, 0.4);
+            --text-gold: #FFD700;
+            --font-size: 3rem;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Contenedor del texto */
+        #text-container {
+            position: relative;
+            font-size: var(--font-size);
+            font-weight: 700;
+            white-space: pre-wrap;
+            z-index: 2;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        /* Estado inicial de cada letra (Blanco opaco/grisáceo) */
+        .char {
+            color: var(--text-white);
+            display: inline-block;
+            transition: color 0.1s;
+        }
+
+        /* Estado animado de la letra (Dorado y cayendo) */
+        .char.typed {
+            color: var(--text-gold);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            animation: dropIn 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* Animación de caída de la letra */
+        @keyframes dropIn {
+            0% {
+                transform: translateY(-20px) scale(1.1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Canvas para las partículas superpuesto y que no bloquee clics */
+        #spark-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="text-container"></div>
+    <canvas id="spark-canvas"></canvas>
+
+    <script>
+        /**
+         * LÓGICA DE PROGRAMACIÓN
+         * Se divide en dos sistemas coordinados:
+         * 1. El DOM para el texto (accesible, escalable).
+         * 2. Canvas para las partículas (alto rendimiento para la soldadura).
+         */
+
+        const textToType = "Forjando el futuro con código puro.";
+        const textContainer = document.getElementById('text-container');
+        const canvas = document.getElementById('spark-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Configuración de la animación
+        const typingSpeed = 80; // Milisegundos entre cada letra (Velocidad constante)
+        const loopDelay = 3000; // Tiempo de espera antes de reiniciar el bucle
+
+        // Variables de estado
+        let charElements = [];
+        let currentIndex = 0;
+        let isWelding = false;
+        let weldPosition = { x: 0, y: 0 };
+        let particles = [];
+
+        // Ajustar tamaño del canvas
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // 1. INICIALIZAR TEXTO DOM
+        function initText() {
+            textContainer.innerHTML = '';
+            charElements = [];
+            
+            // Crear un span para cada letra
+            textToType.split('').forEach(char => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.className = 'char';
+                textContainer.appendChild(span);
+                charElements.push(span);
+            });
+        }
+
+        // 2. SISTEMA DE ESCRITURA (TYPEWRITER)
+        function typeText() {
+            if (currentIndex < charElements.length) {
+                isWelding = true;
+                const currentSpan = charElements[currentIndex];
+                
+                // Aplicar clase para animar la letra
+                currentSpan.classList.add('typed');
+                
+                // Calcular posición exacta para el arco de soldadura
+                const rect = currentSpan.getBoundingClientRect();
+                // Centrar la chispa en la letra actual
+                weldPosition.x = rect.left + (rect.width / 2);
+                weldPosition.y = rect.top + (rect.height / 2);
+
+                currentIndex++;
+                setTimeout(typeText, typingSpeed);
+            } else {
+                // Termina de escribir
+                isWelding = false;
+                setTimeout(resetAnimation, loopDelay);
+            }
+        }
+
+        function resetAnimation() {
+            currentIndex = 0;
+            charElements.forEach(span => span.classList.remove('typed'));
+            // Pequeña pausa antes de volver a empezar
+            setTimeout(typeText, 500);
+        }
+
+        // 3. SISTEMA DE PARTÍCULAS (LA SOLDADURA)
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                // Dirección aleatoria, mayormente hacia afuera y abajo
+                const angle = (Math.random() * Math.PI * 2);
+                const speed = Math.random() * 3 + 1;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed - 2; // Impulso inicial hacia arriba
+                this.life = 1.0; // Vida de 1.0 a 0
+                this.decay = Math.random() * 0.03 + 0.02; // Velocidad de desaparición
+                this.size = Math.random() * 2 + 1;
+                this.gravity = 0.15; // Las chispas caen
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += this.gravity; // Aplicar gravedad
+                this.life -= this.decay;
+            }
+
+            draw(ctx) {
+                ctx.beginPath();
+                // Color dorado/blanco dependiendo de la vida
+                ctx.fillStyle = `rgba(255, ${Math.floor(215 * this.life)}, 0, ${this.life})`;
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Bucle de animación del Canvas
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Si está escribiendo, generar el destello de soldadura difuso y nuevas chispas
+            if (isWelding) {
+                // Destello difuso (El "Cursor" no intrusivo)
+                const gradient = ctx.createRadialGradient(
+                    weldPosition.x, weldPosition.y, 0,
+                    weldPosition.x, weldPosition.y, 30
+                );
+                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)'); // Núcleo incandescente
+                gradient.addColorStop(0.2, 'rgba(255, 215, 0, 0.5)'); // Halo dorado
+                gradient.addColorStop(1, 'rgba(255, 215, 0, 0)');     // Borde difuso
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(weldPosition.x, weldPosition.y, 30, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Generar nuevas partículas (pocas, para que se vea limpio)
+                for (let i = 0; i < 3; i++) {
+                    particles.push(new Particle(weldPosition.x, weldPosition.y));
+                }
+            }
+
+            // Actualizar y dibujar partículas
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                if (p.life <= 0) {
+                    particles.splice(i, 1); // Eliminar partículas muertas
+                } else {
+                    p.draw(ctx);
+                }
+            }
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        // INICIO DEL SCRIPT
+        initText();
+        animateParticles();
+        // Empezar a escribir tras 1 segundo
+        setTimeout(typeText, 1000);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0c2070;
+  --color-secondary: #365ca1;
+  --color-accent: #f8b719;
+  --color-background: #ffffff;
+  --font-sans: "Manrope", sans-serif;
+}
+
+:root {
+  --background: #f9fafb;
+  --foreground: #111827;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 140px;
+  overflow-x: clip;
+}
+
+body {
+  color: var(--foreground);
+  background: #ffffff;
+  font-family: "Manrope", sans-serif;
+  overflow-x: clip;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide floating widgets when mobile menu is open */
+.menu-open .floating-widget-container {
+  display: none;
+}
+
+.menu-open .whatsapp-float {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .menu-open .floating-widget-container {
+    display: flex;
+  }
+
+  .menu-open .whatsapp-float {
+    display: inline-flex;
+  }
+}
+
+/* Keep floating widgets clear of the safe area on every viewport. */
+.floating-widget-container {
+  position: fixed !important;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom)) !important;
+  right: 1.25rem !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+@media (min-width: 768px) {
+  .floating-widget-container {
+    bottom: calc(2rem + env(safe-area-inset-bottom)) !important;
+    right: 2rem !important;
+  }
+}
+
+.impact-story-card {
+  width: 85vw;
+  max-width: 400px;
+  min-width: 0;
+  height: 260px;
+}
+
+@media (min-width: 768px) {
+  .impact-story-card {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    height: 300px;
+  }
+}
+
+body.coming-soon-overlay-active {
+  overflow: hidden !important;
+}
+
+body.coming-soon-overlay-active .floating-widget-container {
+  display: none !important;
+}
