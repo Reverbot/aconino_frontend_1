@@ -1,0 +1,96 @@
+---
+const targetDate = '2027-09-01T00:00:00-05:00';
+---
+
+<main class="relative isolate w-full overflow-hidden bg-gradient-to-b from-[#1a2744] via-[#1e3a5f] to-[#1a2744] text-white">
+  <div class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/10 blur-[100px]"></div>
+  <div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-accent/10 blur-[100px]"></div>
+
+  <section class="relative z-10 mx-auto flex min-h-[calc(100vh-180px)] w-full max-w-6xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 lg:px-8">
+    <div class="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full border-2 border-accent/30 bg-accent/10 sm:mb-8 sm:h-24 sm:w-24 lg:h-28 lg:w-28" aria-hidden="true">
+      <svg class="h-10 w-10 text-accent sm:h-12 sm:w-12 lg:h-14 lg:w-14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"></path>
+        <path d="M5 21V7l7-4 7 4v14"></path>
+        <path d="M9 21v-4h6v4"></path>
+        <path d="M8 9h1M15 9h1M8 12h1M15 12h1"></path>
+      </svg>
+    </div>
+
+    <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/20 px-4 py-2 sm:mb-6 sm:gap-3 sm:px-6">
+      <svg class="h-4 w-4 text-accent sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 21h18"></path>
+        <path d="m6 21 1.5-9h9L18 21"></path>
+        <path d="M8 12V7h8v5"></path>
+        <path d="M10 7V4h4v3"></path>
+      </svg>
+      <span class="text-xs font-bold uppercase tracking-wider text-accent sm:text-sm">En construcción</span>
+    </div>
+
+    <h1 class="mb-3 text-3xl font-black text-white sm:text-4xl md:text-5xl lg:text-6xl" style="text-shadow: 0 4px 30px rgba(0,0,0,.3)">Próximamente</h1>
+    <p class="mb-6 text-lg font-semibold text-white/90 sm:mb-8 sm:text-xl md:text-2xl">Centro Día para Adultos</p>
+
+    <div class="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6" data-coming-soon-countdown data-target-date={targetDate} aria-label="Tiempo restante para la apertura">
+      <div class="flex flex-col items-center">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 sm:h-20 sm:w-20 md:h-24 md:w-24"><span class="text-2xl font-black sm:text-3xl md:text-4xl" data-countdown-value="years">01</span></div>
+        <span class="mt-2 text-xs font-medium uppercase tracking-wider text-white/70 sm:text-sm" data-countdown-label="years">Año</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 sm:h-20 sm:w-20 md:h-24 md:w-24"><span class="text-2xl font-black sm:text-3xl md:text-4xl" data-countdown-value="months">00</span></div>
+        <span class="mt-2 text-xs font-medium uppercase tracking-wider text-white/70 sm:text-sm">Meses</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 sm:h-20 sm:w-20 md:h-24 md:w-24"><span class="text-2xl font-black sm:text-3xl md:text-4xl" data-countdown-value="days">00</span></div>
+        <span class="mt-2 text-xs font-medium uppercase tracking-wider text-white/70 sm:text-sm">Días</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 sm:h-20 sm:w-20 md:h-24 md:w-24"><span class="text-2xl font-black sm:text-3xl md:text-4xl" data-countdown-value="hours">00</span></div>
+        <span class="mt-2 text-xs font-medium uppercase tracking-wider text-white/70 sm:text-sm">Horas</span>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-col items-center gap-3 text-sm text-white/80 sm:mt-10 sm:flex-row sm:gap-6 sm:text-base">
+      <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-accent"></span>Bogotá, Colombia</span>
+      <span class="hidden h-4 w-px rounded-full bg-white/20 sm:block"></span>
+      <span>Abre en <strong class="text-accent">2027</strong></span>
+    </div>
+
+    <p class="mt-6 max-w-xl text-sm text-white/60 sm:mt-8 sm:text-base">Un espacio dedicado a la neurorehabilitación y cuidado integral de adultos.</p>
+
+    <a href="https://wa.me/573133910760" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center gap-3 rounded-full bg-accent px-10 py-4 text-sm font-black tracking-widest text-primary shadow-xl shadow-accent/20 transition-colors hover:bg-white sm:mt-10 sm:px-12 sm:py-5 sm:text-base">
+      <svg class="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.2 1.6 6L.2 24l6.4-1.7a11.8 11.8 0 0 0 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.5-8.4Zm-8.4 18.1h-.1c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.2 6.4 6.6 2 12.1 2c2.6 0 5.1 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.5-4.4 9.7-9.9 9.7Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.5.9-1.7.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.1 1.4 3.3c.2.2 2.3 3.5 5.6 4.9.8.3 1.5.5 2 .6.8.2 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.5Z"></path></svg>
+      CONTÁCTANOS
+    </a>
+  </section>
+</main>
+
+<script is:inline>
+  (() => {
+    const countdown = document.querySelector('[data-coming-soon-countdown]');
+    if (!countdown) return;
+
+    const target = new Date(countdown.getAttribute('data-target-date') || '').getTime();
+    const values = {
+      years: countdown.querySelector('[data-countdown-value="years"]'),
+      months: countdown.querySelector('[data-countdown-value="months"]'),
+      days: countdown.querySelector('[data-countdown-value="days"]'),
+      hours: countdown.querySelector('[data-countdown-value="hours"]'),
+    };
+    const yearLabel = countdown.querySelector('[data-countdown-label="years"]');
+
+    const update = () => {
+      const remaining = Math.max(0, target - Date.now());
+      const totalHours = Math.floor(remaining / 3600000);
+      const years = Math.floor(totalHours / (24 * 365));
+      const months = Math.floor((totalHours % (24 * 365)) / (24 * 30));
+      const days = Math.floor((totalHours % (24 * 30)) / 24);
+      const hours = totalHours % 24;
+      Object.entries({ years, months, days, hours }).forEach(([key, value]) => {
+        if (values[key]) values[key].textContent = String(value).padStart(2, '0');
+      });
+      if (yearLabel) yearLabel.textContent = years === 1 ? 'Año' : 'Años';
+    };
+
+    update();
+    window.setInterval(update, 60000);
+  })();
+</script>

@@ -1,7 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PermanenciaESALPage from '../app/(app)/permanencia-esal/page';
+import DocumentosLegalesPage from '../components/legal/DocumentosLegalesPage.astro';
+
+const documentos = [
+  { id: 'formulario-esal', titulo: 'Formulario de permanencia ESAL', archivoUrl: '/documents/formulario-permanencia-esal.pdf' },
+  { id: 'remuneracion-directivos', titulo: 'Remuneración de cargos directivos', archivoUrl: '/documents/remuneracion-cargos-directivos.pdf' },
+  { id: 'antecedentes', titulo: 'Certificación de antecedentes', archivoUrl: '/documents/certificacion-antecedentes.pdf' },
+];
 ---
 <BaseLayout title="Permanencia ESAL - Asociación Aconiño" description="Documentos relacionados con la permanencia y regulación de la entidad.">
-  <PermanenciaESALPage />
+  <DocumentosLegalesPage
+    titulo="Permanencia ESAL"
+    subtitulo="Entidades Sin Ánimo de Lucro"
+    descripcion="Documentos relacionados con la permanencia y regulación de Entidades Sin Ánimo de Lucro."
+    categoria="esal"
+    icono="🏛️"
+    documentos={documentos}
+  />
 </BaseLayout>

@@ -1,7 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PrivacidadPage from '../app/(app)/privacidad/page';
+import DocumentosLegalesPage from '../components/legal/DocumentosLegalesPage.astro';
+
+const documentos = [
+  { id: 'politica-datos', titulo: 'Política de protección de datos personales', archivoUrl: '/documents/politica-proteccion-datos.pdf' },
+];
 ---
 <BaseLayout title="Protección de Datos Personales - Asociación Aconiño" description="Políticas y documentos relacionados con la protección de datos.">
-  <PrivacidadPage />
+  <DocumentosLegalesPage
+    titulo="Protección de Datos Personales"
+    subtitulo="Política de Privacidad"
+    descripcion="Políticas y documentos relacionados con la protección de datos personales y privacidad."
+    categoria="proteccion_datos"
+    icono="🔒"
+    documentos={documentos}
+  />
 </BaseLayout>

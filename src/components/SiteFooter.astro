@@ -1,0 +1,33 @@
+---
+const year = new Date().getFullYear();
+const socials = [
+  { label: 'Facebook', url: 'https://web.facebook.com/AsociacionAconino/', icon: 'f' },
+  { label: 'Instagram', url: 'https://www.instagram.com/aconinoacn/', icon: '◎' },
+  { label: 'YouTube', url: 'https://www.youtube.com/@asociacionaconino1526', icon: '▶' },
+];
+const transparencia = [
+  { label: 'PERMANENCIA ESAL', href: '/permanencia-esal' },
+  { label: 'PROTECCIÓN DE DATOS', href: '/privacidad' },
+];
+---
+
+<footer class="relative mt-auto overflow-hidden border-t border-white/5 bg-primary pt-10 font-sans text-gray-300 md:pt-14">
+  <div class="pointer-events-none absolute -right-1/4 -top-1/3 h-[500px] w-[500px] rounded-full bg-accent/5 blur-[120px]"></div>
+  <div class="pointer-events-none absolute -bottom-1/3 -left-1/3 h-[400px] w-[400px] rounded-full bg-white/[0.03] blur-[100px]"></div>
+  <div class="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-12 lg:px-16">
+    <div class="mb-8 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-8">
+      <div class="flex flex-col items-center space-y-8 text-center">
+        <a href="/" class="group mb-6 inline-block"><div class="rounded-2xl bg-white/95 p-2 shadow-xl transition-all duration-300 group-hover:scale-105 active:scale-[0.97] md:p-3"><img src="/images/logo_aconino.png" alt="Aconiño Logo" width="160" height="160" class="h-auto w-16 md:w-32" loading="lazy" /></div></a>
+        <div class="mt-4 w-full text-center"><h4 class="mb-1 text-[10px] font-bold uppercase tracking-widest text-accent/80 md:text-xs">App Aconiño</h4><h4 class="text-xs font-bold uppercase tracking-wider text-white md:text-sm">¡Próximamente!</h4></div>
+      </div>
+
+      <div class="flex flex-col items-center text-center md:items-start md:pl-8 md:text-left"><h4 class="mb-5 text-[10px] font-bold uppercase tracking-widest text-accent/80 md:text-xs">ENLACES DE INTERÉS</h4><h5 class="mb-5 text-sm font-bold text-white/60">Información legal pública</h5><ul class="w-full space-y-3 pl-2 text-sm">{transparencia.map((link) => <li><a href={link.href} class="inline-block text-[11px] font-medium uppercase tracking-wider text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-white">{link.label}</a></li>)}</ul></div>
+
+      <div class="flex h-full w-full flex-col items-center text-center md:items-start md:text-left"><h4 class="mb-5 text-[10px] font-bold uppercase tracking-widest text-accent/80 md:text-xs">Contacto</h4><ul class="flex w-full flex-col items-center space-y-3 pl-2 text-sm text-gray-400 md:items-start"><li class="group flex w-full items-start gap-4 rounded-xl transition-colors hover:bg-white/5 md:w-auto"><span class="mt-1 shrink-0 text-accent/80 transition-all group-hover:scale-110 group-hover:text-white" aria-hidden="true">⌖</span><span class="pt-1 text-left leading-tight">Calle 127 B No. 45-28 – Barrio Prado</span></li><li class="group flex w-full items-center gap-4 rounded-xl transition-colors hover:bg-white/5 md:w-auto"><span class="shrink-0 text-accent/80 transition-all group-hover:scale-110 group-hover:text-white" aria-hidden="true">☎</span><a href="tel:(601)6508473" class="text-left transition-colors hover:text-white">(601) 650 8473</a></li><li class="group flex w-full items-center gap-4 rounded-xl transition-colors hover:bg-white/5 md:w-auto"><span class="shrink-0 text-accent/80 transition-all group-hover:scale-110 group-hover:text-white" aria-hidden="true">✆</span><a href="tel:3133910760" class="text-left transition-colors hover:text-white">313 391 0760</a></li><li class="group flex w-full items-center gap-4 rounded-xl transition-colors hover:bg-white/5 md:w-auto"><span class="shrink-0 text-accent/80 transition-all group-hover:scale-110 group-hover:text-white" aria-hidden="true">✉</span><a href="mailto:asistentenorte@aconino.org" class="break-all text-left text-sm transition-colors hover:text-white md:text-[15px]">asistentenorte@aconino.org</a></li></ul></div>
+
+      <div class="flex w-full flex-col items-center gap-12 md:items-start"><div class="flex w-full flex-col items-center md:items-start"><h4 class="mb-8 text-[10px] font-bold uppercase tracking-widest text-accent/80 md:text-xs">Síguenos</h4><div class="flex items-center justify-center gap-4 md:justify-start">{socials.map((social) => <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.label} class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-xl font-bold text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:bg-accent hover:text-primary hover:shadow-accent/40 active:scale-[0.95]">{social.icon}</a>)}</div></div><div class="flex w-full flex-col items-center md:items-start"><h4 class="mb-8 text-[10px] font-bold uppercase tracking-widest text-accent/80 md:text-xs">Vigilancia</h4><div class="group relative inline-block w-fit"><div class="relative flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-3 backdrop-blur-sm transition-all duration-300 group-hover:border-white/20 group-hover:bg-white/[0.06] md:p-4"><img src="/images/vigilado-supersalud-1.png" alt="Vigilado Supersalud" width="180" height="60" class="h-[32px] w-auto object-contain brightness-90 transition-all duration-500 group-hover:brightness-100 md:h-[40px]" loading="lazy" /></div></div></div></div>
+    </div>
+
+    <div class="flex flex-col items-center justify-between gap-6 border-t border-white/10 pb-8 pt-8 lg:flex-row lg:pb-12"><p class="mb-4 text-center text-[11px] font-medium tracking-wide text-gray-500 lg:mb-0 lg:text-left md:text-xs">© {year} Asociación Aconiño. Todos los derechos reservados.</p><div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-[11px] font-medium tracking-wide text-gray-500 md:gap-x-6 md:text-xs"><a href="/privacidad" class="underline-offset-4 transition-all hover:text-white hover:underline decoration-accent">Política de Privacidad</a><span class="hidden text-white/20 md:inline">|</span><a href="/permanencia-esal" class="underline-offset-4 transition-all hover:text-white hover:underline decoration-accent">Transparencia ESAL</a></div></div>
+  </div>
+</footer>

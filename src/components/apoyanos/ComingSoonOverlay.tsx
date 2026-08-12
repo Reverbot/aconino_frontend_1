@@ -23,24 +23,37 @@ interface ComingSoonOverlayProps {
   show?: boolean;
 }
 
+const getTimeLeft = (targetYear: number, targetMonth: number): TimeLeft => {
+  const targetDate = new Date(targetYear, targetMonth, 1);
+  const difference = targetDate.getTime() - Date.now();
+
+  if (difference <= 0) {
+    return { years: 0, months: 0, days: 0, hours: 0, total: 0 };
+  }
+
+  const years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
+  const months = Math.floor(
+    (difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
+  );
+  const days = Math.floor(
+    (difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+  );
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  return { years, months, days, hours, total: difference };
+};
+
 export default function ComingSoonOverlay({
   targetYear = 2027,
   targetMonth = 0,
   message = "Centro Día para Adultos",
   show = true
 }: ComingSoonOverlayProps) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    years: 0,
-    months: 0,
-    days: 0,
-    hours: 0,
-    total: 0
-  });
-  const [mounted, setMounted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() =>
+    getTimeLeft(targetYear, targetMonth)
+  );
 
   useEffect(() => {
-    setMounted(true);
-    
     if (show) {
       document.body.classList.add("coming-soon-overlay-active");
     }
@@ -51,39 +64,18 @@ export default function ComingSoonOverlay({
   }, [show]);
   
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const targetDate = new Date(targetYear, targetMonth, 1);
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
+    const updateTimeLeft = () => setTimeLeft(getTimeLeft(targetYear, targetMonth));
 
-      if (difference > 0) {
-        const years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
-        const months = Math.floor((difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-        const days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        
-        setTimeLeft({
-          years,
-          months,
-          days,
-          hours,
-          total: difference
-        });
-      } else {
-        setTimeLeft({ years: 0, months: 0, days: 0, hours: 0, total: 0 });
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 60000);
+    updateTimeLeft();
+    const timer = setInterval(updateTimeLeft, 60000);
 
     return () => clearInterval(timer);
   }, [targetYear, targetMonth]);
 
-  if (!mounted || !show) return null;
+  if (!show) return null;
 
   const timeUnits = [
-    { value: timeLeft.years, label: "Años", labelShort: "A" },
+    { value: timeLeft.years, label: timeLeft.years === 1 ? "Año" : "Años", labelShort: "A" },
     { value: timeLeft.months, label: "Meses", labelShort: "M" },
     { value: timeLeft.days, label: "Días", labelShort: "D" },
     { value: timeLeft.hours, label: "Horas", labelShort: "H" },

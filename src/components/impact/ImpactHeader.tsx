@@ -15,12 +15,12 @@ export default function ImpactHeader() {
         </div>
       </div>
       
-      <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-primary mb-6 leading-[1.1] tracking-tight">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 leading-[1.1] tracking-tight">
         ESTAMOS GENERANDO IMPACTO
       </h2>
       
-      <p className="text-lg md:text-xl text-slate-500 max-w-3xl font-medium leading-relaxed text-justify mx-auto">
-        Trabajamos cada día para transformar vidas, generando impacto en nuestra población con discapacidad y demostrando que la verdadera inclusión nace cuando vemos capacidades, no limitaciones
+      <p className="text-base md:text-lg text-slate-500 max-w-2xl font-medium leading-relaxed text-center mx-auto">
+        Trabajamos cada día para transformar vidas, generando impacto en nuestra población con discapacidad y demostrando que la verdadera inclusión nace cuando vemos capacidades, no limitaciones.
       </p>
     </ScrollReveal>
   );

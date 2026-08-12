@@ -24,7 +24,7 @@ export default function FooterSocial({ socialLinks }: FooterSocialProps) {
 
   return (
     <div className="flex flex-col items-center md:items-start text-center md:text-left">
-      <h4 className="text-white font-black text-xs tracking-[0.2em] uppercase mb-5">
+      <h4 className="text-accent/80 font-bold text-[10px] md:text-xs tracking-widest uppercase mb-8">
         Síguenos
       </h4>
       <div className="flex gap-4 items-center justify-center md:justify-start">
@@ -34,7 +34,7 @@ export default function FooterSocial({ socialLinks }: FooterSocialProps) {
             href={social.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:-translate-y-1 shrink-0 hover:bg-accent hover:border-accent hover:text-primary transition-all duration-300 shadow-sm hover:shadow-accent/40"
+            className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:-translate-y-1 active:scale-[0.95] shrink-0 hover:bg-accent hover:border-accent hover:text-primary transition-all duration-300 shadow-sm hover:shadow-accent/40"
             aria-label={social.label}
           >
             {renderSocialIcon(social.url)}

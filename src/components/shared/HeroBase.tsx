@@ -145,9 +145,10 @@ export default function HeroBase({
         
         {/* Common Overlay */}
         <div 
-          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-10" 
-          style={{ opacity: overlayOpacity / 100 }}
+          className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/80 z-10" 
+          style={{ opacity: overlayOpacity > 0 ? overlayOpacity / 100 : 0.8 }}
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-transparent to-transparent z-10" />
         
         {/* Custom Overlays (Gradients, Particles, etc.) */}
         {customOverlay || (
@@ -165,19 +166,18 @@ export default function HeroBase({
       {/* 3. Content Layer */}
       <div className={`relative z-20 w-full flex flex-col ${hAlignClass} mt-12 md:mt-0 ${containerClassName}`}>
         
-        {/* Subtitle / Label */}
+        {/* Subtitle / Label as Pill Badge */}
         {subtitle && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className={`mb-4 md:mb-6 flex items-center ${subtitleJustifyClass} gap-3 md:gap-4 ${subtitleClassName}`}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
+            className={`mb-6 inline-flex items-center gap-2 bg-accent/15 border border-accent/30 backdrop-blur-sm rounded-full px-4 py-1.5 self-start ${subtitleJustifyClass === 'justify-center' ? 'self-center mx-auto' : ''} ${subtitleJustifyClass === 'justify-end' ? 'self-end ml-auto' : ''} ${subtitleClassName}`}
           >
-            <div className={`h-[1px] md:h-[2px] bg-accent ${accentLineWidth}`}></div>
-            <span className="text-gray-200 font-bold tracking-[0.3em] uppercase text-[10px] md:text-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shrink-0" />
+            <span className="text-accent font-bold text-xs tracking-widest uppercase">
               {subtitle}
             </span>
-            <div className={`h-[1px] md:h-[2px] bg-accent ${accentLineWidth}`}></div>
           </motion.div>
         )}
 
@@ -185,12 +185,12 @@ export default function HeroBase({
         <motion.div
           initial={!useTypewriter ? { opacity: 0, y: 30 } : {}}
           animate={!useTypewriter ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.19, 1, 0.22, 1] }}
           className="relative w-full"
         >
           <h1
-            className={`text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black text-white leading-tight drop-shadow-2xl max-w-4xl ${titleAlignClass} tracking-tight px-4 ${titleClassName}`}
-            style={{ textShadow: "0 4px 15px rgba(0,0,0,0.4)" }}
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight ${titleAlignClass} ${titleClassName}`}
+            style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
           >
             {useTypewriter && typeof title === 'string' ? (
               <GoldenTypewriter
@@ -210,8 +210,8 @@ export default function HeroBase({
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className={`mt-6 md:mt-8 text-gray-200 text-lg md:text-2xl max-w-3xl font-medium leading-relaxed drop-shadow-lg ${descriptionClassName}`}
+            transition={{ duration: 0.6, delay: 0.22, ease: [0.19, 1, 0.22, 1] }}
+            className={`mt-5 text-base md:text-lg text-white/80 max-w-xl font-medium leading-relaxed drop-shadow-lg ${descriptionClassName}`}
           >
             {description}
           </motion.p>
@@ -222,13 +222,13 @@ export default function HeroBase({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.45, ease: [0.19, 1, 0.22, 1] }}
             className="mt-10"
           >
             {cta.link ? (
               <Link
                 href={cta.link}
-                className={`inline-flex items-center gap-3 bg-accent text-primary px-8 md:px-12 py-4 md:py-6 rounded-full font-black text-lg md:text-xl tracking-widest shadow-2xl hover:scale-105 hover:bg-yellow-400 transition-all duration-300 uppercase ${cta.className || ""}`}
+                className={`inline-flex items-center gap-3 bg-accent text-primary px-8 md:px-12 py-4 md:py-6 rounded-full font-black text-lg md:text-xl tracking-widest shadow-2xl hover:scale-105 hover:bg-yellow-400 active:scale-[0.97] active:shadow-lg transition-all duration-200 uppercase ${cta.className || ""}`}
               >
                 {cta.icon}
                 {cta.text}
@@ -236,7 +236,7 @@ export default function HeroBase({
             ) : (
               <button
                 onClick={cta.onClick}
-                className={`inline-flex items-center gap-3 bg-accent text-primary px-8 md:px-12 py-4 md:py-6 rounded-full font-black text-lg md:text-xl tracking-widest shadow-2xl hover:scale-105 hover:bg-yellow-400 transition-all duration-300 uppercase ${cta.className || ""}`}
+                className={`inline-flex items-center gap-3 bg-accent text-primary px-8 md:px-12 py-4 md:py-6 rounded-full font-black text-lg md:text-xl tracking-widest shadow-2xl hover:scale-105 hover:bg-yellow-400 active:scale-[0.97] active:shadow-lg transition-all duration-200 uppercase ${cta.className || ""}`}
               >
                 {cta.icon}
                 {cta.text}

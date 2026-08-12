@@ -35,7 +35,7 @@ export default function YoutubeCarousel({
   const current = videos[index];
 
   return (
-    <section className="w-full bg-transparent py-16 md:py-24 overflow-hidden">
+    <section className="w-full bg-transparent py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10 md:mb-14 flex flex-col items-center">
@@ -53,7 +53,7 @@ export default function YoutubeCarousel({
             <button
               onClick={() => goTo(index - 1)}
               aria-label="Anterior"
-              className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300"
+              className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 active:scale-[0.97] transition-all duration-300"
             >
               <ChevronLeft className="w-6 h-6 md:w-7 md:h-7" />
             </button>
@@ -81,7 +81,7 @@ export default function YoutubeCarousel({
             <button
               onClick={() => goTo(index + 1)}
               aria-label="Siguiente"
-              className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300"
+              className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 active:scale-[0.97] transition-all duration-300"
             >
               <ChevronRight className="w-6 h-6 md:w-7 md:h-7" />
             </button>

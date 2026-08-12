@@ -65,13 +65,13 @@ export default function Footer({ settings, documentosLegales }: FooterProps) {
   const controlEntity = settings?.controlEntity || settings?.footerInfo?.controlEntity;
 
   return (
-    <footer className="bg-primary text-gray-300 mt-auto pt-24 md:pt-32 pb-0 font-sans relative overflow-hidden border-t border-white/5">
+    <footer className="bg-primary text-gray-300 mt-auto pt-10 md:pt-14 font-sans relative overflow-hidden border-t border-white/5">
       {/* Enhanced Background Glow for depth */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[140px] pointer-events-none -translate-y-1/3 translate-x-1/4" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/3" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/3 translate-x-1/4" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/[0.03] rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/3" />
       
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 lg:gap-8 mb-8">
           <div className="space-y-8">
             <FooterHeader />
           </div>

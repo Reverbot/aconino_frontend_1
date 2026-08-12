@@ -54,7 +54,7 @@ export default function ProgramCard({
             hover: { y: -8 }
         }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+        transition={{ duration: 0.8, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
         className="group relative flex flex-col h-full bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.12)] hover:border-slate-300/60 transition-all duration-500"
     >
         {/* Top Image Section */}
@@ -71,7 +71,7 @@ export default function ProgramCard({
             {/* Title in Badge */}
             <div className="absolute top-3 left-3 right-10 md:top-4 md:left-4 md:right-12 z-10">
                 <div className="bg-white/95 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-xl shadow-lg inline-block border border-white/20">
-                    <h3 className="text-[9px] md:text-sm font-black text-primary tracking-tight uppercase leading-none">
+                    <h3 className="text-[9px] md:text-sm font-bold text-primary tracking-tight uppercase leading-none">
                         {title}
                     </h3>
                 </div>
@@ -85,7 +85,7 @@ export default function ProgramCard({
                 <IconComponent className="w-5 h-5 md:w-8 md:h-8 text-white" />
             </div>
 
-            <span className="text-xl md:text-3xl font-black text-slate-400 uppercase tracking-widest mb-4 md:mb-6">
+            <span className="text-sm md:text-lg font-extrabold text-slate-400 uppercase tracking-widest mb-4 md:mb-6">
                 {category}
             </span>
 

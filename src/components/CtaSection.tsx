@@ -41,7 +41,7 @@ export default function CtaSection({ acf }: CtaSectionProps) {
                     {ctaTitle}
                 </h2>
                 
-                <Link href={ctaLink} className="inline-block bg-accent text-primary font-black tracking-widest text-sm md:text-base px-12 py-5 rounded-full hover:bg-white hover:text-primary transition-all duration-300 shadow-xl shadow-accent/20 transform hover:-translate-y-1 hover:scale-105">
+                <Link href={ctaLink} className="inline-block bg-accent text-primary font-black tracking-widest text-sm md:text-base px-12 py-5 rounded-full hover:bg-white hover:text-primary active:scale-[0.97] transition-all duration-200 shadow-xl shadow-accent/20 transform hover:-translate-y-1 hover:scale-105">
                     {ctaText}
                 </Link>
             </ScrollReveal>

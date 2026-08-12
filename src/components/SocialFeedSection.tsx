@@ -42,7 +42,7 @@ export default function SocialFeedSection({
                     
                     {/* Instagram Card */}
                     <ScrollReveal animation="slide-right" className="group">
-                        <div className="relative h-[500px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                        <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
                             {/* Background Image */}
                             <div 
                                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
@@ -54,7 +54,7 @@ export default function SocialFeedSection({
                             
                             {/* Content */}
                             <div className="absolute inset-0 p-12 flex flex-col justify-end items-center text-center">
-                                <div className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white text-4xl mb-6 shadow-2xl transform transition-transform duration-500 group-hover:rotate-12">
+                                <div className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white text-4xl mb-6 shadow-2xl transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                                     <FaInstagram />
                                 </div>
                                 <h3 className="text-3xl font-black text-white mb-2">Instagram</h3>
@@ -64,7 +64,7 @@ export default function SocialFeedSection({
                                     href="https://www.instagram.com/aconinoacn/" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
-                                    className="w-full max-w-[240px] bg-white text-primary font-bold py-4 px-8 rounded-2xl hover:bg-accent transition-colors duration-300 shadow-xl flex items-center justify-center gap-3 group/btn"
+                                    className="w-full max-w-[240px] bg-white text-primary font-bold py-4 px-8 rounded-2xl hover:bg-accent transition-all duration-200 shadow-xl flex items-center justify-center gap-3 group/btn active:scale-95"
                                 >
                                     <span>Ver Galería</span>
                                     <FaInstagram className="transition-transform group-hover/btn:scale-110" />
@@ -75,7 +75,7 @@ export default function SocialFeedSection({
 
                     {/* Facebook Card */}
                     <ScrollReveal animation="slide-left" className="group">
-                        <div className="relative h-[500px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                        <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
                             {/* Background Image */}
                             <div 
                                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
@@ -87,7 +87,7 @@ export default function SocialFeedSection({
                             
                             {/* Content */}
                             <div className="absolute inset-0 p-12 flex flex-col justify-end items-center text-center">
-                                <div className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white text-4xl mb-6 shadow-2xl transform transition-transform duration-500 group-hover:-rotate-12">
+                                <div className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white text-4xl mb-6 shadow-2xl transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                                     <FaFacebookF />
                                 </div>
                                 <h3 className="text-3xl font-black text-white mb-2">Facebook</h3>
@@ -97,7 +97,7 @@ export default function SocialFeedSection({
                                     href="https://facebook.com/asociacionaconino" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
-                                    className="w-full max-w-[240px] bg-white text-[#1877F2] font-bold py-4 px-8 rounded-2xl hover:bg-accent hover:text-primary transition-all duration-300 shadow-xl flex items-center justify-center gap-3 group/btn"
+                                    className="w-full max-w-[240px] bg-white text-[#1877F2] font-bold py-4 px-8 rounded-2xl hover:bg-accent hover:text-primary transition-all duration-200 shadow-xl flex items-center justify-center gap-3 group/btn active:scale-[0.97]"
                                 >
                                     <span>Ir a la Página</span>
                                     <FaFacebookF className="transition-transform group-hover/btn:scale-110" />

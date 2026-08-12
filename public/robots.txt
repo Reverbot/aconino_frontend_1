@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aconino.org/sitemap-index.xml

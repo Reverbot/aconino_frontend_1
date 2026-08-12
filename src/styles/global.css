@@ -8,9 +8,34 @@
   --font-sans: "Manrope", sans-serif;
 }
 
+/* ─── Design Tokens ─────────────────────────────────────────────── */
 :root {
-  --background: #f9fafb;
+  --background: #ffffff;
   --foreground: #111827;
+
+  /* Physics-based easing — Emil Kowalski */
+  --ease-out-expo:   cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-spring:     cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-in-out:     cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Brand-aware neutrals (blue-tinted grey scale) */
+  --neutral-50:  #f8f9fc;
+  --neutral-100: #f0f2f8;
+  --neutral-200: #e2e6f0;
+  --neutral-300: #c8cfdf;
+  --neutral-400: #8896b3;
+  --neutral-500: #64718f;
+  --neutral-600: #4a5778;
+  --neutral-700: #334060;
+  --neutral-800: #1e2d4f;
+  --neutral-900: #0d1526;
+
+  /* Reusable shadow scale */
+  --shadow-sm:  0 1px 3px rgba(12, 32, 112, 0.06), 0 1px 2px rgba(12, 32, 112, 0.04);
+  --shadow-md:  0 4px 6px -1px rgba(12, 32, 112, 0.08), 0 2px 4px -1px rgba(12, 32, 112, 0.05);
+  --shadow-lg:  0 10px 40px rgba(12, 32, 112, 0.10), 0 4px 16px rgba(12, 32, 112, 0.06);
+  --shadow-xl:  0 20px 60px rgba(12, 32, 112, 0.14), 0 8px 24px rgba(12, 32, 112, 0.08);
+  --shadow-accent: 0 8px 32px rgba(248, 183, 25, 0.30);
 }
 
 html {
@@ -21,7 +46,7 @@ html {
 
 body {
   color: var(--foreground);
-  background: #ffffff;
+  background: var(--background);
   font-family: "Manrope", sans-serif;
   overflow-x: clip;
 }

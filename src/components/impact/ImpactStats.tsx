@@ -23,7 +23,7 @@ export default function ImpactStats({ stats }: ImpactStatsProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            transition={{ duration: 0.35, delay: idx * 0.08, ease: [0.19, 1, 0.22, 1] }}
             className={`bg-gray-50 rounded-2xl md:rounded-3xl p-5 md:p-6 text-center flex flex-col items-center justify-center shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow group ${
               idx === 2 ? "col-span-2 md:col-span-1 w-full max-w-[calc(50%-8px)] md:max-w-none mx-auto" : ""
             }`}

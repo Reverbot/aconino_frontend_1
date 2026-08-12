@@ -1,7 +1,3 @@
-"use client";
-
-import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "@/compat/motion";
 import Image from "next/image";
 import HeroBase, { HeroBaseProps } from "./HeroBase";
 
@@ -11,7 +7,7 @@ export interface HeroSliderSlide {
   overlayOpacity?: number;
 }
 
-interface HeroSliderProps extends Omit<HeroBaseProps, 'backgroundImage' | 'backgroundVideo' | 'backgroundType' | 'overlayOpacity'> {
+interface HeroSliderProps extends Omit<HeroBaseProps, "backgroundImage" | "backgroundVideo" | "backgroundType" | "overlayOpacity"> {
   slides: HeroSliderSlide[];
   autoPlayInterval?: number;
 }
@@ -21,84 +17,63 @@ export default function HeroSlider({
   autoPlayInterval = 6000,
   ...heroBaseProps
 }: HeroSliderProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = useCallback(() => { // eslint-disable-line @typescript-eslint/no-unused-vars
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
-  }, [slides.length]);
-
-  const prevSlide = useCallback(() => { // eslint-disable-line @typescript-eslint/no-unused-vars
-    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  }, [slides.length]);
-
-  useEffect(() => {
-    const timer = setInterval(nextSlide, autoPlayInterval);
-    return () => clearInterval(timer);
-  }, [nextSlide, autoPlayInterval]);
-
-  const currentSlide = slides[currentIndex];
-  const overlayOpacity = currentSlide?.overlayOpacity ?? 30;
+  const safeSlides = slides.length > 0 ? slides : [{ src: "/images/hero-background-blue.png", alt: "Aconiño" }];
 
   return (
-    <section className={`relative w-full overflow-hidden ${heroBaseProps.height || "h-[600px] md:h-[700px]"}`}>
-      {/* 1. Background Slides */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full z-0"
-        >
-          {currentSlide.src && (
+    <section
+      data-hero-slider
+      data-autoplay={autoPlayInterval}
+      className={`relative w-full overflow-hidden ${heroBaseProps.height || "h-[600px] md:h-[700px]"}`}
+    >
+      <div className="absolute inset-0 z-0">
+        {safeSlides.map((slide, index) => (
+          <div
+            key={`${slide.src}-${index}`}
+            data-hero-slide
+            aria-hidden={index === 0 ? "false" : "true"}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-out ${index === 0 ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          >
             <Image
-              src={currentSlide.src}
-              alt={currentSlide.alt}
+              src={slide.src}
+              alt={slide.alt}
               fill
               className="object-cover object-center"
-              style={currentIndex === 1 ? { transform: "scaleX(-1)" } : undefined}
-              priority={currentIndex === 0}
+              style={index === 1 ? { transform: "scaleX(-1)" } : undefined}
+              priority={index === 0}
               sizes="100vw"
             />
-          )}
-          <div 
-            className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-10" 
-            style={{ opacity: overlayOpacity / 100 }}
-          />
-        </motion.div>
-      </AnimatePresence>
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/80 z-10"
+              style={{ opacity: (slide.overlayOpacity ?? 30) / 100 }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-transparent to-transparent z-10" />
+          </div>
+        ))}
+      </div>
 
-      {/* 2. Navigation Arrows - Removed per user request */}
-
-      {/* 3. Hero Content Base */}
-      <HeroBase 
+      <HeroBase
         {...heroBaseProps}
         backgroundType="image"
-        backgroundImage="" // Empty because we handle it in the slider
-        overlayOpacity={0} // Handled in the slider
-        customOverlay={null} // Handled in the slider
+        backgroundImage=""
+        overlayOpacity={0}
+        customOverlay={null}
         showDefaultBackground={false}
         className={`!absolute inset-0 flex pointer-events-none ${heroBaseProps.className || ""}`}
       >
-        <div className="pointer-events-auto">
-            {heroBaseProps.children}
-        </div>
+        <div className="pointer-events-auto">{heroBaseProps.children}</div>
       </HeroBase>
 
-      {/* 4. Dot Indicators */}
-      {slides.length > 1 && (
+      {safeSlides.length > 1 && (
         <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
-          {slides.map((_, idx) => (
+          {safeSlides.map((_, index) => (
             <button
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`rounded-full transition-all duration-300 ${
-                idx === currentIndex
-                  ? "w-8 h-3 bg-accent"
-                  : "w-3 h-3 bg-white/40 hover:bg-white/70"
-              }`}
-              aria-label={`Ir a imagen ${idx + 1}`}
+              key={index}
+              type="button"
+              data-hero-dot
+              data-index={index}
+              aria-label={`Ir a imagen ${index + 1}`}
+              aria-current={index === 0 ? "true" : "false"}
+              className={`rounded-full transition-all duration-300 ${index === 0 ? "w-8 h-3 bg-accent" : "w-3 h-3 bg-white/40 hover:bg-white/70"}`}
             />
           ))}
         </div>

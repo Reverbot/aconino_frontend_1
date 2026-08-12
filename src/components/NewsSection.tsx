@@ -39,10 +39,10 @@ export default function NewsSection({ posts, title, showSection = true }: NewsSe
                             <span className="text-sm font-bold text-gray-400 tracking-widest uppercase">Aconino</span>
                             <div className="h-[2px] bg-accent w-16"></div>
                         </div>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary">{title || "Últimas noticias"}</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">{title || "Últimas noticias"}</h2>
                     </div>
 
-                    <Link href="/blog" className="inline-flex items-center justify-center gap-3 border-2 border-primary text-primary font-bold px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-sm tracking-widest shrink-0 group">
+                    <Link href="/blog" className="inline-flex items-center justify-center gap-3 border-2 border-primary text-primary font-bold px-8 py-3 rounded-full hover:bg-primary hover:text-white active:scale-[0.97] transition-all duration-300 text-sm tracking-widest shrink-0 group">
                         VER TODO <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </ScrollReveal>

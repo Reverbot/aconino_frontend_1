@@ -1,0 +1,315 @@
+---
+const hero = {
+  title: 'Programas',
+  subtitle: 'Habilitación & Rehabilitación',
+  backgroundImage: '/images/programas-hero.jpg',
+};
+
+const interventionModel = {
+  mainTitle: '“Nos centramos más en la actividad y menos en la discapacidad”',
+  subtitle: '“Potenciar habilidades, no solo tratar dificultades”',
+  introText: 'En Aconiño trabajamos desde un enfoque interdisciplinario centrado en el niño y su familia, integrando fisioterapia, terapia ocupacional, fonoaudiología y psicología para promover el desarrollo integral, mejorar la funcionalidad, la comunicación, la autonomía y la participación social del usuario.',
+  image: '/images/programas-intervention.jpg',
+  imageAlt: 'Modelo de intervención de Aconiño',
+};
+
+const principles = [
+  { key: 'p1', title: 'Intervención interdisciplinaria', description: 'Fisioterapeutas, terapeutas ocupacionales, fonoaudiólogos y psicólogos trabajamos desde un enfoque interdisciplinario coordinada para alcanzar objetivos terapéuticos comunes.' },
+  { key: 'p2', title: 'Atención centrada en el usuario y su familia', description: 'Colaboración entre profesionales, paciente y familia en la valoración, planificación, implementación y seguimiento del proceso terapéutico.' },
+  { key: 'p3', title: 'Objetivos funcionales', description: 'Trabajamos habilidades que permiten una mayor independencia y autonomía en las actividades de la vida diaria.' },
+  { key: 'p4', title: 'Intervención personalizada', description: 'Diseñamos el tratamiento específicamente para cada usuario tras una evaluación individual, considerando sus condiciones, objetivos y evolución.' },
+];
+
+const targetAudience = [
+  { key: 't1', icon: '👶', label: 'Bebés con riesgo en el neurodesarrollo' },
+  { key: 't2', icon: '🧒', label: 'Niños con retraso en su desarrollo' },
+  { key: 't3', icon: '🚶', label: 'Niños con discapacidad motora' },
+  { key: 't4', icon: '🗣️', label: 'Niños con dificultades en comunicación' },
+  { key: 't5', icon: '📚', label: 'Niños con dificultades de aprendizaje' },
+  { key: 't6', icon: '🚀', label: 'Jóvenes que requieren fortalecer su autonomía y participación' },
+];
+
+const teamAreas = [
+  { id: 'fisioterapia', title: 'Fisioterapia', description: 'Enfoque en el desarrollo motor, la movilidad y la fuerza física.', icon: 'walk' },
+  { id: 'terapia-ocupacional', title: 'Terapia Ocupacional', description: 'Desarrollo de habilidades para la independencia en la vida diaria.', icon: 'heart' },
+  { id: 'fonoaudiologia', title: 'Fonoaudiología', description: 'Mejora de la comunicación, el lenguaje y la alimentación.', icon: 'speak' },
+  { id: 'psicologia', title: 'Psicología', description: 'Apoyo emocional, conductual y orientación a familias.', icon: 'brain' },
+];
+
+const maxSatisfaction = {
+  title: 'Nuestra máxima satisfacción es cuando cada niño puede:',
+  items: ['Jugar', 'Aprender', 'Comunicarse', 'Relacionarse', 'Participar activamente en su entorno'],
+};
+
+const whatWeDo = [
+  { key: 'w1', step: 1, title: 'Valoración inicial interdisciplinaria', description: 'Permite identificar el desarrollo que está demorado, inmaduro o bloqueado debido al tono postural atípico u otras deficiencias. Permite establecer un plan de tratamiento adecuado.' },
+  { key: 'w2', step: 2, title: 'Definición de objetivos personalizados', description: 'Establecemos metas claras basadas en las necesidades del niño y las expectativas de su familia.' },
+  { key: 'w3', step: 3, title: 'Plan terapéutico integral', description: 'Diseñamos una ruta de intervención coordinada entre todas las áreas necesarias.' },
+  { key: 'w4', step: 4, title: 'Trabajo conjunto con las familias', description: 'La colaboración es fundamental porque la participación activa del niño y sus cuidadores mejora la motivación y los resultados.' },
+  { key: 'w5', step: 5, title: 'Seguimiento diario', description: 'Se registra la evolución en cada área, siguiendo lineamientos de normatividad de la historia clínica.' },
+  { key: 'w6', step: 6, title: 'Informe semestral', description: 'Evaluación detallada de objetivos mediante escala GAS y planteamiento de un nuevo plan de acción conjunto.' },
+  { key: 'w7', step: 7, title: 'Egreso o Transición', description: 'Se realiza el egreso al lograr objetivos o transición al programa de jóvenes si el niño cumple 3 años y requiere continuidad.' },
+];
+
+const objectivesByArea = {
+  motorGruesa: [
+    'Favorecer el desarrollo y la adquisición de patrones motores funcionales y de calidad.',
+    'Estimular la integración sensoriomotora y el control postural durante el movimiento.',
+    'Fortalecer la musculatura y mejorar las condiciones osteomusculares, optimizando la movilidad.',
+    'Prevenir o disminuir alteraciones musculoesqueléticas y limitaciones en la movilidad.',
+    'Desarrollar ajustes posturales y reacciones de enderezamiento y protección.',
+    'Evitar compensaciones motoras que interfieran en el desarrollo funcional.',
+    'Favorecer la participación en actividades de la vida diaria mediante diferentes actividades.',
+    'Diseñar, realizar y sugerir productos de apoyo para favorecer posturas correctas y desplazamiento.',
+  ],
+  motorFina: [
+    'Desarrollar habilidades de motricidad fina y coordinación manual (agarre, manipulación, coordinación bilateral y óculo-manual).',
+    'Favorecer la integración sensorial y el procesamiento multisensorial.',
+    'Estimular procesos cognitivos y funciones ejecutivas (atención, planificación, resolución de problemas) durante actividades con propósito.',
+    'Potenciar habilidades grafomotoras y pre-académicas, facilitando el desempeño escolar.',
+    'Promover control postural y posicionamiento adecuado para el desempeño funcional.',
+    'Fomentar la autonomía en actividades de la vida diaria, juego, aprendizaje y participación.',
+    'Orientar y acompañar a familias y entorno escolar para favorecer la continuidad del proceso terapéutico.',
+  ],
+  comunicacion: [
+    'Favorecer el desarrollo de la comunicación funcional (habla, lenguaje y comunicación aumentativa o alternativa).',
+    'Estimular habilidades cognitivas y lingüísticas que faciliten la comprensión, expresión y razonamiento verbal.',
+    'Fortalecer las funciones estomatognáticas y orofaciales relacionadas con respiración, alimentación y deglución.',
+    'Estimular procesos de atención, concentración y motivación que favorezcan el aprendizaje.',
+    'Promover alineación postural y control corporal que faciliten la producción oral y la alimentación.',
+  ],
+  psicologia: [
+    'Fortalecer procesos psicológicos básicos y superiores relacionados con el desarrollo cognitivo, emocional y conductual.',
+    'Promover conductas sociales adaptativas y habilidades de interacción en contextos familiares, sociales y escolares.',
+    'Desarrollar estrategias de regulación emocional y afrontamiento, incluyendo tolerancia a la frustración.',
+    'Estimular habilidades cognitivas relacionadas con el aprendizaje (atención, motivación, resolución de problemas).',
+    'Orientar a las familias en pautas de crianza y manejo comportamental.',
+    'Empoderar a padres y cuidadores para acompañar el proceso terapéutico.',
+    'Explorar intereses y expectativas del usuario para favorecer su proyecto de vida y desarrollo personal.',
+  ],
+};
+
+const objectiveTabs = [
+  { id: 'motorGruesa', label: 'Motor Gruesa', icon: '🏃' },
+  { id: 'motorFina', label: 'Motor Fina', icon: '✍️' },
+  { id: 'comunicacion', label: 'Comunicación', icon: '🗣️' },
+  { id: 'psicologia', label: 'Psicología', icon: '🧠' },
+];
+
+const specificPrograms = [
+  {
+    id: 'atencion-temprana',
+    title: 'Atención temprana de 0 a 3 años',
+    description: 'Programa terapéutico integral para apoyar el desarrollo sicomotor a través de la estimulación temprana y adecuada de sistemas multisensoriales (musculoesquelético, neuromotor, vestibular, visual, etc) para mejorar la funcionalidad.\n\nCapacitar a las familias en el manejo y conocimiento de la condición de su bebé.',
+    image: '/images/programa-atencion-temprana.jpg',
+    alt: 'Atención temprana bebé',
+    imageLeft: true,
+    decoration: 'yellow-bar-heart',
+  },
+  {
+    id: 'atencion-ninos-jovenes',
+    title: 'Atención a niños y jóvenes de 3 a 18 años',
+    description: 'Programa terapéutico integral para apoyar el desarrollo sicomotor y evitar en lo posible la aparición de patrones atípicos, a través de la estimulación de sistemas multisensoriales (musculo-esquelético, neuromotor, vestibular, visual, etc) para mejorar la funcionalidad y propiciar la inclusión social.\n\nCapacitar a la familia en el manejo y conocimiento de la condición de su hijo.',
+    image: '/images/programa-neurodesarrollo.jpg',
+    alt: 'Visión niños y jóvenes',
+    imageLeft: false,
+    decoration: 'blue-bar-yellow-bg',
+  },
+  {
+    id: 'apoyo-aprendizaje',
+    title: 'Apoyo a dificultades en el aprendizaje a niños de 3 a 14 años',
+    description: 'Programa terapéutico de apoyo a las actividades escolares para potencializar las habilidades motoras, cognitivas y de lenguaje, con el fin de lograr un mejor desempeño en el aula regular.\n\nEstá dirigido a niños y jóvenes de diversas Entidades Administradoras de Planes de Beneficios- EATB, alumnos de colegios, particulares y usuarios en general.',
+    image: '/images/programa-aprendizaje.jpg',
+    alt: 'Apoyo en el aprendizaje',
+    imageLeft: true,
+    decoration: 'yellow-bar-half-heart',
+  },
+  {
+    id: 'pediasuit',
+    title: 'Protocolo Intensivo Pediasuit Niños y jóvenes de 2 a 18 años',
+    description: 'Protocolo Pediasuit es un programa terapéutico intensivo para apoyar el desarrollo sicomotor a través de la estimulación de sistemas multisensoriales (musculoesquelético, neuromotor, etc) para mejorar la funcionalidad y propiciar la inclusión social.\n\nRecomendado a niños y jóvenes con discapacidad física con clasificación de Medida de la Función Motora Gruesa - GMFM entre nivel I y IV.\n\nCapacitar a la familia en el manejo y conocimiento de la condición de su hijo.',
+    image: '/images/programa-pediasuit.jpg',
+    alt: 'Protocolo Intensivo Pediasuit',
+    imageLeft: false,
+    decoration: 'blue-bar-full-yellow-bg',
+  },
+];
+
+const faqs = [
+  { question: '¿Cuándo debería iniciar terapia mi hijo?', answer: 'Lo ideal es iniciar tan pronto como se note algún retraso en el desarrollo o tras recibir un diagnóstico. La intervención temprana aprovecha la neuroplasticidad del cerebro para obtener mejores resultados.' },
+  { question: '¿Cuántas sesiones necesita?', answer: 'El número de sesiones depende de la valoración inicial y de los objetivos planteados. Diseñamos un plan personalizado que se ajusta a las necesidades específicas de cada niño y su familia.' },
+  { question: '¿Cómo puedo apoyar el proceso en casa?', answer: 'La participación de la familia es fundamental. Nuestros especialistas te brindarán pautas, ejercicios y estrategias adaptadas para integrar el proceso terapéutico en las rutinas diarias del hogar.' },
+  { question: '¿Mi hijo puede mejorar aunque tenga un diagnóstico?', answer: '¡Por supuesto! El objetivo de la habilitación y rehabilitación es potenciar al máximo las habilidades, fomentando la independencia y mejorando la calidad de vida funcional, independientemente del diagnóstico.' },
+];
+
+const whyChooseUs = [
+  'Programas para bebés, niños y jóvenes',
+  'Intervención temprana y especializada',
+  'Enfoque centrado en el niño y su familia',
+  'Trabajo interdisciplinario de alta calidad y humanidad',
+  'Seguimiento de productos de apoyo (órtesis y ayudas técnicas)',
+  'Orientación a familia y escuela',
+  'Equipo profesional actualizado',
+];
+---
+
+<main class="min-h-screen overflow-x-hidden bg-gray-50 selection:bg-primary/20">
+  <section class="relative flex h-[40vh] w-full items-center justify-center overflow-hidden py-24 md:h-[45vh]">
+    <div class="absolute inset-0 z-0">
+      <img src={hero.backgroundImage} alt="Programas de Aconiño" class="h-full w-full object-cover" loading="eager" fetchpriority="high" />
+      <div class="absolute inset-0 z-10 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/80" style="opacity: 0.6"></div>
+      <div class="absolute inset-0 z-10 bg-gradient-to-r from-primary/60 via-transparent to-transparent"></div>
+      <div class="absolute inset-0 z-10 bg-gradient-to-b from-primary/70 via-transparent to-primary/80 mix-blend-multiply"></div>
+    </div>
+    <div class="relative z-20 mt-12 flex w-full max-w-5xl flex-col items-center px-6 text-center md:mt-0 md:px-8">
+      <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/15 px-4 py-1.5 backdrop-blur-sm">
+        <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+        <span class="text-xs font-bold uppercase tracking-widest text-accent">{hero.subtitle}</span>
+      </div>
+      <h1 class="w-full text-3xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-4xl md:text-5xl lg:text-6xl" style="text-shadow: 0 2px 20px rgba(0,0,0,0.3)">{hero.title}</h1>
+      <p class="mt-5 max-w-xl text-base font-medium leading-relaxed text-white/80 drop-shadow-lg md:text-lg">{hero.subtitle}</p>
+    </div>
+  </section>
+
+  <section id="modelo" class="relative z-20 -mt-10 scroll-mt-32 overflow-hidden rounded-t-[3rem] bg-white py-20 shadow-[0_-20px_40px_rgba(0,0,0,0.02)] md:py-32">
+    <div class="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/2 rounded-full bg-blue-50 opacity-70 blur-[80px]"></div>
+    <div class="pointer-events-none absolute bottom-0 left-0 h-[300px] w-[300px] -translate-x-1/3 translate-y-1/3 rounded-full bg-yellow-50 opacity-70 blur-[60px]"></div>
+    <div class="relative z-10 mx-auto max-w-[1400px] px-6 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center gap-12 lg:flex-row lg:gap-24">
+        <div class="order-2 flex w-full justify-center lg:order-1 lg:w-1/2">
+          <div class="relative w-full max-w-lg">
+            <div class="group relative aspect-video w-full overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] md:aspect-square md:rounded-[2.5rem]">
+              <img src={interventionModel.image} alt={interventionModel.imageAlt} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+            </div>
+            <div class="absolute -bottom-4 -right-4 z-20 flex flex-col items-center justify-center rounded-2xl border-b-8 border-accent bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.15)] md:bottom-10 md:-right-8 md:rounded-3xl md:p-7">
+              <svg viewBox="0 0 24 24" class="mb-2 h-8 w-8 text-accent md:h-10 md:w-10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M8 14c1.3-2.7 3.1-4.6 6.6-5.4"></path><path d="M8.5 9.5h.01M15.5 14.5h.01M10 17h4"></path></svg>
+              <span class="text-[10px] font-black uppercase tracking-widest text-primary md:text-xs">Cuidado Integral</span>
+            </div>
+            <div class="absolute -left-8 -top-8 -z-10 hidden h-32 w-32 rounded-3xl border-8 border-accent/20 md:block"></div>
+          </div>
+        </div>
+        <div class="order-1 w-full lg:order-2 lg:w-1/2">
+          <div class="mb-6 flex items-center gap-4"><span class="text-xs font-bold uppercase tracking-widest text-gray-400 md:text-sm">Enfoque Terapéutico</span><div class="h-[2px] w-12 bg-accent md:w-16"></div></div>
+          <h2 class="mb-8 text-3xl font-black leading-[1.15] tracking-tight text-primary md:text-5xl lg:text-6xl">{interventionModel.mainTitle}</h2>
+          <div class="text-lg text-gray-600">
+            <p class="mb-6 text-xl font-bold leading-snug text-secondary md:text-2xl">{interventionModel.subtitle}</p>
+            <p class="font-medium leading-relaxed">{interventionModel.introText}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-primary py-16 md:py-20">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-10"><div class="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-white blur-[100px]"></div><div class="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-accent blur-[100px]"></div></div>
+    <div class="relative z-10 mx-auto max-w-5xl px-6 text-center">
+      <div class="flex flex-col items-center">
+        <div class="mb-4 text-6xl leading-none text-accent/20 md:mb-6 md:text-8xl" aria-hidden="true">“</div>
+        <h2 class="mb-6 text-[10px] font-black uppercase tracking-[0.4em] text-accent/80 md:mb-8 md:text-xs">Objetivo General del Programa</h2>
+        <p class="mb-6 max-w-4xl text-xl font-black italic leading-snug text-white md:mb-8 md:text-3xl lg:text-4xl">Promover el desarrollo integral, la funcionalidad y la participación social de niños, niñas y jóvenes con alteraciones del neurodesarrollo mediante un abordaje interdisciplinario centrado en la familia.</p>
+        <div class="flex w-full max-w-4xl justify-end text-6xl leading-none text-accent/20 md:text-8xl" aria-hidden="true">”</div>
+        <div class="mt-6 h-1 w-20 rounded-full bg-accent/30 md:mt-8"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodologia" class="relative scroll-mt-32 bg-gray-50 py-20 md:py-32">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-16 text-center"><span class="mb-4 block text-sm font-bold uppercase tracking-widest text-accent">Nuestros Pilares</span><h2 class="text-4xl font-black leading-tight text-primary md:text-5xl lg:text-6xl">Metodología de Trabajo</h2><div class="mx-auto mt-8 h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-transparent"></div></div>
+      <div class="mx-auto w-full max-w-4xl space-y-4 px-2 md:px-0">
+        {principles.map((principle, index) => (
+          <details open={index === 0} class="group overflow-hidden rounded-[1.5rem] border border-gray-100 bg-white transition-all duration-300 open:border-primary/20 open:bg-blue-50/40 open:shadow-[0_15px_45px_rgba(12,32,112,0.05)] hover:border-primary/20 hover:shadow-lg md:rounded-[2.5rem]">
+            <summary class="flex w-full cursor-pointer list-none items-center justify-between p-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:p-8 [&::-webkit-details-marker]:hidden">
+              <span class="flex items-center gap-6 md:gap-10"><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gray-50 text-sm font-black text-gray-400 shadow-sm group-open:bg-primary group-open:text-white md:h-14 md:w-14 md:rounded-3xl md:text-lg">{String(index + 1).padStart(2, '0')}</span><span class="text-base font-black leading-tight tracking-tight text-slate-800 transition-colors group-open:text-primary md:text-2xl">{principle.title}</span></span>
+              <span class="ml-4 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-50 text-gray-300 transition-all group-open:rotate-180 group-open:bg-primary/10 group-open:text-primary md:h-12 md:w-12"><svg viewBox="0 0 24 24" class="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></span>
+            </summary>
+            <div class="px-5 pb-8 pt-0 md:ml-24 md:px-8 md:pb-12"><p class="max-w-2xl border-l-4 border-accent pl-6 text-sm font-medium leading-relaxed text-slate-500 md:pl-10 md:text-xl">{principle.description}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-white py-12 md:py-24">
+    <div class="pointer-events-none absolute right-0 top-0 h-full w-full overflow-hidden text-primary opacity-[0.02]"><div class="absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/3 rounded-full border-[30px] border-current md:h-[800px] md:w-[800px] md:border-[60px]"></div></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center md:mb-16"><span class="mb-3 block text-[10px] font-bold uppercase tracking-[0.2em] text-primary md:mb-4 md:text-sm">Nuestro Equipo Interdisciplinario</span><h2 class="text-3xl font-black leading-tight text-primary md:text-5xl lg:text-6xl">Sinergia para el desarrollo integral</h2><div class="mx-auto mt-6 h-1 rounded-full bg-accent md:mt-8 md:h-1.5" style="width: 60px"></div></div>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
+        {teamAreas.map((area) => (
+          <div class="group relative flex flex-col items-center overflow-hidden rounded-[2rem] border border-gray-100/80 bg-white p-6 text-center shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl md:rounded-[3rem] md:p-10">
+            <div class="relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-white bg-primary text-white shadow-xl shadow-primary/30 transition-all duration-500 group-hover:scale-110 md:mb-8 md:h-24 md:w-24 md:border-4">
+              {area.icon === 'walk' && <svg viewBox="0 0 24 24" class="h-8 w-8 md:h-12 md:w-12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4" r="2"></circle><path d="m11 8 3 3 3-2M10 8l-2 5 3 2 1 5M13 11l-1 4 4 3M8 13l-3 5M17 9l3 3"></path></svg>}
+              {area.icon === 'heart' && <svg viewBox="0 0 24 24" class="h-8 w-8 md:h-12 md:w-12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 8.7c0 5.5-8.8 10.1-8.8 10.1S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.8 2.3Z"></path><path d="M7 18h10M8 21h8"></path></svg>}
+              {area.icon === 'speak' && <svg viewBox="0 0 24 24" class="h-8 w-8 md:h-12 md:w-12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h6A3.5 3.5 0 0 1 17 5.5v3A3.5 3.5 0 0 1 13.5 12H10l-3.5 3V12A3.5 3.5 0 0 1 4 8.5Z"></path><path d="M19 7.5a3 3 0 0 1 2 2.8v2.2a3 3 0 0 1-3 3h-1l-2.5 2v-2.3"></path></svg>}
+              {area.icon === 'brain' && <svg viewBox="0 0 24 24" class="h-8 w-8 md:h-12 md:w-12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4.5A3 3 0 0 0 6 7.5v.2A3.2 3.2 0 0 0 4 10.7a3.3 3.3 0 0 0 2 3.1v.7a3 3 0 0 0 3 3h.5V5.5A1 1 0 0 0 9 4.5Z"></path><path d="M15 4.5a3 3 0 0 1 3 3v.2a3.2 3.2 0 0 1 2 3 3.3 3.3 0 0 1-2 3.1v.7a3 3 0 0 1-3 3h-.5V5.5a1 1 0 0 1 .5-1Z"></path><path d="M9.5 8h-2M9.5 12h-3M14.5 8h2M14.5 12h3M12 5v14"></path></svg>}
+            </div>
+            <h3 class="relative z-10 mb-2 text-lg font-black uppercase tracking-tight text-primary md:mb-4 md:text-xl">{area.title}</h3>
+            <p class="relative z-10 text-sm font-medium leading-relaxed text-slate-500 md:text-base">{area.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-white py-20 md:py-32">
+    <div class="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-50/50 blur-[100px]"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center md:mb-20"><span class="mb-3 block text-[10px] font-black uppercase tracking-[0.3em] text-accent md:mb-4 md:text-sm">Población de Atención</span><h2 class="text-3xl font-black leading-tight tracking-tight text-primary md:text-5xl lg:text-6xl">¿A quién está dirigido?</h2><div class="mx-auto mt-6 h-1.5 w-20 rounded-full bg-accent md:mt-8"></div></div>
+      <div class="grid grid-cols-2 gap-3 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+        {targetAudience.map((target) => (
+          <div class="group relative flex h-full flex-col items-center overflow-hidden rounded-[1.5rem] border border-gray-100 bg-white p-4 text-center shadow-[0_4px_15px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl md:rounded-[3rem] md:p-10">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+            <div class="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50/50 text-3xl shadow-sm transition-all duration-500 group-hover:rotate-3 group-hover:bg-primary md:mb-8 md:h-24 md:w-24 md:rounded-[2rem] md:text-5xl">{target.icon}</div>
+            <h3 class="relative z-10 text-xs font-black uppercase leading-tight tracking-tight text-primary transition-colors group-hover:text-blue-700 md:text-xl">{target.label}</h3>
+            <div class="absolute -bottom-2 -right-2 h-8 w-8 rounded-full bg-accent/10 transition-transform duration-500 group-hover:scale-100"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative flex items-center justify-center overflow-hidden bg-primary py-16 text-white md:py-24 lg:py-32">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12)_0%,transparent_70%)] opacity-70"></div><div class="absolute -mr-24 -mt-24 h-[300px] w-[300px] rounded-full bg-white/5 blur-[100px] md:h-[500px] md:w-[500px]"></div><div class="absolute -mb-12 -ml-12 h-[200px] w-[200px] rounded-full bg-accent/10 blur-[80px] md:h-[350px] md:w-[350px]"></div>
+    <div class="relative z-10 mx-auto max-w-6xl px-4 text-center md:px-6"><span class="mb-4 block text-[10px] font-black uppercase tracking-[0.3em] text-accent md:mb-6 md:text-xs">Nuestro Propósito</span><h2 class="mx-auto mb-8 max-w-4xl px-2 text-2xl font-black leading-[1.2] tracking-tight drop-shadow-sm md:mb-12 md:text-4xl lg:text-5xl">{maxSatisfaction.title}</h2><div class="flex max-w-5xl flex-wrap items-center justify-center gap-3 md:gap-5 lg:gap-6">{maxSatisfaction.items.map((item) => <span class="inline-block cursor-default select-none rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-base font-black text-white shadow-lg backdrop-blur-md transition-all hover:bg-white/15 md:rounded-full md:px-10 md:py-5 md:text-2xl lg:text-3xl">{item}</span>)}</div></div>
+  </section>
+
+  <section class="bg-gray-50 py-18 md:py-20"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div data-program-timeline data-current-index="0" data-step-count={whatWeDo.length} class="mx-auto w-full max-w-5xl overflow-hidden px-4 py-10 md:py-20">
+    <div class="mb-12 text-center md:mb-20"><span class="mb-4 block text-[10px] font-black uppercase tracking-[0.3em] text-accent md:text-sm">Nuestra Metodología</span><h2 class="text-3xl font-black text-primary md:text-6xl">¿Cómo lo hacemos?</h2><div class="relative mx-auto mt-6 h-1 max-w-md overflow-hidden rounded-full bg-gray-100"><div data-timeline-progress class="absolute left-0 top-0 h-full bg-accent transition-[width] duration-300" style={`width: ${100 / whatWeDo.length}%`}></div></div><div data-timeline-status class="mt-4 text-xs font-black uppercase tracking-widest text-primary opacity-40 md:text-sm">Paso 1 de {whatWeDo.length}</div></div>
+    <div class="relative flex flex-col items-center"><div class="relative flex min-h-[200px] w-full max-w-4xl items-center md:min-h-[250px]">
+      {whatWeDo.map((item, index) => <article data-timeline-card data-index={index} aria-hidden={index === 0 ? 'false' : 'true'} class:list={["relative flex w-full flex-col items-center gap-8 overflow-hidden rounded-[2.5rem] border border-gray-100 bg-white px-8 py-6 shadow-[0_20px_70px_rgba(12,32,112,0.05)] md:flex-row md:gap-12 md:rounded-[3.5rem] md:px-14 md:py-8 lg:px-16 lg:py-10", index === 0 ? '' : 'hidden']}>
+        <div class="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary text-2xl font-black text-white shadow-xl shadow-primary/20 md:h-24 md:w-24 md:rounded-3xl md:text-5xl">{item.step}</div><div class="relative z-10 flex-1 text-center md:text-left"><h3 class="mb-4 text-xl font-black leading-tight tracking-tight text-primary md:text-3xl lg:text-4xl">{item.title}</h3><p class="text-sm font-medium leading-relaxed text-slate-500 md:text-lg lg:text-xl">{item.description}</p><div class="mt-6 text-[10px] font-black uppercase tracking-[0.2em] text-accent opacity-40 lg:hidden">Desliza para continuar</div></div><div class="pointer-events-none absolute -mr-24 -mt-24 right-0 top-0 h-48 w-48 rounded-full bg-primary/5 blur-3xl"></div>
+      </article>)}
+    </div><div class="mt-10 flex items-center gap-6 rounded-full border border-gray-100 bg-white px-6 py-3 shadow-xl shadow-primary/5 md:mt-12 md:px-8 md:py-4"><button type="button" data-timeline-prev aria-label="Paso anterior" disabled class="flex h-12 w-12 items-center justify-center rounded-full text-gray-200 transition-all disabled:cursor-not-allowed md:h-14 md:w-14"><svg viewBox="0 0 24 24" class="h-6 w-6 md:h-8 md:w-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button><div class="flex gap-3 px-4">{whatWeDo.map((_, index) => <button type="button" data-timeline-dot data-index={index} aria-label={`Ir al paso ${index + 1}`} aria-current={index === 0 ? 'step' : undefined} class:list={["h-2 rounded-full transition-all duration-300", index === 0 ? 'w-10 bg-primary' : 'w-2 bg-gray-200 hover:bg-gray-300']}></button>)}</div><button type="button" data-timeline-next aria-label="Siguiente paso" class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50 text-primary shadow-sm transition-all hover:scale-110 hover:bg-primary hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:bg-transparent disabled:text-gray-200 md:h-14 md:w-14"><svg viewBox="0 0 24 24" class="h-6 w-6 md:h-8 md:w-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button></div></div>
+  </div></div></section>
+
+  <section id="objetivos" class="relative scroll-mt-32 border-t border-gray-100 bg-white py-16 md:py-24"><div class="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-accent/5 blur-[80px]"></div><div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div data-objectives-tabs class="mx-auto w-full max-w-6xl px-4 md:px-0">
+    <div class="mb-10 text-center md:mb-16"><span class="mb-4 inline-block rounded-full bg-blue-50 px-6 py-2 text-xs font-bold uppercase tracking-[0.2em] text-primary md:text-sm">Metas Terapéuticas</span><h2 class="text-3xl font-extrabold leading-tight text-primary md:text-5xl lg:text-6xl">Objetivos por Área</h2></div>
+    <div class="mb-12 flex flex-wrap justify-center gap-3"><div class="flex w-full flex-wrap justify-center gap-2 rounded-3xl border border-gray-100 bg-slate-50 p-2 shadow-inner md:w-auto md:gap-4 md:rounded-full md:p-3">{objectiveTabs.map((tab, index) => <button type="button" data-objective-tab={tab.id} aria-selected={index === 0 ? 'true' : 'false'} class:list={["relative z-10 flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-[10px] font-bold transition-all duration-300 md:flex-none md:gap-3 md:rounded-full md:px-8 md:py-4 md:text-sm", index === 0 ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'text-gray-500 hover:bg-white/50 hover:text-primary']}><span class="text-base md:text-xl">{tab.icon}</span><span class="whitespace-nowrap">{tab.label}</span></button>)}</div></div>
+    <div class="relative min-h-[450px]"><div data-objectives-desktop class="hidden grid-cols-1 gap-x-8 gap-y-6 rounded-[2.5rem] border border-gray-100 bg-white p-6 shadow-xl shadow-gray-500/5 sm:grid md:grid-cols-2 md:gap-y-10 md:p-16 lg:gap-x-16 lg:rounded-[4rem] lg:p-20">{objectiveTabs.map((tab, tabIndex) => <div data-objectives-panel={tab.id} class:list={["col-span-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-10 lg:gap-x-16", tabIndex === 0 ? 'grid' : 'hidden']}>{objectivesByArea[tab.id].map((objective, index) => <div class="group flex items-start gap-5 md:gap-6"><div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white shadow-lg shadow-primary/10 md:h-14 md:w-14 md:rounded-2xl md:text-lg">{String(index + 1).padStart(2, '0')}</div><p class="text-base font-bold leading-relaxed tracking-tight text-gray-900 md:text-xl">{objective}</p></div>)}</div>)}</div>
+    <div data-objectives-mobile class="flex flex-col items-center sm:hidden">{objectiveTabs.map((tab, tabIndex) => <div data-objectives-mobile-panel={tab.id} data-objective-items={JSON.stringify(objectivesByArea[tab.id])} class:list={["w-full", tabIndex === 0 ? '' : 'hidden']}><div class="relative flex min-h-[380px] w-full items-center"><div class="flex w-full flex-col items-center rounded-[2.5rem] border border-gray-100 bg-white p-10 text-center shadow-xl"><div data-objective-mobile-number class="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-xl font-bold text-white shadow-xl shadow-primary/20">1</div><div class="flex flex-1 items-center justify-center"><p data-objective-mobile-copy class="text-xl font-bold leading-snug tracking-tight text-gray-900">{objectivesByArea[tab.id][0]}</p></div><div class="mt-8 text-[10px] font-black uppercase tracking-[0.2em] text-accent opacity-60">Desliza para continuar</div></div></div><div class="mt-8 flex items-center justify-center gap-6 rounded-full border border-gray-50 bg-white px-6 py-3 shadow-lg"><button type="button" data-objective-prev aria-label="Objetivo anterior" disabled class="flex h-10 w-10 items-center justify-center rounded-full text-gray-200"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button><span data-objective-mobile-status class="text-sm font-black tracking-widest text-primary">1 / {objectivesByArea[tab.id].length}</span><button type="button" data-objective-next aria-label="Siguiente objetivo" disabled={objectivesByArea[tab.id].length <= 1} class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 text-primary active:scale-90 disabled:bg-transparent disabled:text-gray-200"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button></div></div>)}</div>
+  </div></div></div></section>
+
+  <section class="relative overflow-hidden border-t border-gray-100 bg-gray-50 py-20 md:py-32"><div class="pointer-events-none absolute left-0 top-1/4 h-[300px] w-[300px] rounded-full bg-yellow-100/50 blur-[100px]"></div><div class="pointer-events-none absolute bottom-1/4 right-0 h-[400px] w-[400px] rounded-full bg-blue-100/50 blur-[120px]"></div><div class="flex w-full flex-col gap-32 md:gap-40">
+    {specificPrograms.map((program) => (
+      <div id={program.id} class="relative mx-auto w-full max-w-7xl scroll-mt-32 px-4 sm:px-6 lg:px-8">
+        {program.decoration === 'blue-bar-yellow-bg' && <div class="absolute right-0 top-0 hidden h-[120%] w-[80%] translate-x-[10%] translate-y-[-10%] rounded-l-[4rem] bg-accent opacity-90 -z-10 md:block md:w-[45%]"></div>}
+        {program.decoration === 'blue-bar-full-yellow-bg' && <div class="absolute right-0 top-0 hidden h-[120%] w-[95%] translate-x-[5%] translate-y-[-10%] rounded-l-[5rem] bg-accent -z-10 md:block md:w-[60%]"></div>}
+        <div class="mb-12 px-4 pt-8 text-center lg:hidden"><div class="mb-4 flex items-center justify-center gap-3"><div class="h-[2px] w-6 bg-accent"></div><span class="text-[9px] font-bold uppercase tracking-widest text-gray-400 sm:text-xs">Aconiño</span><div class="h-[2px] w-6 bg-accent"></div></div><h3 class="px-2 text-2xl font-black leading-[1.15] text-primary sm:text-4xl">{program.title}</h3></div>
+        <div class:list={["flex flex-col items-center gap-10 lg:gap-20", program.imageLeft ? 'lg:flex-row' : 'lg:flex-row-reverse']}>
+          <div class="relative z-10 w-full lg:w-1/2"><div class="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-2xl md:rounded-[3rem]"><img src={program.image} alt={program.alt} class="h-full w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" /></div>
+            {program.decoration === 'yellow-bar-heart' && <div class="absolute -right-2 top-1/2 z-20 flex h-[70%] w-2 -translate-y-1/2 flex-col items-center justify-end rounded-full bg-accent shadow-lg sm:-right-4 sm:w-3 md:-right-8 md:w-4"><div class="absolute -bottom-6 h-8 w-8 text-accent md:h-10 md:w-10"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg></div></div>}
+            {program.decoration === 'yellow-bar-half-heart' && <div class="absolute -right-2 top-[10%] z-20 flex h-[80%] w-2 flex-col items-center justify-end rounded-full bg-accent shadow-lg sm:-right-4 sm:w-3 md:-right-8 md:w-4"><div class="absolute -bottom-4 -right-2 h-6 w-6 text-accent md:h-8 md:w-8"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg></div></div>}
+          </div>
+          <div class="relative w-full lg:w-1/2"><div class="relative hidden lg:block">{program.decoration.includes('blue-bar') && <div class="absolute -left-10 top-0 h-24 w-2 rounded-full bg-primary"></div>}<div class="mb-6 flex items-center gap-4"><span class="text-sm font-bold uppercase tracking-widest text-gray-500">Aconiño</span><div class="h-[2px] w-16 bg-accent"></div></div><h3 class="mb-8 text-3xl font-black leading-[1.15] text-primary md:text-4xl lg:text-5xl">{program.title}</h3></div><div class="mb-10 space-y-6 text-center text-gray-600 sm:text-lg lg:text-left">{program.description.split('\n\n').map((paragraph) => <p class="font-medium leading-relaxed">{paragraph}</p>)}</div><div class="flex justify-center lg:justify-start"><a href="/contacto" class="inline-flex items-center justify-center rounded-full bg-primary px-10 py-4 text-lg font-bold text-white shadow-xl shadow-primary/20 transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-primary/30">Más información</a></div></div>
+        </div>
+      </div>
+    ))}
+  </div></section>
+
+  <section class="relative overflow-hidden bg-white py-24 text-slate-800 md:py-32"><div class="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[100px]"></div><div class="pointer-events-none absolute bottom-0 left-0 h-[500px] w-[500px] -translate-x-1/4 translate-y-1/4 rounded-full bg-blue-50/50 blur-[120px]"></div><div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mb-16 text-center md:mb-24"><div class="mb-4 flex items-center justify-center gap-3 md:gap-4"><div class="h-[2px] w-6 bg-accent md:w-12"></div><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 sm:text-xs md:text-sm">Para Familias</span><div class="h-[2px] w-6 bg-accent md:w-12"></div></div><h2 class="mb-6 px-4 text-3xl font-extrabold leading-tight text-primary md:text-5xl lg:text-6xl">Preguntas Frecuentes</h2><p class="mx-auto max-w-2xl px-6 text-base font-medium text-gray-500 md:text-xl">Resolvemos las dudas más comunes de los padres sobre el inicio y desarrollo del proceso terapéutico.</p></div><div class="flex flex-col items-center gap-16 lg:flex-row lg:gap-24"><div class="w-full shrink-0 lg:w-1/2"><div class="group relative h-[400px] w-full overflow-hidden rounded-[2.5rem] shadow-xl md:h-[500px] md:rounded-[4rem]"><img src="/images/programas-intervention.jpg" alt="Niños en diferentes tratamientos" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" /><div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div></div><div class="mt-8 flex items-start gap-4 rounded-[2rem] border border-blue-100 bg-blue-50/50 p-6"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg" aria-hidden="true"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9.8-1.9 1.2-1.9 2.4"></path><path d="M12 16h.01"></path></svg></div><p class="text-sm font-medium leading-relaxed text-slate-600 md:text-base">Nuestros profesionales acompañan a los niños en diferentes etapas, garantizando un entorno seguro, motivador y <strong class="font-bold text-primary">centrado en su bienestar.</strong></p></div></div><div class="w-full space-y-6 lg:w-1/2">{faqs.map((faq, index) => <details open={index === 0} class="group overflow-hidden rounded-[2rem] border border-gray-100 bg-white transition-all open:border-primary/20 open:bg-blue-50/40 open:shadow-xl hover:border-primary/20 hover:shadow-md md:rounded-[3rem]"><summary class="flex w-full cursor-pointer list-none items-center justify-between p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:p-8 [&::-webkit-details-marker]:hidden"><span class="pr-4 text-lg font-bold leading-snug text-slate-800 group-open:text-primary md:text-xl">{faq.question}</span><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-400 transition-all group-open:rotate-180 group-open:bg-primary group-open:text-white md:h-12 md:w-12"><svg viewBox="0 0 24 24" class="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></span></summary><div class="px-6 pb-8 pt-0 md:px-8"><p class="pb-2 text-base font-medium leading-relaxed text-slate-500 md:text-lg">{faq.answer}</p></div></details>)}</div></div></div></section>
+
+  <section class="border-t border-gray-100 bg-white pb-4 pt-16 md:pb-4 md:pt-24"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto w-full max-w-6xl px-4 py-8 md:px-0 md:py-16"><div class="mb-8 text-center md:mb-16"><span class="mb-2 block text-[10px] font-black uppercase tracking-[0.2em] text-accent md:mb-4 md:text-sm">Nuestra Propuesta</span><h2 class="px-2 text-2xl font-black leading-tight text-primary md:text-5xl lg:text-6xl">¿Por qué elegir a Aconiño?</h2><div class="mx-auto mt-4 h-1 rounded-full bg-accent md:mt-8" style="width: 60px"></div></div><div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">{whyChooseUs.map((item) => <div class="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-gray-100 bg-white p-5 shadow-[0_4px_15px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] md:items-start md:gap-5 md:rounded-[2.5rem] md:p-8"><div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div><div class="relative z-10 shrink-0"><div class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-blue-50/50 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:bg-blue-100 md:h-14 md:w-14 md:rounded-2xl"><svg viewBox="0 0 24 24" class="h-5 w-5 text-primary md:h-7 md:w-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.5 2.5L16 9"></path></svg></div></div><p class="relative z-10 text-sm font-bold leading-tight text-gray-700 transition-colors duration-500 group-hover:text-primary md:text-base md:leading-snug">{item}</p></div>)}</div></div></div></section>
+
+  <section class="relative overflow-hidden bg-white pb-16 pt-2 text-center md:pb-16 md:pt-2"><div class="pointer-events-none absolute -right-32 -top-32 -z-10 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[100px]"></div><div class="pointer-events-none absolute -bottom-32 -left-32 -z-10 h-[400px] w-[400px] rounded-full bg-accent/10 blur-[80px]"></div><div class="relative z-10 mx-auto max-w-3xl px-6"><h3 class="mb-8 text-4xl font-black leading-[1.1] text-primary md:text-6xl">¿Quieres saber más sobre nuestros programas?</h3><p class="mb-10 text-xl font-medium text-gray-500">Déjanos acompañarte y construir juntos el mejor camino para tu hijo.</p><a href="https://wa.me/573133910760" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center gap-3 rounded-full bg-accent px-12 py-5 text-xl font-black uppercase tracking-wider text-primary shadow-[0_15px_40px_rgba(251,191,36,0.3)] transition-all duration-300 hover:scale-105 hover:bg-yellow-400 hover:shadow-[0_20px_50px_rgba(251,191,36,0.4)]"><svg viewBox="0 0 24 24" class="h-6 w-6 transition-transform group-hover:scale-110" fill="currentColor" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-14.9 4.1L3 20l4.6-1.8A8 8 0 1 1 20 11.5Zm-8-5a5 5 0 0 0-4.9 5c0 .8.2 1.6.6 2.3l-.7 1.9 2-.7c.9.5 1.9.7 3 .7a5 5 0 1 0 0-10Zm-2.2 2.8c.2-.1.4-.1.5.1l.7 1.3c.1.2.1.3-.1.5l-.5.5c.5 1 1.2 1.6 2.2 2.1l.5-.5c.2-.2.3-.2.5-.1l1.3.6c.2.1.2.3.2.5-.2.8-.8 1.2-1.5 1.2-2.7 0-4.4-2.3-5.5-3.8-.7-1-.9-2.1-.5-2.3l.7-.1Z"></path></svg>CONTÁCTANOS</a></div></section>
+</main>

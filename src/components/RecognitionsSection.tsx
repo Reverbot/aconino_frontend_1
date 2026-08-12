@@ -31,7 +31,7 @@ export default function RecognitionsSection({ recognitions, text }: Recognitions
     ];
 
     return (
-        <section className="w-full py-12 md:py-32 bg-gray-50 relative overflow-hidden">
+        <section className="w-full py-24 md:py-32 bg-gray-50 relative overflow-hidden">
             {/* Atmosferic Background Elements */}
             <div className="absolute top-0 left-0 w-[200px] h-[200px] md:w-[350px] md:h-[350px] lg:w-[500px] lg:h-[500px] bg-primary/5 rounded-full blur-[60px] md:blur-[80px] lg:blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[150px] h-[150px] md:w-[280px] md:h-[280px] lg:w-[400px] lg:h-[400px] bg-accent/5 rounded-full blur-[50px] md:blur-[70px] lg:blur-[100px] translate-y-1/2 translate-x-1/4 pointer-events-none" />
@@ -45,11 +45,11 @@ export default function RecognitionsSection({ recognitions, text }: Recognitions
                 >
                     <div className="flex items-center gap-4 mb-4">
                         <div className="h-0.5 md:h-1 bg-accent w-12 md:w-20"></div>
-                        <span className="text-xl md:text-3xl font-black text-primary tracking-[0.2em] uppercase">Excelencia Aconiño</span>
+                        <span className="text-xs font-bold text-primary/50 tracking-widest uppercase">Premios &amp; Distinciones</span>
                         <div className="h-0.5 md:h-1 bg-accent w-12 md:w-20"></div>
                     </div>
 
-                    <h2 className="text-3xl md:text-6xl font-black text-primary mb-4 leading-tight">
+                    <h2 className="text-3xl md:text-6xl font-extrabold text-primary mb-4 leading-tight">
                         {text || "Nuestros Reconocimientos"}
                     </h2>
                     <div className="w-12 md:w-24 h-1 bg-accent/30 rounded-full"></div>

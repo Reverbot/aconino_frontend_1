@@ -132,11 +132,11 @@ export default function ProgramasPage() {
         subtitle="Habilitación & Rehabilitación"
         description={hero.subtitle}
         backgroundImage={hero.backgroundImageUrl}
-        height="h-[60vh] md:h-[70vh]"
+        height="h-[40vh] md:h-[45vh]"
         overlayOpacity={60}
         showCurtain={true}
         useTypewriter={true}
-        containerClassName="max-w-5xl mx-auto px-6 md:px-8 mt-20 md:mt-16"
+        containerClassName="max-w-5xl mx-auto px-6 md:px-8 mt-12 md:mt-8"
         customOverlay={
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-transparent to-primary/80 mix-blend-multiply z-10" />
         }

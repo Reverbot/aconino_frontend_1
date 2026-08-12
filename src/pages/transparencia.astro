@@ -1,7 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TransparenciaPage from '../app/(app)/transparencia/page';
+import DocumentosLegalesPage from '../components/legal/DocumentosLegalesPage.astro';
+
+const documentos = [
+  { id: 'informe-gestion-2024', titulo: 'Informe de gestión 2024', archivoUrl: '/documents/informe-gestion-2024.pdf' },
+  { id: 'estados-financieros-2024', titulo: 'Estados financieros 2024-2023', archivoUrl: '/documents/estados-financieros-2024-2023.pdf' },
+  { id: 'certificado-legal', titulo: 'Certificado de existencia y representación legal', archivoUrl: '/documents/certificado-existencia-representacion-legal.pdf' },
+  { id: 'estatutos', titulo: 'Estatutos de la Asociación Aconiño', archivoUrl: '/documents/estatutos-aconino.pdf' },
+];
 ---
 <BaseLayout title="Transparencia - Asociación Aconiño" description="Documentos de transparencia e información pública.">
-  <TransparenciaPage />
+  <DocumentosLegalesPage
+    titulo="Transparencia"
+    subtitulo="Información Pública"
+    descripcion="Documentos de transparencia e información pública conforme a la normativa vigente."
+    categoria="transparencia"
+    icono="📋"
+    documentos={documentos}
+  />
 </BaseLayout>

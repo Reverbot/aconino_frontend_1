@@ -40,7 +40,7 @@ export default function ImpactSection({ stats = [], stories = [], videos = [], c
     : defaultStories;
 
   return (
-    <section className="py-12 md:py-16 bg-white relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-white relative overflow-hidden">
       {/* Premium Background Decor */}
       <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 bg-accent/5 rounded-full blur-[60px] md:blur-[80px] lg:blur-[100px] opacity-50 pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-secondary/5 rounded-full blur-[50px] md:blur-[70px] lg:blur-[100px] opacity-50 pointer-events-none" />

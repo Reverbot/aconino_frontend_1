@@ -33,8 +33,9 @@ export default function CursosHero({
         <HeroSlider
             slides={slides}
             title={title}
-            height="h-[400px] md:h-[500px] lg:h-[600px]"
-            titleClassName="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter mt-10"
+            subtitle="Capacitación Profesional"
+            description="Explora nuestros programas de formación en neurodesarrollo y certificación en metodologías especializadas."
+            height="h-[40vh] md:h-[45vh]"
         >
             <div className="absolute -top-8 left-1/2 -translate-x-1/2 md:-top-12 z-20">
                 <span className="text-accent text-4xl md:text-5xl drop-shadow-lg mt-10">♥</span>

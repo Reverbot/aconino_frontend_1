@@ -45,16 +45,16 @@ const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 }
   }
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { type: "spring", stiffness: 100, damping: 20 } 
+    transition: { duration: 0.8, ease: [0.19, 1, 0.22, 1] } 
   }
 };
 
@@ -66,7 +66,7 @@ export function InterventionModelSection({
 }: InterventionModelSectionProps) {
 
   return (
-    <section className="relative w-full py-12 md:py-24 lg:py-40 overflow-hidden bg-white">
+    <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
       {/* Background Decorations - High End Aesthetics */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none -z-10">
         <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-blue-50 rounded-full blur-[80px] md:blur-[120px] opacity-60" />
@@ -85,13 +85,13 @@ export function InterventionModelSection({
             <div className="lg:col-span-8">
               <motion.span
                 variants={itemVariants}
-                className="text-accent font-black tracking-[0.2em] md:tracking-[0.3em] uppercase text-2xl md:text-4xl mb-4 md:mb-6 block"
+                className="text-accent font-bold tracking-widest uppercase text-sm md:text-base mb-4 md:mb-6 block"
               >
                 {subtitle}
               </motion.span>
               <motion.h2
                 variants={itemVariants}
-                className="text-2xl md:text-4xl lg:text-5xl font-black text-primary leading-[1.1] md:leading-[1.05] tracking-tight"
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary leading-[1.1] md:leading-[1.05] tracking-tight"
               >
                 {mainTitle}
               </motion.h2>
@@ -119,7 +119,7 @@ export function InterventionModelSection({
                   {getIconForIndex(index)}
                 </div>
 
-                <h3 className="relative z-10 text-lg md:text-xl font-black text-primary mb-3 md:mb-4 uppercase tracking-tight leading-tight">
+                <h3 className="relative z-10 text-lg md:text-xl font-extrabold text-primary mb-3 md:mb-4 uppercase tracking-tight leading-tight">
                   {principle.title}
                 </h3>
                 
@@ -136,7 +136,7 @@ export function InterventionModelSection({
               href="https://wa.me/573133910760"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-accent text-primary font-black tracking-widest text-sm md:text-base px-12 py-5 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-xl shadow-accent/20 transform hover:-translate-y-1 hover:scale-105"
+              className="inline-flex items-center gap-3 bg-accent text-primary font-bold tracking-widest text-sm md:text-base px-12 py-5 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-xl shadow-accent/20 transform hover:-translate-y-1 hover:scale-105 active:scale-[0.97]"
             >
               <FaWhatsapp className="text-xl md:text-2xl" />
               CONTÁCTANOS

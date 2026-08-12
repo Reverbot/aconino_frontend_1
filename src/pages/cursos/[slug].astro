@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CoursePage from '../../app/(app)/cursos/[slug]/page';
+import CourseDetailPage from '../../components/cursos/CourseDetailPage.astro';
+import { courseDetails } from '../../data/courses';
 
 export function getStaticPaths() {
   return ['concepto-bobath', 'movimientos-generales', 'pediasuit-formacion']
@@ -8,7 +9,29 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
+const course = courseDetails[slug || 'concepto-bobath'];
+
+const title = course ? `${course.title} | Asociación Aconiño` : "Curso | Asociación Aconiño";
+const description = course?.description || "Formación especializada de la Asociación Aconiño.";
+const imageUrl = course?.image;
+
+const schema = course ? {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": course.title,
+  "description": course.description || "Curso de formación",
+  "provider": {
+    "@type": "Organization",
+    "name": "Asociación Aconiño",
+    "sameAs": "https://aconino.org"
+  }
+} : null;
 ---
-<BaseLayout title="Curso | Asociación Aconiño" description="Formación especializada de la Asociación Aconiño.">
-  <CoursePage slug={slug || 'concepto-bobath'} />
+<BaseLayout title={title} description={description} image={imageUrl}>
+  {schema && (
+    <Fragment slot="head">
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+    </Fragment>
+  )}
+  <CourseDetailPage slug={slug || 'concepto-bobath'} />
 </BaseLayout>

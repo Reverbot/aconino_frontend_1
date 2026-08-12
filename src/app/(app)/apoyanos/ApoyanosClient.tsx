@@ -12,10 +12,6 @@ export default function ApoyanosClient() {
         return () => setShowComingSoon(false);
     }, [setShowComingSoon]);
 
-    // Render the Coming Soon content directly inline — NOT via portal —
-    // to avoid hydration mismatches and z-index conflicts in production.
-    // The page content (CentroDiaHero, DonationCatalog, etc.) is intentionally
-    // not rendered while the Coming Soon state is active.
     return (
         <main className="min-h-screen">
             <ComingSoonOverlay

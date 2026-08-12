@@ -55,7 +55,7 @@ export default function ProgramsSection({
     const displayPrograms = (programs && programs.length > 0) ? programs : defaultPrograms;
 
     return (
-        <section className="w-full py-12 md:py-20 lg:py-28 bg-[#F8FAFC] relative overflow-hidden">
+        <section className="w-full py-24 md:py-32 bg-[#F8FAFC] relative overflow-hidden">
             {/* Background Decorative Elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                 <div className="absolute -top-[10%] -right-[5%] w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-primary/5 blur-[60px] sm:blur-[80px] md:blur-[100px] lg:blur-[120px]" />
@@ -111,7 +111,7 @@ export default function ProgramsSection({
                 <ScrollReveal animation="fade-up" delay={0.2} className="mt-12 md:mt-16 text-center">
                     <Link
                         href="/programas"
-                        className="inline-block bg-accent text-primary font-black tracking-widest text-sm md:text-base px-12 py-5 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-xl shadow-accent/20 transform hover:-translate-y-1 hover:scale-105"
+                        className="inline-block bg-accent text-primary font-bold tracking-widest text-sm md:text-base px-12 py-5 rounded-full hover:bg-primary hover:text-white active:scale-[0.97] transition-all duration-200 shadow-xl shadow-accent/20 transform hover:-translate-y-1 hover:scale-105"
                     >
                         NUESTROS PROGRAMAS
                     </Link>

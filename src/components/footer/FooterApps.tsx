@@ -23,7 +23,7 @@ export default function FooterApps({ socialLinks }: FooterAppsProps) {
 
       {/* Vigilancia Section */}
       <div className="w-full flex flex-col items-center md:items-start">
-        <h4 className="text-white font-black text-xs tracking-[0.2em] uppercase mb-6 opacity-70">
+        <h4 className="text-accent/80 font-bold text-[10px] md:text-xs tracking-widest uppercase mb-8">
           Vigilancia
         </h4>
         <div className="relative group inline-block w-fit">
@@ -34,7 +34,7 @@ export default function FooterApps({ socialLinks }: FooterAppsProps) {
               alt="Vigilado Supersalud" 
               width={180} 
               height={60} 
-              className="h-[32px] md:h-[40px] w-auto object-contain brightness-90 group-hover:brightness-100 grayscale-[0.5] group-hover:grayscale-0 transition-all duration-500"
+              className="h-[32px] md:h-[40px] w-auto object-contain brightness-90 group-hover:brightness-100 transition-all duration-500"
             />
           </div>
         </div>

@@ -16,10 +16,13 @@ export const navLinks = [
         dropdownType: 'dynamic',
         collectionSource: 'programs-pages',
         subLinks: [
-            { name: "Atención Temprana", href: "/programas#atencion-temprana" },
-            { name: "Pediasuit", href: "/programas#pediasuit" },
+            { name: "Enfoque Terapéutico", href: "/programas#modelo" },
+            { name: "Metodología de Trabajo", href: "/programas#metodologia" },
+            { name: "Objetivos por Área", href: "/programas#objetivos" },
+            { name: "Atención Temprana 0-3 Años", href: "/programas#atencion-temprana" },
+            { name: "Atención a Niños y Jóvenes 3-18 Años", href: "/programas#atencion-ninos-jovenes" },
             { name: "Apoyo al Aprendizaje", href: "/programas#apoyo-aprendizaje" },
-            { name: "Visión", href: "/programas#atencion-ninos-jovenes" }
+            { name: "Protocolo Intensivo PediaSuit", href: "/programas#pediasuit" }
         ]
     },
     { name: "Cursos", href: "/cursos" },

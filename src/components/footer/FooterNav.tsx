@@ -34,12 +34,12 @@ export default function FooterNav({ documentosLegales }: FooterNavProps) {
 
   return (
     <div className="flex flex-col items-center md:items-start text-center md:text-left lg:pl-8">
-      <h4 className="text-white font-black text-xs tracking-[0.2em] uppercase mb-8">
+      <h4 className="text-accent/80 font-bold text-[10px] md:text-xs tracking-widest uppercase mb-5">
         ENLACES DE INTERÉS
       </h4>
 
       {/* Subtítulo de categoría */}
-      <h5 className="text-white/70 font-semibold text-sm mb-5">
+      <h5 className="text-white/60 font-bold text-sm mb-5">
         Información legal pública
       </h5>
 
@@ -48,7 +48,7 @@ export default function FooterNav({ documentosLegales }: FooterNavProps) {
         <li>
           <Link
             href="/permanencia-esal"
-            className="text-gray-400 hover:text-accent hover:translate-x-1 transition-all duration-300 inline-block uppercase text-xs tracking-wide"
+            className="text-gray-400 hover:text-white active:scale-[0.98] origin-left hover:translate-x-1 transition-all duration-300 inline-block uppercase text-[11px] font-medium tracking-wider"
           >
             PERMANENCIA ESAL
           </Link>
@@ -63,7 +63,7 @@ export default function FooterNav({ documentosLegales }: FooterNavProps) {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-accent hover:translate-x-1 transition-all duration-300 inline-block uppercase text-xs tracking-wide"
+                className="text-gray-400 hover:text-white active:scale-[0.98] origin-left hover:translate-x-1 transition-all duration-300 inline-block uppercase text-[11px] font-medium tracking-wider"
               >
                 {doc.titulo}
               </a>
@@ -75,7 +75,7 @@ export default function FooterNav({ documentosLegales }: FooterNavProps) {
         <li>
           <Link
             href="/privacidad"
-            className="text-gray-400 hover:text-accent hover:translate-x-1 transition-all duration-300 inline-block uppercase text-xs tracking-wide"
+            className="text-gray-400 hover:text-white active:scale-[0.98] origin-left hover:translate-x-1 transition-all duration-300 inline-block uppercase text-[11px] font-medium tracking-wider"
           >
             PROTECCIÓN DE DATOS
           </Link>

@@ -8,18 +8,26 @@ const navLinks = [
     name: 'Quiénes somos',
     href: '/quienes-somos/nosotros',
     subLinks: [
-      { name: 'Nuestra Historia', href: '/quienes-somos/nosotros#historia' },
-      { name: 'Misión y Visión', href: '/quienes-somos/nosotros#mision' },
+      { name: 'Nuestra Identidad', href: '/quienes-somos/nosotros#nosotros' },
+      { name: 'Aspiración Estratégica', href: '/quienes-somos/nosotros#mision' },
+      { name: 'Historia', href: '/quienes-somos/nosotros#historia' },
+      { name: 'Fundadores', href: '/quienes-somos/nosotros#fundadores' },
+      { name: 'Junta Directiva', href: '/quienes-somos/nosotros#junta-directiva' },
+      { name: 'Equipo De Trabajo', href: '/quienes-somos/nosotros#equipo-de-trabajo' },
+      { name: 'Asociación De Usuarios', href: '/quienes-somos/asociacion-de-usuarios' },
     ],
   },
   {
     name: 'Programas',
     href: '/programas',
     subLinks: [
-      { name: 'Atención Temprana', href: '/programas#atencion-temprana' },
-      { name: 'PediaSuit', href: '/programas#pediasuit' },
+      { name: 'Enfoque Terapéutico', href: '/programas#modelo' },
+      { name: 'Metodología de Trabajo', href: '/programas#metodologia' },
+      { name: 'Objetivos por Área', href: '/programas#objetivos' },
+      { name: 'Atención Temprana 0-3 Años', href: '/programas#atencion-temprana' },
+      { name: 'Atención a Niños y Jóvenes 3-18 Años', href: '/programas#atencion-ninos-jovenes' },
       { name: 'Apoyo al Aprendizaje', href: '/programas#apoyo-aprendizaje' },
-      { name: 'Neurodesarrollo', href: '/programas#atencion-ninos-jovenes' },
+      { name: 'Protocolo Intensivo PediaSuit', href: '/programas#pediasuit' },
     ],
   },
   {
@@ -99,7 +107,7 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
 </svg>
 
 <header id="site-header" data-site-header class="sticky top-0 z-50 w-full bg-white">
-  <div class="hidden overflow-hidden bg-[#1b2b65] text-white md:block" data-topbar>
+  <div class="hidden overflow-hidden bg-primary text-white md:block" data-topbar>
     <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-4 py-2.5 text-[11px] sm:px-6 sm:text-xs md:flex-row md:px-8 md:text-sm lg:px-8">
       <div class="flex flex-col items-center gap-4 text-center sm:flex-row sm:gap-8 md:text-left">
         <div class="flex items-center gap-1.5">
@@ -127,26 +135,28 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
 
   <div data-header-main class="relative bg-white transition-[padding,box-shadow] duration-300">
     <div data-header-inner class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 md:py-3 lg:px-8">
-      <a href="/" class="group relative z-50 flex flex-col items-center justify-center" aria-label="Aconiño, inicio">
+      <a href="/" class="group relative z-50 flex flex-col items-center justify-center shrink-0" aria-label="Aconiño, inicio">
         <span class="absolute inset-0 scale-100 rounded-full bg-accent/10 blur-xl transition-transform duration-300 group-hover:scale-150 md:scale-150"></span>
-        <img src="/images/logo_aconino.png" alt="Aconiño" width="180" height="180" class="relative h-auto w-16 drop-shadow-sm md:w-20 lg:w-24" loading="eager" fetchpriority="high" />
+        <img src="/images/logo_aconino.png" alt="Aconiño" width="180" height="180" class="relative h-auto w-12 drop-shadow-sm md:w-14 lg:w-16" loading="eager" fetchpriority="high" />
       </a>
 
-      <nav aria-label="Navegación principal" class="hidden items-center gap-6 text-[13px] font-bold lg:flex xl:gap-8 xl:text-[14px]">
-        {navLinks.map((link) => (
+      <nav aria-label="Navegación principal" class="hidden items-center gap-1 text-[13px] font-semibold lg:flex xl:gap-2">
+        {navLinks
+          .filter((link) => link.href !== '/apoyanos')
+          .map((link) => (
           <div class="group relative">
             <a
               href={link.href}
               class:list={[
-                'relative z-10 flex items-center gap-1 px-2 py-1 transition-colors duration-300 lg:py-2',
-                isActive(link.href) ? 'text-accent' : 'text-primary hover:text-accent',
+                'relative z-10 flex items-center gap-1 px-3 py-2 rounded-lg transition-colors duration-200',
+                isActive(link.href) ? 'text-accent' : 'text-primary hover:text-accent hover:bg-primary/5',
               ]}
               aria-current={isActive(link.href) ? 'page' : undefined}
               aria-haspopup={link.subLinks ? 'true' : undefined}
             >
               <span>{link.name}</span>
               {link.subLinks && <svg class="h-3 w-3 text-gray-400 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"><use href="#aconino-chevron" /></svg>}
-              <span class:list={['absolute bottom-0 left-0 h-[3px] rounded-t-full bg-accent transition-[width,box-shadow] duration-300', isActive(link.href) ? 'w-full shadow-[0_-4px_12px_rgba(248,183,25,0.4)]' : 'w-0 group-hover:w-full group-focus-within:w-full group-hover:shadow-[0_-4px_12px_rgba(248,183,25,0.4)]']}></span>
+              <span class:list={['absolute bottom-0 left-0 h-[2px] rounded-t-full bg-accent transition-[width,box-shadow] duration-300', isActive(link.href) ? 'w-full shadow-[0_-4px_12px_rgba(248,183,25,0.4)]' : 'w-0 group-hover:w-full group-focus-within:w-full group-hover:shadow-[0_-4px_12px_rgba(248,183,25,0.4)]']}></span>
             </a>
             {link.subLinks && (
               <div class="invisible absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-4 opacity-0 transition-[opacity,visibility] duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
@@ -156,7 +166,7 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
                   <div class="absolute right-0 top-0 h-8 w-8 rounded-tr-2xl border-r-2 border-t-2 border-accent/30"></div>
                   <div class="relative flex flex-col">
                     {link.subLinks.map((sub) => (
-                      <a href={sub.href} class:list={['block border-l-4 px-6 py-3 text-sm font-semibold transition-all duration-300', isActive(sub.href) ? 'border-accent bg-primary/5 font-black text-primary' : 'border-transparent text-gray-600 hover:border-accent hover:bg-gray-50 hover:pl-7 hover:text-primary']}>
+                      <a href={sub.href} class:list={['block border-l-4 px-6 py-3 text-sm font-semibold transition-all duration-300', isActive(sub.href) ? 'border-accent bg-primary/5 font-bold text-primary' : 'border-transparent text-gray-600 hover:border-accent hover:bg-gray-50 hover:pl-7 hover:text-primary']}>
                         {sub.name}
                       </a>
                     ))}
@@ -166,15 +176,26 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
             )}
           </div>
         ))}
+
+        {/* Botón Apóyanos — CTA prominente al final del nav */}
+        <a
+          href="/apoyanos"
+          class:list={[
+            'ml-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-bold tracking-wide transition-all duration-200 shadow-md active:scale-[0.97]',
+            isActive('/apoyanos')
+              ? 'bg-primary text-white shadow-primary/20'
+              : 'bg-accent text-primary hover:bg-primary hover:text-white hover:shadow-primary/30 shadow-accent/30',
+          ]}
+          aria-current={isActive('/apoyanos') ? 'page' : undefined}
+        >
+          <svg class="h-3.5 w-3.5 shrink-0" aria-hidden="true"><use href="#aconino-heart" /></svg>
+          <span>Apóyanos</span>
+        </a>
       </nav>
 
-      <div class="relative z-50 flex items-center gap-3 md:gap-4">
-        <a href="https://wa.me/573133910760" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp" class="group inline-flex items-center rounded-full bg-accent px-3 py-2.5 text-primary shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/40 active:scale-95 sm:px-4 sm:py-3">
-          <span class="flex items-center rounded-full bg-primary/10 p-1 sm:p-1.5">
-            <svg class="h-[14px] w-[14px] text-primary transition-colors group-hover:text-[#25D366] sm:h-4 sm:w-4"><use href="#aconino-whatsapp" /></svg>
-          </span>
-        </a>
-        <button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="rounded-xl bg-gray-50 p-2.5 text-primary transition-all duration-300 hover:bg-primary hover:text-white lg:hidden">
+      {/* Mobile: solo hamburguesa */}
+      <div class="relative z-50 flex items-center lg:hidden">
+        <button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="rounded-xl bg-gray-50 p-2.5 text-primary transition-all duration-300 hover:bg-primary hover:text-white">
           <svg data-menu-open-icon class="h-5 w-5"><use href="#aconino-bars" /></svg>
           <svg data-menu-close-icon class="hidden h-5 w-5"><use href="#aconino-close" /></svg>
         </button>
@@ -232,7 +253,7 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
           <span class="flex min-w-0 flex-col"><span class="text-[9px] font-bold uppercase tracking-widest text-gray-400">Ubícanos</span><span class="text-[11px] font-medium leading-tight text-gray-600">Calle 127 B No. 45-28 – Barrio Prado, Bogotá</span></span>
         </div>
       </div>
-      <a href="/apoyanos" data-mobile-link class="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-sm font-black uppercase tracking-widest text-primary shadow-lg shadow-accent/20 transition-all active:scale-[0.98]">
+      <a href="/apoyanos" data-mobile-link class="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-sm font-black uppercase tracking-widest text-primary shadow-lg shadow-accent/20 transition-all active:scale-[0.97] active:shadow-md">
         <svg class="h-4 w-4"><use href="#aconino-heart" /></svg>
         APADRINA UN NIÑO
       </a>
@@ -300,8 +321,10 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
   }
 
   [data-site-header][data-scrolled='true'] [data-header-main] {
-    background-color: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(248, 183, 25, 0.1);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px) saturate(1.8);
+    -webkit-backdrop-filter: blur(14px) saturate(1.8);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(248, 183, 25, 0.12);
   }
 
   [data-site-header][data-scrolled='true'] [data-header-inner] {
@@ -314,12 +337,22 @@ const dropdownLinks = navLinks.filter((link) => link.subLinks);
     transform: scaleX(1);
   }
 
+  /* ── Mobile menu: slide-in from right with opacity ── */
   .mobile-menu-panel {
-    display: none;
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(100%);
+    transition:
+      transform 0.38s cubic-bezier(0.19, 1, 0.22, 1),
+      opacity   0.25s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform, opacity;
   }
 
   .mobile-menu-panel.is-open {
-    display: block;
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .mobile-dropdown[open] .mobile-chevron {

@@ -18,7 +18,7 @@ export default function PostCard({ title, excerpt, slug, date, imageUrl }: PostC
     });
 
     return (
-        <article className="flex flex-col bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
+        <article className="flex flex-col bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300 group">
             {/* Imagen Destacada */}
             <div className="relative w-full h-48 bg-gray-200 dark:bg-gray-700">
                 {imageUrl ? (
@@ -40,7 +40,7 @@ export default function PostCard({ title, excerpt, slug, date, imageUrl }: PostC
 
             <div className="flex flex-col flex-1 p-6">
                 <div className="text-sm text-gray-500 mb-2">{formattedDate}</div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-secondary transition-colors duration-200">
                     {title}
                 </h3>
 

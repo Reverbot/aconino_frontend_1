@@ -1,6 +1,6 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter';
+import SiteFooter from '../components/SiteFooter.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
 
@@ -8,15 +8,18 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  image?: string;
 }
 
 const {
   title = 'Asociación Aconiño | Apoyando la inclusión',
   description = 'Más de 35 años apoyando la inclusión y mejorando la calidad de vida.',
   noindex = false,
+  image = '/images/logo_aconino.png',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, 'https://aconino.org').toString();
+const imageUrl = new URL(image, 'https://aconino.org').toString();
 ---
 <!doctype html>
 <html lang="es">
@@ -30,6 +33,22 @@ const canonical = new URL(Astro.url.pathname, 'https://aconino.org').toString();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageUrl} />
+
+    <slot name="head" />
     <title>{title}</title>
   </head>
   <body class="antialiased min-h-screen flex flex-col font-sans bg-white text-primary">
@@ -41,5 +60,58 @@ const canonical = new URL(Astro.url.pathname, 'https://aconino.org').toString();
       </main>
       <SiteFooter />
     </div>
+
+    <script is:inline>
+      (() => {
+        document.querySelectorAll('[data-contact-form]').forEach((form) => {
+          form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const subject = String(formData.get('subject') || 'Consulta desde el sitio web');
+            const body = [
+              `Nombre: ${String(formData.get('name') || '')}`,
+              `Teléfono: ${String(formData.get('phone') || '')}`,
+              `Correo: ${String(formData.get('email') || '')}`,
+              '',
+              'Mensaje:',
+              String(formData.get('message') || ''),
+            ].join('\n');
+            window.location.href = `mailto:asistentenorte@aconino.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          });
+        });
+
+        document.querySelectorAll('[data-hero-slider]').forEach((slider) => {
+          const slides = Array.from(slider.querySelectorAll('[data-hero-slide]'));
+          const dots = Array.from(slider.querySelectorAll('[data-hero-dot]'));
+          if (slides.length < 2) return;
+          let current = 0;
+
+          const showSlide = (index) => {
+            current = (index + slides.length) % slides.length;
+            slides.forEach((slide, slideIndex) => {
+              const active = slideIndex === current;
+              slide.classList.toggle('opacity-100', active);
+              slide.classList.toggle('opacity-0', !active);
+              slide.classList.toggle('pointer-events-none', !active);
+              slide.setAttribute('aria-hidden', String(!active));
+            });
+            dots.forEach((dot, dotIndex) => {
+              const active = dotIndex === current;
+              dot.classList.toggle('w-8', active);
+              dot.classList.toggle('h-3', active);
+              dot.classList.toggle('bg-accent', active);
+              dot.classList.toggle('w-3', !active);
+              dot.classList.toggle('h-3', !active);
+              dot.classList.toggle('bg-white/40', !active);
+              dot.setAttribute('aria-current', active ? 'true' : 'false');
+            });
+          };
+
+          dots.forEach((dot) => dot.addEventListener('click', () => showSlide(Number(dot.dataset.index))));
+          window.setInterval(() => showSlide(current + 1), Number(slider.dataset.autoplay || 6000));
+          showSlide(0);
+        });
+      })();
+    </script>
   </body>
 </html>

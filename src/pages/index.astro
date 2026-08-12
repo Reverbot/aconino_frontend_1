@@ -1,7 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Home from '../app/(app)/page';
+import Home from '../components/home/HomePage.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://aconino.org/#organization",
+      "name": "Asociación Aconiño",
+      "url": "https://aconino.org",
+      "logo": "https://aconino.org/images/logo_aconino.png",
+      "description": "Más de 35 años apoyando la inclusión y mejorando la calidad de vida de niños y jóvenes con discapacidad.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+573138806283",
+        "contactType": "Atención al cliente",
+        "areaServed": "CO",
+        "availableLanguage": "Spanish"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aconino.org/#website",
+      "url": "https://aconino.org",
+      "name": "Asociación Aconiño",
+      "publisher": {
+        "@id": "https://aconino.org/#organization"
+      }
+    }
+  ]
+};
 ---
 <BaseLayout>
-  <Home client:load />
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  </Fragment>
+  <Home />
 </BaseLayout>

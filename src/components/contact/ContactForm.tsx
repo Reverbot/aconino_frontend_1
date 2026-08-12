@@ -1,7 +1,6 @@
 "use client";
 
 import ScrollReveal from "../animations/ScrollReveal";
-import type { FormEvent } from "react";
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn, FaPaperPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -12,23 +11,6 @@ const socialLinks = [
     { icon: <FaXTwitter />, href: "https://twitter.com/aconino", color: "hover:bg-black" },
     { icon: <FaLinkedinIn />, href: "https://co.linkedin.com/company/aconinoacn", color: "hover:bg-blue-700" },
 ];
-
-function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const subject = String(formData.get("subject") || "Consulta desde el sitio web");
-    const body = [
-        `Nombre: ${String(formData.get("name") || "")}`,
-        `Teléfono: ${String(formData.get("phone") || "")}`,
-        `Correo: ${String(formData.get("email") || "")}`,
-        "",
-        "Mensaje:",
-        String(formData.get("message") || ""),
-    ].join("\n");
-
-    window.location.href = `mailto:asistentenorte@aconino.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
 
 export default function ContactForm() {
     return (
@@ -78,7 +60,7 @@ export default function ContactForm() {
                     {/* Form */}
                     <div className="lg:col-span-3">
                         <ScrollReveal animation="slide-left" delay={0.2}>
-                            <form onSubmit={handleSubmit} className="bg-white rounded-[2rem] p-8 md:p-12 shadow-xl border border-gray-100">
+                            <form data-contact-form className="bg-white rounded-[2rem] p-8 md:p-12 shadow-xl border border-gray-100">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                     <div>
                                         <label htmlFor="contact-name" className="block text-sm font-bold text-primary mb-2 ml-1">Nombres y apellidos</label>
