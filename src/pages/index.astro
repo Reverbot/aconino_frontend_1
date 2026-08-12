@@ -35,6 +35,7 @@ const schema = {
 <BaseLayout>
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+    <link rel="preload" as="image" href="/images/hero-background-blue.png" fetchpriority="high" />
   </Fragment>
   <Home />
 </BaseLayout>
