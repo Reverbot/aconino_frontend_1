@@ -83,6 +83,35 @@ const imageUrl = new URL(image, 'https://aconino.org').toString();
           });
         });
 
+        // Emil Kowalski style reveal-on-scroll IntersectionObserver
+        const setupScrollReveal = () => {
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (prefersReducedMotion) return;
+
+          const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1
+          };
+
+          const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
+
+          document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+            revealObserver.observe(el);
+          });
+        };
+        
+        // Run on load and after View Transitions
+        setupScrollReveal();
+        document.addEventListener('astro:page-load', setupScrollReveal);
+
         document.querySelectorAll('[data-hero-slider]').forEach((slider) => {
           const slides = Array.from(slider.querySelectorAll('[data-hero-slide]'));
           const dots = Array.from(slider.querySelectorAll('[data-hero-dot]'));

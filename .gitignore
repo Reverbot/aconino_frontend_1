@@ -43,5 +43,14 @@ yarn-error.log*
 # claude
 .claude/worktrees/
 
+# local agent and tool state
+/.agents/
+/.claude/
+/.codex/
+/.gemini/
+/.opencode/
+/.sanity/
+/.superpowers/
+
 # Windows reserved name (nul, con, prn, etc.)
 nul

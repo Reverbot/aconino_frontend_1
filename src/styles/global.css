@@ -119,6 +119,55 @@ body.coming-soon-overlay-active .floating-widget-container {
   display: none !important;
 }
 
+/* ─── Emil Kowalski UI/UX Motion ───────────────────────────── */
+@keyframes slideUpFadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDownFadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUpFadeIn 0.5s var(--ease-out-expo) forwards;
+}
+
+.animate-slide-down {
+  animation: slideDownFadeIn 0.5s var(--ease-out-expo) forwards;
+}
+
+/* Button & Interaction Effects */
+.kowalski-btn {
+  transition: transform 150ms var(--ease-out-expo), box-shadow 150ms var(--ease-out-expo), background-color 150ms var(--ease-out-expo) !important;
+}
+.kowalski-btn:active {
+  transform: scale(0.97) !important;
+}
+.kowalski-card {
+  transition: transform 300ms var(--ease-out-expo), box-shadow 300ms var(--ease-out-expo) !important;
+}
+.kowalski-card:active {
+  transform: scale(0.98) !important;
+}
+
+/* Reveal on Scroll */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-on-scroll.delay-100 { transition-delay: 100ms; }
+.reveal-on-scroll.delay-200 { transition-delay: 200ms; }
+.reveal-on-scroll.delay-300 { transition-delay: 300ms; }
+.reveal-on-scroll.delay-400 { transition-delay: 400ms; }
+
 /* ─── Accessibility: Reduced Motion ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
