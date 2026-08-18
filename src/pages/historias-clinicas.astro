@@ -39,6 +39,15 @@ const sortedFiles = files.sort((a, b) => a.name.localeCompare(b.name));
         </div>
       </div>
 
+      <div class="mb-8 rounded-2xl border-l-4 border-accent bg-white p-6 shadow-sm reveal-on-scroll delay-100">
+        <h3 class="mb-2 text-lg font-bold text-primary">¿Cómo saber si tu historia clínica está disponible?</h3>
+        <p class="text-sm leading-relaxed text-slate-600 md:text-base">
+          <strong>Paso 1:</strong> Descarga el archivo Excel que se encuentra a continuación.<br/>
+          <strong>Paso 2:</strong> Busca tu nombre o número de documento en el listado.<br/>
+          <strong>Paso 3:</strong> Si apareces en el archivo, significa que tu historia clínica está disponible para ser reclamada físicamente en nuestra sede.
+        </p>
+      </div>
+
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 reveal-on-scroll delay-200">
         {sortedFiles.map((item, index) => (
           <a 
