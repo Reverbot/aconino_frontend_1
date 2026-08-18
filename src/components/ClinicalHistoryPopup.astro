@@ -40,26 +40,36 @@
   document.addEventListener('astro:page-load', () => {
     const popup = document.getElementById('clinical-history-popup');
     const closeBtn = document.getElementById('close-popup-btn');
-    const POPUP_KEY = 'aconino_has_seen_history_popup';
     
     if (!popup || !closeBtn) return;
     
-    // Check if user has already closed it
-    if (localStorage.getItem(POPUP_KEY)) {
+    // Fecha límite: 19 de septiembre de 2026 a las 23:59 (hora local)
+    // Usamos el 20 de septiembre a las 00:00 como límite estricto
+    const deadline = new Date('2026-09-20T00:00:00-05:00').getTime();
+    const now = new Date().getTime();
+
+    // Si ya pasó la fecha, no mostrar el popup nunca más
+    if (now > deadline) {
       return;
     }
 
-    // Show popup after short delay
-    setTimeout(() => {
-      popup.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
-    }, 2000);
-
-    // Close logic
+    // Lógica para ocultar el popup
     const closePopup = () => {
       popup.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
-      localStorage.setItem(POPUP_KEY, 'true');
     };
 
+    // 1. Mostrar el popup 1.5 segundos después de cargar la página
+    setTimeout(() => {
+      popup.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+      
+      // 2. Ocultar automáticamente después de 10 segundos de estar visible
+      setTimeout(() => {
+        closePopup();
+      }, 10000);
+      
+    }, 1500);
+
+    // Permitir cierre manual
     closeBtn.addEventListener('click', closePopup);
   });
 </script>
