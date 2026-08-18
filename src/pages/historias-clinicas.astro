@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const files = [
+  { name: 'Estados Financieros', file: 'fuid-estados-financieros.xlsx' },
+  { name: 'Informes', file: 'fuid-informes.xlsx' },
+  { name: 'Comprobantes Contables de Egreso', file: 'fuid-eliminacion-comprobantes-contables-de-egreso.xlsx' },
+  { name: 'Documentos de Apoyo', file: 'fuid-eliminacion-documentos-de-apoyo.xlsx' },
+  { name: 'Contratos de Encargo Fiduciario', file: 'fuid-contratos-de-encargo-fiduciario.xlsx' },
+  { name: 'Historias Clínicas', file: 'fuid-eliminacion-historias-clinicas---.xlsx' },
+  { name: 'Comunicaciones Oficiales Recibidas y Enviadas', file: 'fuid-comunicaciones-oficiales-recibidas-y-enviadas.xlsx' },
+  { name: 'Comprobantes Contables de Ingreso', file: 'fuid-eliminacion-comprobantes-contables-de-ingreso.xlsx' },
+  { name: 'Derechos de Petición', file: 'fuid-derechos-de-peticion.xlsx' },
+  { name: 'Órdenes de Compra', file: 'fuid-ordenes-de-compra.xlsx' },
+  { name: 'Actos Administrativos', file: 'fuid-actos-administrativos.xlsx' },
+  { name: 'Manuales', file: 'fuid-manuales.xlsx' },
+  { name: 'Declaraciones Tributarias', file: 'fuid-declaraciones-tributarias.xlsx' },
+  { name: 'Contratos P.S', file: 'fuid-contratos-p.s.xlsx' },
+  { name: 'Planes', file: 'fuid-planes.xlsx' }
+];
+
+// Sort alphabetically by name
+const sortedFiles = files.sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout 
+  title="Inventarios de Eliminación y Historias Clínicas - Aconiño" 
+  description="Accede a los inventarios de eliminación y documentos relacionados con las historias clínicas de la Asociación Aconiño."
+>
+  <main class="min-h-screen bg-gray-50 pt-24 pb-20">
+    <div class="mx-auto max-w-5xl px-6 lg:px-8">
+      
+      <div class="mb-12 text-center animate-slide-up mt-12">
+        <span class="mb-4 block text-sm font-bold uppercase tracking-widest text-accent">Transparencia</span>
+        <h1 class="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl md:text-5xl">Historias Clínicas e Inventarios</h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-500">
+          En esta sección puedes descargar los inventarios de eliminación documental en formato Excel, de acuerdo con nuestras políticas de retención y transparencia.
+        </p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 reveal-on-scroll delay-200">
+        {sortedFiles.map((item, index) => (
+          <a 
+            href={`/documentos/historias-clinicas/${item.file}`} 
+            download
+            class="group flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 kowalski-card"
+          >
+            <div>
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-primary transition-colors group-hover:bg-accent group-hover:text-white">
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="8" y1="13" x2="16" y2="13"></line>
+                  <line x1="8" y1="17" x2="16" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <h3 class="mb-2 text-sm font-bold leading-tight text-primary md:text-base">{item.name}</h3>
+            </div>
+            
+            <div class="mt-4 flex items-center text-xs font-bold uppercase tracking-wider text-accent transition-colors group-hover:text-primary">
+              Descargar Excel
+              <svg class="ml-1 h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </main>
+</BaseLayout>
