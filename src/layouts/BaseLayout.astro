@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import ClinicalHistoryPopup from '../components/ClinicalHistoryPopup.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -65,6 +66,7 @@ const imageUrl = new URL(image, 'https://aconino.org').toString();
         <slot />
       </main>
       <SiteFooter />
+      <ClinicalHistoryPopup />
     </div>
 
     <script is:inline>

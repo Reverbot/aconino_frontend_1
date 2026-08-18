@@ -1,0 +1,65 @@
+---
+---
+
+<div id="clinical-history-popup" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100] max-w-sm w-[calc(100%-2rem)] bg-white rounded-2xl shadow-2xl border border-primary/10 transform transition-all duration-500 translate-y-full opacity-0 pointer-events-none" aria-live="polite">
+  <div class="relative p-5 sm:p-6 overflow-hidden">
+    <!-- Background accent -->
+    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+    
+    <button id="close-popup-btn" class="absolute top-3 right-3 p-2 text-gray-400 hover:text-primary transition-colors rounded-full hover:bg-gray-100" aria-label="Cerrar ventana">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+      </div>
+      <div>
+        <h3 class="text-[15px] font-extrabold text-primary leading-tight mb-2 pr-4">
+          ¿Tu hijo recibió atención en ACONIÑO?
+        </h3>
+        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+          Solicita su historia clínica antes del <strong class="text-primary font-bold">19 de septiembre de 2026</strong>. Después de esta fecha, podrá ser eliminada si cumplió el tiempo legal de conservación.
+        </p>
+        <a href="/historias-clinicas" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-primary bg-accent rounded-full hover:bg-primary hover:text-white transition-all shadow-md active:scale-95 group w-full sm:w-auto">
+          Más Información
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const popup = document.getElementById('clinical-history-popup');
+    const closeBtn = document.getElementById('close-popup-btn');
+    const POPUP_KEY = 'aconino_has_seen_history_popup';
+    
+    if (!popup || !closeBtn) return;
+    
+    // Check if user has already closed it
+    if (localStorage.getItem(POPUP_KEY)) {
+      return;
+    }
+
+    // Show popup after short delay
+    setTimeout(() => {
+      popup.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+    }, 2000);
+
+    // Close logic
+    const closePopup = () => {
+      popup.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+      localStorage.setItem(POPUP_KEY, 'true');
+    };
+
+    closeBtn.addEventListener('click', closePopup);
+  });
+</script>
