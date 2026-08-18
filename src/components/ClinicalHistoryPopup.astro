@@ -1,75 +1,138 @@
 ---
 ---
 
-<div id="clinical-history-popup" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100] max-w-sm w-[calc(100%-2rem)] bg-white rounded-2xl shadow-2xl border border-primary/10 transform transition-all duration-500 translate-y-full opacity-0 pointer-events-none" aria-live="polite">
-  <div class="relative p-5 sm:p-6 overflow-hidden">
-    <!-- Background accent -->
-    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-    
-    <button id="close-popup-btn" class="absolute top-3 right-3 p-2 text-gray-400 hover:text-primary transition-colors rounded-full hover:bg-gray-100" aria-label="Cerrar ventana">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
+<!-- View Transitions persistence boundary so it doesn't reset on navigation -->
+<div id="clinical-history-widget" transition:persist="clinical-widget" class="fixed z-[99] pointer-events-none" style="bottom: 0; right: 0; width: 100%; height: 100%;">
+  
+  <!-- EXPANDED STATE (The big popup) -->
+  <div id="ch-expanded" class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 max-w-sm w-[calc(100%-2rem)] bg-white rounded-2xl shadow-2xl border border-primary/10 transform transition-all duration-500 translate-y-[150%] opacity-0 pointer-events-auto flex flex-col" aria-live="polite">
+    <div class="relative p-5 sm:p-6 overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+      
+      <button id="ch-minimize-btn" class="absolute top-3 right-3 p-2 text-gray-400 hover:text-primary transition-colors rounded-full hover:bg-gray-100" aria-label="Minimizar">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
 
-    <div class="flex items-start gap-4">
-      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-[15px] font-extrabold text-primary leading-tight mb-2 pr-4">
+            ¿Tu hijo recibió atención en ACONIÑO?
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Solicita su historia clínica antes del <strong class="text-primary font-bold">19 de septiembre de 2026</strong>. Después de esta fecha, podrá ser eliminada si cumplió el tiempo legal de conservación.
+          </p>
+          <a href="/historias-clinicas" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-primary bg-accent rounded-full hover:bg-primary hover:text-white transition-all shadow-md active:scale-95 group w-full sm:w-auto text-center">
+            Ver listado y descargar
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINIMIZED STATE (Small bubble above WhatsApp) -->
+  <button id="ch-minimized" class="absolute bottom-[5.5rem] right-5 md:bottom-[6.5rem] md:right-8 bg-white border border-gray-200 shadow-lg rounded-full py-2 px-4 flex items-center gap-2 transform transition-all duration-500 scale-0 opacity-0 pointer-events-auto hover:bg-gray-50 active:scale-95 group" aria-label="Abrir aviso de historias clínicas">
+    <div class="relative flex items-center justify-center">
+      <!-- Pulsing green dot -->
+      <span class="absolute flex h-2.5 w-2.5 -top-1 -right-1">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+      </span>
+      <div class="text-accent">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
       </div>
-      <div>
-        <h3 class="text-[15px] font-extrabold text-primary leading-tight mb-2 pr-4">
-          ¿Tu hijo recibió atención en ACONIÑO?
-        </h3>
-        <p class="text-sm text-gray-600 leading-relaxed mb-4">
-          Solicita su historia clínica antes del <strong class="text-primary font-bold">19 de septiembre de 2026</strong>. Después de esta fecha, podrá ser eliminada si cumplió el tiempo legal de conservación.
-        </p>
-        <a href="/historias-clinicas" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-primary bg-accent rounded-full hover:bg-primary hover:text-white transition-all shadow-md active:scale-95 group w-full sm:w-auto">
-          Más Información
-          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
     </div>
-  </div>
+    <span class="text-xs font-bold text-primary whitespace-nowrap hidden sm:block">Historias Clínicas</span>
+  </button>
 </div>
 
 <script is:inline>
-  document.addEventListener('astro:page-load', () => {
-    const popup = document.getElementById('clinical-history-popup');
-    const closeBtn = document.getElementById('close-popup-btn');
+  // Ejecutamos la lógica principal una sola vez (gracias a transition:persist)
+  // Pero necesitamos re-atar eventos si la navegación rompe algo, aunque persist lo mantiene intacto.
+  const initClinicalWidget = () => {
+    const widget = document.getElementById('clinical-history-widget');
+    const expanded = document.getElementById('ch-expanded');
+    const minimized = document.getElementById('ch-minimized');
+    const minimizeBtn = document.getElementById('ch-minimize-btn');
     
-    if (!popup || !closeBtn) return;
+    if (!expanded || !minimized || !widget) return;
     
-    // Fecha límite: 19 de septiembre de 2026 a las 23:59 (hora local)
-    // Usamos el 20 de septiembre a las 00:00 como límite estricto
+    // Evitar reinicializar si ya se inicializó
+    if (widget.dataset.initialized === "true") return;
+    widget.dataset.initialized = "true";
+    
     const deadline = new Date('2026-09-20T00:00:00-05:00').getTime();
     const now = new Date().getTime();
 
-    // Si ya pasó la fecha, no mostrar el popup nunca más
+    // Si ya pasó la fecha, forzar oculto total y no hacer nada más
     if (now > deadline) {
+      widget.style.display = 'none';
       return;
     }
 
-    // Lógica para ocultar el popup
-    const closePopup = () => {
-      popup.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+    const showExpanded = () => {
+      // Ocultar min
+      minimized.classList.remove('scale-100', 'opacity-100');
+      minimized.classList.add('scale-0', 'opacity-0');
+      
+      // Mostrar exp
+      expanded.classList.remove('translate-y-[150%]', 'opacity-0');
+      expanded.classList.add('translate-y-0', 'opacity-100');
+      
+      sessionStorage.setItem('ch_widget_state', 'expanded');
     };
 
-    // 1. Mostrar el popup 1.5 segundos después de cargar la página
-    setTimeout(() => {
-      popup.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+    const showMinimized = () => {
+      // Ocultar exp
+      expanded.classList.remove('translate-y-0', 'opacity-100');
+      expanded.classList.add('translate-y-[150%]', 'opacity-0');
       
-      // 2. Ocultar automáticamente después de 10 segundos de estar visible
-      setTimeout(() => {
-        closePopup();
-      }, 10000);
+      // Mostrar min
+      minimized.classList.remove('scale-0', 'opacity-0');
+      minimized.classList.add('scale-100', 'opacity-100');
       
-    }, 1500);
+      sessionStorage.setItem('ch_widget_state', 'minimized');
+    };
 
-    // Permitir cierre manual
-    closeBtn.addEventListener('click', closePopup);
-  });
+    // Comprobar estado previo en sessionStorage
+    const prevState = sessionStorage.getItem('ch_widget_state');
+
+    if (prevState === 'minimized') {
+      // Iniciar minimizado directamente
+      showMinimized();
+    } else {
+      // Iniciar expandido después de un breve delay
+      setTimeout(() => {
+        // Verificar que no se haya minimizado manualmente antes del timeout
+        if (sessionStorage.getItem('ch_widget_state') !== 'minimized') {
+          showExpanded();
+          
+          // Auto-minimizar después de 10 segundos
+          setTimeout(() => {
+            if (sessionStorage.getItem('ch_widget_state') !== 'minimized') {
+              showMinimized();
+            }
+          }, 10000);
+        }
+      }, 1000);
+    }
+
+    // Eventos de click
+    minimizeBtn.addEventListener('click', showMinimized);
+    minimized.addEventListener('click', showExpanded);
+  };
+
+  // Astro page-load listener (se ejecuta al inicio y en cada transición, pero transition:persist protege el DOM)
+  document.addEventListener('astro:page-load', initClinicalWidget);
 </script>
