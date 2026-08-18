@@ -31,13 +31,12 @@ const imageUrl = new URL(image, 'https://aconino.org').toString();
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/images/logo_aconino.png" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />
-    </noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />
+    
     <ClientRouter />
     
     <!-- Open Graph / Facebook -->
@@ -69,7 +68,7 @@ const imageUrl = new URL(image, 'https://aconino.org').toString();
     </div>
 
     <script is:inline>
-      (() => {
+      const initScripts = () => {
         document.querySelectorAll('[data-contact-form]').forEach((form) => {
           form.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -112,9 +111,7 @@ const imageUrl = new URL(image, 'https://aconino.org').toString();
           });
         };
         
-        // Run on load and after View Transitions
         setupScrollReveal();
-        document.addEventListener('astro:page-load', setupScrollReveal);
 
         document.querySelectorAll('[data-hero-slider]').forEach((slider) => {
           const slides = Array.from(slider.querySelectorAll('[data-hero-slide]'));
@@ -147,7 +144,23 @@ const imageUrl = new URL(image, 'https://aconino.org').toString();
           window.setInterval(() => showSlide(current + 1), Number(slider.dataset.autoplay || 6000));
           showSlide(0);
         });
-      })();
+      };
+
+      // Run on load but defer to avoid blocking main thread (TBT improvements)
+      if (typeof requestIdleCallback !== 'undefined') {
+        requestIdleCallback(initScripts, { timeout: 2000 });
+      } else {
+        setTimeout(initScripts, 50);
+      }
+      
+      // Re-run on Astro view transitions
+      document.addEventListener('astro:page-load', () => {
+        if (typeof requestIdleCallback !== 'undefined') {
+          requestIdleCallback(initScripts, { timeout: 2000 });
+        } else {
+          setTimeout(initScripts, 50);
+        }
+      });
     </script>
   </body>
 </html>
