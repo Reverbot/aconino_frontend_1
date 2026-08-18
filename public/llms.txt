@@ -1,21 +1,24 @@
 # Asociación Aconiño
 
-Asociación Aconiño es una ONG colombiana fundada en 1990, dedicada a la rehabilitación integral de niños y jóvenes con discapacidad sensorial, física o cognitiva.
+> ONG colombiana fundada en 1990 con más de 36 años de experiencia en la rehabilitación, neurodesarrollo y atención integral a niños, jóvenes y adultos con discapacidad.
+
+La Asociación Aconiño es una Entidad Sin Ánimo de Lucro (ESAL) en Bogotá que se enfoca en potenciar las capacidades funcionales y la independencia, ofreciendo fisioterapia, fonoaudiología, terapia ocupacional y psicología.
 
 ## Misión y Visión
-Más de 35 años apoyando la inclusión y mejorando la calidad de vida de la población con discapacidad, proporcionando herramientas para su independencia y participación en la sociedad.
+Transformar vidas mediante el acompañamiento interdisciplinario centrado en la familia y el usuario, proporcionando herramientas para la independencia y la participación en la sociedad.
 
 ## Programas Principales
-- Rehabilitación Integral (Fisioterapia, Fonoaudiología, Terapia Ocupacional, Psicología)
-- Programas Educativos y de Inclusión Escolar
-- Orientación y Apoyo a Familias
+- [Programas de Atención Integral](https://aconino.org/programas): Servicios terapéuticos incluyendo Atención Temprana, Niños y Jóvenes, Dificultades en el Aprendizaje y el Protocolo Intensivo PediaSuit.
 
 ## Enlaces Clave
-- Sitio Web: https://aconino.org
-- Programas: https://aconino.org/programas
-- Cómo Donar / Apoyarnos: https://aconino.org/apoyanos
-- Contacto: https://aconino.org/contacto
+- [Sitio Web](https://aconino.org/): Página principal de la Asociación Aconiño.
+- [Quiénes Somos](https://aconino.org/quienes-somos/nosotros): Conoce nuestra historia, equipo fundador y reconocimientos.
+- [Cómo Apoyarnos](https://aconino.org/apoyanos): Información para realizar donaciones y apoyar nuestra misión.
+- [Transparencia ESAL](https://aconino.org/permanencia-esal): Documentos legales y de permanencia de la ONG.
+- [Historias Clínicas](https://aconino.org/historias-clinicas): Inventarios de eliminación documental y procesos de reclamación de historias clínicas.
+- [Contacto](https://aconino.org/contacto): Ubicación y formularios de contacto.
 
 ## Contacto
-- Teléfono / WhatsApp: +57 313 8806283
+- Dirección: Calle 127 B No. 45-28 – Barrio Prado, Bogotá, Colombia
+- Teléfonos: (601) 650 8473 / +57 313 391 0760
 - Email: asistentenorte@aconino.org
