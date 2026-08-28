@@ -13,6 +13,7 @@ import imgCompensar from '../../assets/images/reconocimiento-compensar.png';
 import imgConcejo from '../../assets/images/reconocimiento-concejo.png';
 import imgHeroBg from '../../assets/images/hero-background-blue.png';
 import { getImage } from 'astro:assets';
+import ClinicalHistoryBanner from '../ClinicalHistoryBanner.astro';
 
 const optimizedHeroBg = await getImage({ src: imgHeroBg, format: 'webp', width: 800 });
 
@@ -76,6 +77,7 @@ const svg = (name: keyof typeof iconPaths) => iconPaths[name];
 ---
 
 <div class="w-full">
+  <ClinicalHistoryBanner />
   <section class="relative flex min-h-[78vh] w-full flex-col justify-between overflow-hidden">
     <div class="absolute inset-0 z-0"><video class="absolute inset-0 h-full w-full object-cover" autoplay loop muted playsinline preload="metadata" poster={optimizedHeroBg.src} aria-hidden="true"><source src="/videos/hero-banner.mp4" type="video/mp4" media="(min-width: 768px)" /></video><div class="absolute inset-0 z-10 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/80"></div><div class="absolute inset-0 z-10 bg-gradient-to-r from-primary/60 via-transparent to-transparent"></div></div>
     <div class="relative z-20 flex flex-1 items-center animate-slide-up"><div class="mx-auto w-full max-w-7xl px-6 py-12 md:px-12 md:py-16 lg:px-16"><div class="max-w-3xl"><div class="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/15 px-4 py-1.5 backdrop-blur-sm"><span class="h-1.5 w-1.5 rounded-full bg-accent"></span><span class="text-xs font-bold uppercase tracking-widest text-accent">ONG Colombiana · Desde 1990</span></div><h1 class="text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl" style="text-shadow: 0 2px 20px rgba(0,0,0,0.3)">36 años acompañando a <span class="text-accent">niños con discapacidad</span></h1><p class="mt-5 max-w-xl text-base font-medium leading-relaxed text-white/80 md:text-lg">Hoy seguimos soñando y trabajando por un nuevo paso: un Centro Día para adultos.</p><div class="mt-8 flex flex-wrap items-center gap-3"><a href="/apoyanos" class="kowalski-btn inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-bold tracking-wide text-primary shadow-lg shadow-accent/30 transition-all hover:bg-white hover:shadow-xl active:scale-[0.97]"><svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84Z"></path></svg>Apóyanos</a><a href="/quienes-somos/nosotros" class="kowalski-btn inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/20 active:scale-[0.97]">Conoce nuestra historia<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13.5 4.5 7.5 7.5-7.5 7.5M21 12H3"></path></svg></a></div></div></div></div>

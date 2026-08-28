@@ -2,35 +2,38 @@
 ---
 
 <!-- View Transitions persistence boundary so it doesn't reset on navigation -->
-<div id="clinical-history-widget" transition:persist="clinical-widget" class="fixed z-[99] pointer-events-none" style="bottom: 0; right: 0; width: 100%; height: 100%;">
+<div id="clinical-history-widget" transition:persist="clinical-widget" class="fixed inset-0 z-[99] flex items-center justify-center p-4 pointer-events-none sm:p-6">
   
   <!-- EXPANDED STATE (The big popup) -->
-  <div id="ch-expanded" class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 max-w-sm w-[calc(100%-2rem)] bg-white rounded-2xl shadow-2xl border border-primary/10 transform transition-all duration-500 translate-y-[150%] opacity-0 pointer-events-auto flex flex-col" aria-live="polite">
-    <div class="relative p-5 sm:p-6 overflow-hidden">
+  <div id="ch-expanded" class="relative flex max-h-[calc(100dvh-2rem)] w-full max-w-3xl translate-y-[150%] transform flex-col overflow-y-auto rounded-[1.75rem] border border-primary/10 bg-white opacity-0 shadow-2xl transition-all duration-500 pointer-events-auto sm:max-h-[calc(100dvh-3rem)] sm:rounded-[2rem]" aria-live="polite">
+    <div class="relative overflow-hidden p-6 sm:p-9">
       <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
       
-      <button id="ch-minimize-btn" class="absolute top-3 right-3 p-2 text-gray-400 hover:text-primary transition-colors rounded-full hover:bg-gray-100" aria-label="Minimizar">
+      <button id="ch-minimize-btn" class="absolute right-3 top-3 rounded-full p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 sm:right-5 sm:top-5" aria-label="Minimizar aviso">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
         </svg>
       </button>
 
-      <div class="flex items-start gap-4">
-        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+      <div class="flex items-start gap-4 sm:gap-6">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent sm:h-16 sm:w-16">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
           </svg>
         </div>
-        <div>
-          <h3 class="text-[15px] font-extrabold text-primary leading-tight mb-2 pr-4">
-            ¿Tu hijo recibió atención en ACONIÑO?
+        <div class="min-w-0 pr-2 sm:pr-6">
+          <h3 class="mb-3 pr-4 text-xl font-extrabold leading-tight text-primary sm:text-3xl">
+            ¿Tú o tu hijo recibieron atención en ACONIÑO?
           </h3>
-          <p class="text-sm text-gray-600 leading-relaxed mb-4">
-            Solicita su historia clínica antes del <strong class="text-primary font-bold">19 de septiembre de 2026</strong>. Después de esta fecha, podrá ser eliminada si cumplió el tiempo legal de conservación.
+          <p class="mb-3 text-base leading-relaxed text-gray-600 sm:text-lg">
+            Consulta el listado y verifica si el periodo de atención está incluido.
           </p>
-          <a href="/historias-clinicas" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-primary bg-accent rounded-full hover:bg-primary hover:text-white transition-all shadow-md active:scale-95 group w-full sm:w-auto text-center">
-            Ver listado y descargar
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <p class="mb-6 text-base leading-relaxed text-gray-600 sm:text-lg">
+            Si aparece, solicita una copia de la historia clínica a más tardar el <strong class="font-bold text-primary">19 de septiembre de 2026</strong>. Después de esta fecha, las historias que hayan cumplido el tiempo legal de conservación podrán ser eliminadas.
+          </p>
+          <a href="/historias-clinicas" class="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-accent px-5 py-3.5 text-center text-sm font-bold text-primary shadow-md transition-all hover:bg-primary hover:text-white active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 sm:w-auto sm:px-7 sm:py-4 sm:text-base">
+            Revisar listado y solicitar historia clínica
+            <svg class="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </a>
