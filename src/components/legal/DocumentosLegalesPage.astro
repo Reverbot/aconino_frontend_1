@@ -44,6 +44,8 @@ const categorias = [
       <p class="text-lg leading-relaxed text-gray-600">{descripcion}</p>
     </div>
 
+    <slot />
+
     {documentos.length === 0 ? (
       <div class="rounded-2xl bg-gray-50 p-12 text-center">
         <div class="mb-4 text-5xl" aria-hidden="true">📄</div>
