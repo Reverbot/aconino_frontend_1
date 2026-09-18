@@ -1,0 +1,103 @@
+backend:
+  name: github
+  repo: Reverbot/aconino_frontend_1
+  branch: main
+  squash_merges: true
+
+# Las imágenes nuevas se guardan como archivos públicos para que Astro pueda
+# servirlas sin tener que modificar el código del sitio.
+media_folder: "src/content/blog/images"
+public_folder: "/images/blog"
+
+site_url: https://www.aconino.org
+display_url: https://www.aconino.org
+logo_url: /images/logo_aconino.png
+locale: es
+publish_mode: editorial_workflow
+
+collections:
+  - name: blog
+    label: Artículos del blog
+    label_singular: Artículo
+    folder: src/content/blog
+    create: true
+    delete: false
+    media_folder: images
+    public_folder: ./images
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} — {{publishedAt}}"
+    editor:
+      preview: true
+    fields:
+      - label: Título
+        name: title
+        widget: string
+        hint: El título que verá la persona que visite el blog.
+      - label: Fecha de publicación
+        name: publishedAt
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: DD/MM/YYYY
+        time_format: false
+      - label: Categoría
+        name: category
+        widget: select
+        options:
+          - label: Neurodesarrollo
+            value: neurodesarrollo
+          - label: Inclusión
+            value: inclusion
+          - label: Familias
+            value: familias
+        default: familias
+      - label: Resumen
+        name: excerpt
+        widget: text
+        hint: Una o dos frases para la tarjeta del blog y los buscadores.
+      - label: Imagen destacada
+        name: image
+        widget: image
+        choose_url: false
+        media_processing:
+          enabled: true
+          format:
+            enabled: true
+            default: webp
+          quality: 82
+          strip_metadata: true
+          width: 1600
+        media_library:
+          config:
+            max_file_size: 5242880
+      - label: Texto alternativo de la imagen
+        name: imageAlt
+        widget: string
+        hint: Describe la imagen para personas que usan lectores de pantalla.
+      - label: Autor
+        name: author
+        widget: string
+        required: false
+        default: Asociación Aconiño
+      - label: Mantener como borrador
+        name: draft
+        widget: boolean
+        default: false
+        hint: Los borradores no aparecen en el sitio público.
+      - label: Título SEO
+        name: seoTitle
+        widget: string
+        required: false
+        hint: Opcional. Si queda vacío, se usa el título del artículo.
+      - label: Descripción SEO
+        name: seoDescription
+        widget: text
+        required: false
+        hint: Opcional. Si queda vacío, se usa el resumen.
+      - label: Contenido
+        name: body
+        widget: markdown
+        modes:
+          - rich_text
+          - raw

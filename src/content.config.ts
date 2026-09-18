@@ -6,9 +6,14 @@ const blogCollection = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     publishedAt: z.string().transform((str) => new Date(str)),
+    category: z.enum(['neurodesarrollo', 'inclusion', 'familias']).default('familias'),
     excerpt: z.string(),
     image: image(),
     imageAlt: z.string(),
+    author: z.string().optional(),
+    draft: z.boolean().default(false),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
   }),
 });
 

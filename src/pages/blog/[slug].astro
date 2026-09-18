@@ -5,7 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostPage from '../../components/blog/BlogPostPage.astro';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const blogEntries = (await getCollection('blog')).filter((entry: CollectionEntry<'blog'>) => !entry.data.draft);
   return blogEntries.map((entry: CollectionEntry<'blog'>) => {
     const slug = entry.id.replace(/\.md$/, '');
     return {
@@ -19,20 +19,21 @@ interface Props { entry: CollectionEntry<'blog'>; slug: string; }
 const { entry, slug } = Astro.props;
 const { Content } = await render(entry);
 
-const title = `${entry.data.title} | Asociación Aconiño`;
-const description = entry.data.excerpt;
+const title = `${entry.data.seoTitle || entry.data.title} | Asociación Aconiño`;
+const description = entry.data.seoDescription || entry.data.excerpt;
 const imageUrl = entry.data.image.src;
+const authorName = entry.data.author || 'Asociación Aconiño';
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": entry.data.title,
-  "description": entry.data.excerpt,
-  "image": `https://aconino.org${entry.data.image.src}`,
+  "description": description,
+  "image": `https://aconino.org${imageUrl}`,
   "datePublished": entry.data.publishedAt,
   "author": {
     "@type": "Organization",
-    "name": "Asociación Aconiño",
+    "name": authorName,
     "url": "https://aconino.org"
   }
 };
