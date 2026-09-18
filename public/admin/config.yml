@@ -1,11 +1,10 @@
 backend:
-  name: github
-  repo: Reverbot/aconino_frontend_1
+  name: turbo-github
+  turbo_site_id: a46fdf9b-64e4-49b1-b015-208ea07d5361
   branch: main
-  squash_merges: true
 
-# Las imágenes nuevas se guardan como archivos públicos para que Astro pueda
-# servirlas sin tener que modificar el código del sitio.
+# Las imágenes nuevas se guardan junto al contenido para que Astro pueda
+# resolverlas y optimizarlas durante la compilación.
 media_folder: "src/content/blog/images"
 public_folder: "/images/blog"
 
