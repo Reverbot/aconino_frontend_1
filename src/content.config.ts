@@ -5,7 +5,9 @@ const blogCollection = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: ({ image }) => z.object({
     title: z.string(),
-    publishedAt: z.string().transform((str) => new Date(str)),
+    // Decap can serialize datetime fields as either a quoted string or a
+    // native YAML date. Coercion keeps both existing and edited posts valid.
+    publishedAt: z.coerce.date(),
     category: z.enum(['neurodesarrollo', 'inclusion', 'familias']).default('familias'),
     excerpt: z.string(),
     image: image(),

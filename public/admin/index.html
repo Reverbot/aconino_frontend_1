@@ -9,6 +9,13 @@
   </head>
   <body>
     <noscript>Necesitas activar JavaScript para usar el editor del blog.</noscript>
+    <script>
+      // Decap resolves config.yml relative to /admin/. Normalize /admin
+      // before the CMS starts so both URLs work in static hosting.
+      if (window.location.pathname === '/admin') {
+        window.location.replace(`/admin/${window.location.search}${window.location.hash}`);
+      }
+    </script>
     <script src="https://unpkg.com/decap-cms@3.17.0-beta.0/dist/decap-cms.js"></script>
   </body>
 </html>
