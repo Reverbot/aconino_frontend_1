@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EthicsReportForm from '../components/transparency/EthicsReportForm.astro';
+
+const sent = Astro.url.searchParams.get('enviado') === '1';
+---
+
+<BaseLayout
+  title="Presentar un reporte | Canal de Transparencia y Ética - Aconiño"
+  description="Presenta de manera identificada o anónima un reporte ante el Canal de Transparencia y Ética de Aconiño."
+>
+  <div class="min-h-screen bg-[#f7f9fd]">
+    <section class="relative overflow-hidden bg-primary px-6 pb-16 pt-28 text-white md:px-12 md:pb-24 md:pt-36">
+      <div class="pointer-events-none absolute -right-20 -top-36 h-96 w-96 rounded-full bg-accent/15 blur-[100px]"></div>
+      <div class="pointer-events-none absolute -bottom-40 -left-20 h-80 w-80 rounded-full bg-secondary/35 blur-[100px]"></div>
+      <div class="relative mx-auto max-w-5xl">
+        <a href="/transparencia#canal-transparencia-etica" class="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m15 19-7-7 7-7" /></svg>
+          Volver al Canal de Transparencia y Ética
+        </a>
+        <div class="max-w-3xl">
+          <p class="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-accent">Canal de Transparencia y Ética</p>
+          <h1 class="text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">Presenta un reporte con confianza.</h1>
+          <p class="mt-6 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">Cuéntanos qué ocurrió. Puedes hacerlo de manera identificada o anónima; trataremos la información con seriedad, respeto y confidencialidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-10 md:px-8 md:py-16">
+      <div class="mx-auto max-w-5xl">
+        {sent && (
+          <div class="mb-8 flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-900" role="status">
+            <svg class="mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 4 4L19 6" /></svg>
+            <div><strong class="block font-bold">Recibimos tu reporte.</strong><span class="mt-1 block text-sm leading-relaxed">La información fue enviada al canal correspondiente. Si dejaste un medio de contacto, podremos solicitar datos adicionales.</span></div>
+          </div>
+        )}
+        <div class="mb-8 grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-primary/10 bg-white p-5 shadow-sm"><span class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-accent/15 text-primary" aria-hidden="true"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 7v5c0 4.5 3.4 7.6 8 9 4.6-1.4 8-4.5 8-9V7l-8-4Z" /><path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4" /></svg></span><h2 class="text-sm font-extrabold text-primary">Confidencial</h2><p class="mt-1 text-sm leading-relaxed text-slate-500">La información será conocida por las personas autorizadas para revisar el caso.</p></div>
+          <div class="rounded-2xl border border-primary/10 bg-white p-5 shadow-sm"><span class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-accent/15 text-primary" aria-hidden="true"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.5 2.5" /></svg></span><h2 class="text-sm font-extrabold text-primary">De buena fe</h2><p class="mt-1 text-sm leading-relaxed text-slate-500">Comparte los hechos que conozcas con claridad, aunque aún no tengas todas las pruebas.</p></div>
+          <div class="rounded-2xl border border-primary/10 bg-white p-5 shadow-sm"><span class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-accent/15 text-primary" aria-hidden="true"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 18.5v-13Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h8M8 11h8M8 15h5" /></svg></span><h2 class="text-sm font-extrabold text-primary">Solo lo necesario</h2><p class="mt-1 text-sm leading-relaxed text-slate-500">Evita enviar historias clínicas completas o información sensible que no sea indispensable.</p></div>
+        </div>
+        <EthicsReportForm />
+      </div>
+    </section>
+  </div>
+</BaseLayout>

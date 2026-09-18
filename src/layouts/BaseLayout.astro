@@ -22,6 +22,8 @@ const {
 
 const canonical = new URL(Astro.url.pathname, 'https://aconino.org').toString();
 const imageUrl = new URL(image, 'https://aconino.org').toString();
+const routePath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const suppressClinicalWidget = routePath === '/transparencia' || routePath === '/reporte-etica';
 ---
 <!doctype html>
 <html lang="es">
@@ -81,7 +83,7 @@ const imageUrl = new URL(image, 'https://aconino.org').toString();
         <slot />
       </main>
       <SiteFooter />
-      <ClinicalHistoryPopup />
+      {!suppressClinicalWidget && <ClinicalHistoryPopup />}
     </div>
 
     <script is:inline>
