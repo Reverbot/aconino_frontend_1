@@ -32,16 +32,12 @@ const legalDocuments = [
 <form
   id="reporte-etica-form"
   class="report-form"
-  action="https://formsubmit.co/transparenciayetica@aconino.org"
+  action="/api/reporte-etica"
   method="POST"
   enctype="multipart/form-data"
   data-report-form
   novalidate
 >
-  <input type="hidden" name="_subject" value="Nuevo reporte — Canal de Transparencia y Ética Aconiño" />
-  <input type="hidden" name="_template" value="table" />
-  <input type="hidden" name="_captcha" value="true" />
-  <input type="hidden" name="_next" value="https://aconino.org/reporte-etica?enviado=1" />
   <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only" />
 
   <div class="report-form__intro">
@@ -97,7 +93,7 @@ const legalDocuments = [
 
   <fieldset class="report-form__section">
     <legend><span class="report-form__number">04</span> Soportes y seguimiento</legend>
-    <div class="report-form__field"><label for="report-files">Adjuntar soportes</label><input id="report-files" name="archivos" type="file" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx,.mp4,.mp3,.avi" data-report-files /><small class="report-form__hint">Puedes adjuntar fotografías, documentos o capturas de pantalla. Máximo total: 10 MB. No envíes información sensible que no sea indispensable.</small><p class="report-form__file-status" data-file-status aria-live="polite">No has seleccionado archivos.</p></div>
+    <div class="report-form__field"><label for="report-files">Adjuntar soportes</label><input id="report-files" name="archivos" type="file" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx,.mp4,.mp3,.avi" data-report-files /><small class="report-form__hint">Puedes adjuntar fotografías, documentos o capturas de pantalla. Máximo total: 4 MB. No envíes información sensible que no sea indispensable.</small><p class="report-form__file-status" data-file-status aria-live="polite">No has seleccionado archivos.</p></div>
     <div class="report-form__field report-form__field--full"><label for="follow-up">¿Hay algo más que debamos saber?</label><textarea id="follow-up" name="informacion_adicional" rows="4" placeholder="Incluye cualquier dato adicional que ayude a revisar el caso."></textarea></div>
   </fieldset>
 
@@ -123,7 +119,10 @@ const legalDocuments = [
     const fileInput = form.querySelector('[data-report-files]');
     const fileStatus = form.querySelector('[data-file-status]');
     const errorMessage = form.querySelector('[data-form-error]');
-    const maxFileSize = 10 * 1024 * 1024;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const submitLabel = submitButton?.querySelector('span');
+    const maxFileSize = 4 * 1024 * 1024;
+    let isSubmitting = false;
 
     const syncReporterMode = (mode) => {
       const anonymous = mode === 'anonymous';
@@ -152,9 +151,10 @@ const legalDocuments = [
       fileStatus.classList.toggle('is-error', totalSize > maxFileSize);
     });
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (isSubmitting) return;
       if (!form.checkValidity()) {
-        event.preventDefault();
         form.classList.add('has-validation-error');
         if (errorMessage) { errorMessage.textContent = 'Revisa los campos obligatorios y las autorizaciones antes de enviar el reporte.'; errorMessage.removeAttribute('hidden'); }
         form.querySelector(':invalid')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -163,13 +163,37 @@ const legalDocuments = [
       if (fileInput instanceof HTMLInputElement) {
         const totalSize = Array.from(fileInput.files ?? []).reduce((total, file) => total + file.size, 0);
         if (totalSize > maxFileSize) {
-          event.preventDefault();
-          if (errorMessage) { errorMessage.textContent = 'Los archivos superan el máximo total de 10 MB. Elimina alguno e inténtalo de nuevo.'; errorMessage.removeAttribute('hidden'); }
+          if (errorMessage) { errorMessage.textContent = 'Los archivos superan el máximo total de 4 MB. Elimina alguno e inténtalo de nuevo.'; errorMessage.removeAttribute('hidden'); }
           fileInput.focus();
           return;
         }
       }
       errorMessage?.setAttribute('hidden', 'true');
+      isSubmitting = true;
+      form.setAttribute('aria-busy', 'true');
+      if (submitButton instanceof HTMLButtonElement) submitButton.disabled = true;
+      if (submitLabel) submitLabel.textContent = 'Enviando...';
+
+      try {
+        const response = await fetch(form.getAttribute('action') || '/api/reporte-etica', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || 'No fue posible enviar el reporte.');
+        window.location.href = '/reporte-etica?enviado=1';
+      } catch (error) {
+        if (errorMessage) {
+          errorMessage.textContent = error instanceof Error ? error.message : 'No fue posible enviar el reporte. Inténtalo nuevamente.';
+          errorMessage.removeAttribute('hidden');
+        }
+      } finally {
+        isSubmitting = false;
+        form.removeAttribute('aria-busy');
+        if (submitButton instanceof HTMLButtonElement) submitButton.disabled = false;
+        if (submitLabel) submitLabel.textContent = 'Enviar reporte';
+      }
     });
     syncReporterMode('identified');
   };
