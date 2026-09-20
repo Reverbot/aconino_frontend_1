@@ -29,7 +29,7 @@
             Consulta el listado y verifica si el periodo de atención está incluido.
           </p>
           <p class="mb-6 text-base leading-relaxed text-gray-600 sm:text-lg">
-            Si aparece, solicita una copia de la historia clínica a más tardar el <strong class="font-bold text-primary">19 de septiembre de 2026</strong>. Después de esta fecha, las historias que hayan cumplido el tiempo legal de conservación podrán ser eliminadas.
+            Si aparece, solicita una copia de la historia clínica a más tardar el <strong class="font-bold text-primary">30 de noviembre de 2026</strong>. Después de esta fecha, las historias que hayan cumplido el tiempo legal de conservación podrán ser eliminadas.
           </p>
           <a href="/historias-clinicas" class="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-accent px-5 py-3.5 text-center text-sm font-bold text-primary shadow-md transition-all hover:bg-primary hover:text-white active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 sm:w-auto sm:px-7 sm:py-4 sm:text-base">
             Revisar listado y solicitar historia clínica
@@ -75,7 +75,7 @@
     if (widget.dataset.initialized === "true") return;
     widget.dataset.initialized = "true";
     
-    const deadline = new Date('2026-09-20T00:00:00-05:00').getTime();
+    const deadline = new Date('2026-12-01T00:00:00-05:00').getTime();
     const now = new Date().getTime();
 
     // Si ya pasó la fecha, forzar oculto total y no hacer nada más
