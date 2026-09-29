@@ -1,5 +1,5 @@
 ---
-title: Cómo hablar de discapacidad con niños | ACONIÑO
+title: Cómo hablar de discapacidad con otros niños sin generar miedo ni lástima
 publishedAt: 2026-09-29
 category: inclusion
 excerpt: Aprende cómo explicar la discapacidad a los niños con palabras claras,
@@ -8,7 +8,7 @@ image: images/hablemos-de-discapacidad.webp
 imageAlt: Cómo hablar sobre discapacidad
 author: Asociación Aconiño
 draft: false
-seoTitle: "Cómo hablar de discapacidad "
+seoTitle: Cómo hablar de discapacidad con niños | ACONIÑO
 seoDescription: discapacidad infantil, inclusión, niños con discapacidad, cómo
   explicar la discapacidad, educación inclusiva, respeto por la diversidad.
 ---
