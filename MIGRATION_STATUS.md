@@ -63,7 +63,7 @@ Las rutas de `src/pages/` montan componentes `.astro`. El contenido activo vive 
 - Revisar y completar los datos estáticos de las páginas restantes contra el contenido histórico exportado.
 - Migrar los documentos y medios que todavía deban conservarse.
 - Convertir gradualmente los componentes interactivos restantes a HTML/CSS nativo cuando no afecte la paridad visual.
-- Mantener `App` y `Blog` fuera del menú principal hasta decidir su publicación.
+- Mantener `App` fuera del menú principal; el blog ya está publicado y tiene acceso desde la navegación.
 - Optimizar el video del hero cuando exista una herramienta de transcodificación compatible y validar el resultado en Safari, Chrome y móvil.
 - `temp_uploads/` fue retirado después de validar los documentos y recursos seleccionados para la versión estática.
 - Rotar secretos de `.env.local` y retirarlo del historial Git.
