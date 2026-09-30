@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const transferMessage = encodeURIComponent('Hola, realicé una transferencia para Aconiño Centro Día y quisiera consultar cómo confirmar su recepción.');
+---
+
+<BaseLayout
+  title="Información sobre tu transferencia | Aconiño Centro Día"
+  description="Gracias por apoyar Aconiño Centro Día. Consulta con el equipo si necesitas verificar una transferencia."
+>
+  <section class="relative isolate flex min-h-[62vh] items-center overflow-hidden bg-[#f8f9fc] px-5 py-16 sm:px-8 md:py-24 lg:px-12">
+    <div class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full border-[40px] border-primary/[0.045]" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-4xl">
+      <p class="text-sm font-extrabold uppercase tracking-[0.12em] text-secondary">Aconiño Centro Día</p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-extrabold leading-tight tracking-[-0.035em] text-primary sm:text-5xl md:text-6xl">Gracias por apoyar Aconiño Centro Día.</h1>
+      <div class="mt-8 max-w-2xl space-y-4 text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">
+        <p>Si acabas de realizar una transferencia, te agradecemos mucho por apoyar la construcción de este espacio.</p>
+        <p>Esta página no confirma automáticamente que el dinero haya llegado. Si necesitas verificar tu transferencia, puedes consultarlo directamente con el equipo de Aconiño.</p>
+        <p>Tu apoyo puede ayudar a ampliar las oportunidades de autonomía, comunicación, movimiento, aprendizaje y participación para jóvenes y adultos con discapacidad.</p>
+        <p>A medida que avancemos, queremos mostrarte cómo va tomando forma el proyecto.</p>
+        <p class="font-extrabold text-primary">Gracias por estar aquí desde el comienzo.</p>
+      </div>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a href="/apoyanos" class="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-extrabold text-white transition-colors hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Ver el proyecto</a>
+        <a href={`https://wa.me/573133910760?text=${transferMessage}`} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-primary/20 px-6 py-3 text-sm font-extrabold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Consultar mi transferencia</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

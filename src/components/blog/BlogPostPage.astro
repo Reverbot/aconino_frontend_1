@@ -29,7 +29,7 @@ const recentPosts = allPosts.filter((item) => !item.data.draft && item.id !== en
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-12">
       <div class="lg:col-span-2">
         <div class="relative -mt-12 mb-10 h-[300px] overflow-hidden rounded-3xl shadow-2xl md:-mt-16 md:h-[450px]" transition:name={`blog-image-${slug}`}><Image src={entry.data.image} alt={entry.data.imageAlt} class="h-full w-full object-cover" loading="eager" decoding="async" /></div>
-        <div class="prose prose-lg max-w-none">
+        <div class="blog-post-content prose prose-lg max-w-none">
           <slot />
         </div>
         <div class="mt-12 border-t border-gray-200 pt-8">
@@ -83,3 +83,14 @@ const recentPosts = allPosts.filter((item) => !item.data.draft && item.id !== en
     initProgressBar();
   </script>
 </article>
+
+<style>
+  .blog-post-content :global(p) {
+    line-height: 1.8;
+    margin-block: 0;
+  }
+
+  .blog-post-content :global(p + p) {
+    margin-block-start: 1.25em;
+  }
+</style>

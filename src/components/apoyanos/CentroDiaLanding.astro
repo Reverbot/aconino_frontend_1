@@ -1,0 +1,382 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/equipo-principal.jpg';
+
+const phone = '573133910760';
+const donateMessage = encodeURIComponent('Hola, quiero conocer cómo puedo aportar a Aconiño Centro Día.');
+const companyMessage = encodeURIComponent('Hola, quiero conocer las opciones para vincular a mi empresa con Aconiño Centro Día.');
+const updatesMessage = encodeURIComponent('Hola, quiero seguir los avances de Aconiño Centro Día.');
+
+const spaces = [
+  {
+    name: 'Gimnasio terapéutico',
+    description: 'Equipos especializados para trabajar movilidad, fuerza, postura, resistencia, transferencias y marcha.',
+    detail: 'Soporte parcial de peso, caminadora terapéutica, bipedestador y barras paralelas ayudarán a convertir cada ejercicio en una habilidad útil para el día a día.',
+  },
+  {
+    name: 'Tecnología adaptada',
+    description: 'Computadores, tabletas y dispositivos de acceso alternativo para encontrar nuevas formas de comunicarse, aprender y participar.',
+    detail: 'Teclados y mouse especializados, reconocimiento de voz, comunicación aumentativa y seguimiento ocular harán parte de este espacio.',
+  },
+  {
+    name: 'Taller creativo integral',
+    description: 'Un lugar para desarrollar habilidades cognitivas, sociales y ocupacionales mediante actividades artísticas, musicales, expresivas y tecnológicas.',
+    detail: 'También habrá espacio para descubrir gustos, probar algo nuevo y compartir con otras personas.',
+  },
+  {
+    name: 'Piscina terapéutica',
+    description: 'Un entorno de temperatura controlada y acceso universal donde el cuerpo puede moverse de otra manera.',
+    detail: 'El agua permitirá trabajar movilidad, equilibrio, flexibilidad, fuerza y resistencia, además de ganar confianza y disfrutar.',
+  },
+];
+
+const goals = [
+  { value: '80%', description: 'de participantes con mejoras significativas en su capacidad funcional' },
+  { value: '70%', description: 'con mayor independencia en actividades de la vida diaria' },
+  { value: '60%', description: 'con competencias digitales funcionales' },
+  { value: '30%', description: 'vinculados a formación ocupacional, actividades productivas o entornos laborales inclusivos' },
+];
+
+const contributionExamples = [
+  'Una caminadora terapéutica',
+  'Un dispositivo para comunicarse con la mirada',
+  'Una mesa accesible para una persona usuaria de silla de ruedas',
+  'Un equipo para facilitar una transferencia',
+  'Elementos para la piscina terapéutica',
+  'Computadores y tabletas adaptadas',
+];
+
+const donationImpacts = [
+  {
+    name: 'Movimiento y bienestar',
+    gift: 'Caminadora terapéutica y equipos de marcha',
+    impact: 'Acompañan el trabajo de movilidad, postura y habilidades que se usan cada día.',
+  },
+  {
+    name: 'Comunicación',
+    gift: 'Tabletas y dispositivos de acceso alternativo',
+    impact: 'Abren nuevas formas de expresar decisiones, aprender y participar.',
+  },
+  {
+    name: 'Autonomía',
+    gift: 'Mobiliario y elementos accesibles',
+    impact: 'Ayudan a que cada persona participe en actividades con apoyos adecuados.',
+  },
+  {
+    name: 'Agua y relajación',
+    gift: 'Equipos para la piscina terapéutica',
+    impact: 'Permiten trabajar movimiento, equilibrio y resistencia en el agua.',
+  },
+];
+
+const updates = [
+  'Equipos adquiridos',
+  'Adecuaciones realizadas',
+  'Espacios terminados',
+  'Alianzas logradas',
+  'Hitos hasta la apertura',
+];
+---
+
+<div class="centro-dia-page w-full overflow-hidden bg-white text-primary">
+  <section class="relative isolate overflow-hidden bg-[#f8f9fc]">
+    <div class="pointer-events-none absolute -right-40 -top-36 h-[32rem] w-[32rem] rounded-full border-[44px] border-primary/[0.035]" aria-hidden="true"></div>
+    <div class="relative grid w-full items-center gap-8 px-5 py-12 sm:px-8 md:py-16 lg:grid-cols-2 lg:gap-x-0 lg:gap-y-8 lg:px-0 lg:py-0 xl:grid-cols-[0.9fr_0.5fr_1.25fr]">
+      <div class="relative z-10 mx-auto w-full max-w-2xl lg:col-start-1 lg:row-start-1 lg:mx-0 lg:max-w-none lg:py-14 lg:pl-12 lg:pr-10 xl:py-16 xl:pl-14 xl:pr-7 2xl:pl-20">
+        <h1 class="text-[clamp(2.55rem,3.9vw,3.65rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-primary">
+          Todo lo que aún pueden lograr merece un lugar.
+        </h1>
+        <p class="mt-6 text-xl font-extrabold leading-tight text-secondary sm:text-2xl">Nace Aconiño Centro Día</p>
+        <p class="mt-5 max-w-xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">
+          Estamos creando en Bogotá un nuevo espacio para jóvenes y adultos con discapacidad. Un lugar para seguir fortaleciendo su movilidad, comunicación, autonomía, habilidades y participación en la vida cotidiana.
+        </p>
+        <p class="mt-5 max-w-lg text-base font-semibold leading-7 text-primary sm:text-lg">Hay mucho por construir. Y grandes cosas pueden empezar aquí.</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a href="#aportar" class="inline-flex min-h-14 items-center justify-center rounded-full bg-accent px-7 py-4 text-center text-sm font-extrabold text-primary shadow-[0_7px_20px_rgba(12,32,112,0.14)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:text-base">
+            Quiero donar
+          </a>
+          <a href="#espacios" class="inline-flex min-h-14 items-center justify-center rounded-full border-2 border-primary/15 bg-white px-7 py-3.5 text-center text-sm font-extrabold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:text-base">
+            Conocer el proyecto
+          </a>
+        </div>
+        <p class="mt-6 text-sm font-semibold text-[#5c6882]">En Bogotá, Colombia · Una nueva etapa para Aconiño</p>
+      </div>
+
+      <figure class="relative mx-auto w-full max-w-2xl lg:col-start-2 lg:row-start-1 lg:ml-auto lg:mr-0 xl:col-start-3 xl:max-w-none xl:self-center">
+        <div class="relative aspect-[1.18/1] overflow-hidden rounded-[1.25rem] bg-[#dfe5f1] sm:aspect-[1.28/1] lg:aspect-[1.1/1] xl:aspect-auto xl:h-[35rem]">
+          <Image src={heroImage} alt="Integrantes del equipo de Aconiño junto a una persona usuaria de silla de ruedas en la sede actual" class="h-full w-full object-cover object-center" widths={[600, 900, 1200]} sizes="(min-width: 1024px) 48vw, 92vw" loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+        <figcaption class="mt-3 max-w-md px-1 text-xs leading-5 text-[#5c6882] xl:pl-3">Comunidad Aconiño en su sede actual. La imagen no representa las instalaciones proyectadas del Centro Día.</figcaption>
+      </figure>
+
+      <aside class="relative z-10 rounded-2xl border border-primary/10 bg-white p-5 shadow-[0_14px_40px_rgba(12,32,112,0.08)] sm:p-6 lg:col-span-2 lg:row-start-2 lg:mx-auto lg:w-full lg:max-w-5xl xl:col-span-1 xl:col-start-2 xl:row-start-1 xl:mx-5 xl:max-w-none">
+        <p class="text-xs font-extrabold uppercase tracking-[0.12em] text-secondary">Tu aporte puede ayudar a hacer posible</p>
+        <ul class="mt-4 divide-y divide-primary/10">
+          <li class="py-3 text-sm font-bold leading-5 text-primary sm:text-base">Equipos para movilidad y marcha</li>
+          <li class="py-3 text-sm font-bold leading-5 text-primary sm:text-base">Tecnología de comunicación adaptada</li>
+          <li class="py-3 text-sm font-bold leading-5 text-primary sm:text-base">Mobiliario accesible</li>
+          <li class="py-3 text-sm font-bold leading-5 text-primary sm:text-base">Equipos para la piscina terapéutica</li>
+        </ul>
+        <a href="#aportar" class="mt-3 inline-flex min-h-11 items-center text-sm font-extrabold text-secondary underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Ver cómo donar</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="bg-white px-5 py-14 sm:px-8 md:py-20 lg:px-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-5 border-b border-primary/15 pb-7 md:grid-cols-[0.85fr_1.15fr] md:items-end md:gap-12">
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-secondary">Del aporte a la vida diaria</p>
+          <h2 class="mt-3 max-w-xl text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl">Una donación concreta abre nuevas posibilidades.</h2>
+        </div>
+        <p class="max-w-2xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">Cada espacio y cada equipo se proyectan para acompañar experiencias de movimiento, comunicación, autonomía y participación.</p>
+      </div>
+      <div class="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
+        {donationImpacts.map((item, index) => (
+          <article class="border-b border-primary/15 py-6 sm:py-7 lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0">
+            <p class="text-xs font-extrabold uppercase tracking-[0.12em] text-secondary">0{index + 1} · {item.name}</p>
+            <h3 class="mt-3 text-lg font-extrabold leading-snug text-primary">{item.gift}</h3>
+            <p class="mt-2 text-sm font-medium leading-6 text-[#53617e]">{item.impact}</p>
+          </article>
+        ))}
+      </div>
+      <a href="#aportar" class="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-extrabold text-primary transition-colors hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Quiero aportar</a>
+    </div>
+  </section>
+
+  <section class="bg-white px-5 py-16 sm:px-8 md:py-24 lg:px-12">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:gap-20">
+      <h2 class="max-w-xl text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl md:text-5xl">Crecer cambia las necesidades. Las oportunidades también tienen que crecer.</h2>
+      <div class="max-w-3xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">
+        <p>Hay un momento que muchas familias conocen bien. Pasan los años, cambian las necesidades y encontrar espacios especializados para jóvenes y adultos con discapacidad se vuelve cada vez más difícil.</p>
+        <p class="mt-5">La rehabilitación sigue siendo importante. La comunicación, moverse, aprender, relacionarse, desarrollar habilidades y tener una vida cada vez más autónoma también.</p>
+        <p class="mt-5">Buena parte de la atención especializada continúa concentrándose en la infancia, y la transición hacia la adultez puede dejar a muchas personas con menos alternativas de acompañamiento.</p>
+        <p class="mt-7 border-t-2 border-accent pt-5 text-xl font-extrabold leading-snug text-primary sm:text-2xl">Ahí es donde Aconiño quiere hacer algo nuevo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-primary px-5 py-16 text-white sm:px-8 md:py-24 lg:px-12">
+    <div class="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full border-[34px] border-white/[0.055]" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="max-w-3xl">
+        <h2 class="text-4xl font-extrabold leading-tight tracking-[-0.03em] sm:text-5xl">Imagina un día aquí.</h2>
+        <p class="mt-5 max-w-2xl text-base font-medium leading-7 text-white/85 sm:text-lg sm:leading-8">Una jornada puede empezar trabajando movimientos que ayuden a desenvolverse mejor en casa. Más tarde, una herramienta adaptada puede abrir otra forma de comunicarse, aprender o manejar un dispositivo.</p>
+      </div>
+
+      <div class="mt-12 grid gap-x-10 gap-y-9 border-t border-white/20 pt-8 sm:grid-cols-2 lg:grid-cols-4">
+        <article>
+          <h3 class="text-xl font-extrabold text-accent">Movimiento</h3>
+          <p class="mt-3 text-sm font-medium leading-6 text-white/80">Ejercicios con una intención práctica: conservar capacidades y fortalecer habilidades cotidianas.</p>
+        </article>
+        <article>
+          <h3 class="text-xl font-extrabold text-accent">Comunicación</h3>
+          <p class="mt-3 text-sm font-medium leading-6 text-white/80">Tecnología adaptada para expresar lo que se quiere, aprender y participar con mayor independencia.</p>
+        </article>
+        <article>
+          <h3 class="text-xl font-extrabold text-accent">Creación</h3>
+          <p class="mt-3 text-sm font-medium leading-6 text-white/80">Talleres para explorar actividades artísticas, musicales, expresivas y tecnológicas con otras personas.</p>
+        </article>
+        <article>
+          <h3 class="text-xl font-extrabold text-accent">Agua</h3>
+          <p class="mt-3 text-sm font-medium leading-6 text-white/80">Un entorno donde algunos movimientos pueden sentirse distintos y el cuerpo encuentra nuevas posibilidades.</p>
+        </article>
+      </div>
+
+      <div class="mt-12 grid gap-6 border-t border-white/20 pt-8 sm:grid-cols-[1fr_auto] sm:items-end">
+        <div>
+          <p class="text-lg font-extrabold leading-snug sm:text-xl">Todo sucede en el mismo lugar, con acompañamiento profesional y objetivos definidos para cada persona.</p>
+          <p class="mt-3 text-base font-bold leading-7 text-accent sm:text-lg">Que lo que pase aquí se note también afuera.</p>
+        </div>
+        <a href="#espacios" class="inline-flex min-h-12 items-center justify-center self-start rounded-full border border-white/50 px-6 py-3 text-sm font-extrabold text-white transition-colors hover:border-accent hover:bg-accent hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:self-auto">Conoce los espacios</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="espacios" class="scroll-mt-28 bg-[#f8f9fc] px-5 py-16 sm:px-8 md:py-24 lg:px-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-6 border-b border-primary/15 pb-8 md:grid-cols-[0.8fr_1.2fr] md:items-end md:gap-12">
+        <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl md:text-5xl">Un centro creado para seguir avanzando.</h2>
+        <p class="max-w-2xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">Aconiño Centro Día reunirá rehabilitación, tecnología, creatividad y participación en un mismo espacio. Cada área tendrá una función y trabajará conectada con las demás, porque la vida cotidiana también funciona así.</p>
+      </div>
+
+      <div class="mt-3">
+        {spaces.map((space) => (
+          <article class="grid gap-4 border-b border-primary/15 py-7 sm:py-9 md:grid-cols-[0.72fr_1.28fr] md:gap-12 md:py-11">
+            <h3 class="max-w-sm text-2xl font-extrabold leading-tight text-primary sm:text-3xl">{space.name}</h3>
+            <div class="max-w-3xl">
+              <p class="text-base font-bold leading-7 text-secondary sm:text-lg">{space.description}</p>
+              <p class="mt-3 text-sm font-medium leading-6 text-[#53617e] sm:text-base sm:leading-7">{space.detail}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="mt-8 max-w-3xl text-sm font-semibold leading-6 text-[#53617e]">Los espacios y equipos descritos hacen parte del proyecto que se está construyendo.</p>
+    </div>
+  </section>
+
+  <section class="bg-white px-5 py-16 sm:px-8 md:py-24 lg:px-12">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <h2 class="max-w-lg text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl md:text-5xl">Queremos ver el cambio. Y poder medirlo.</h2>
+        <p class="mt-5 max-w-lg text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">La emoción mueve a las personas. La evidencia construye confianza. Por eso el proyecto plantea objetivos concretos y seguimiento de los procesos.</p>
+        <p class="mt-4 text-sm font-extrabold uppercase tracking-[0.08em] text-secondary">Metas propuestas para los primeros 12 meses</p>
+      </div>
+      <dl class="divide-y divide-primary/15 border-y border-primary/15">
+        {goals.map((goal) => (
+          <div class="grid gap-2 py-5 sm:grid-cols-[7rem_1fr] sm:items-center sm:gap-7 sm:py-6">
+            <dt class="text-4xl font-extrabold leading-none tracking-[-0.03em] text-primary sm:text-5xl">{goal.value}</dt>
+            <dd class="max-w-xl text-base font-semibold leading-6 text-[#465574] sm:text-lg sm:leading-7">{goal.description}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <p class="mx-auto mt-6 max-w-7xl text-xs leading-5 text-[#64718f]">Son objetivos del proyecto y no resultados alcanzados.</p>
+  </section>
+
+  <section class="overflow-hidden bg-[#f8f9fc] px-5 py-16 sm:px-8 md:py-20 lg:px-12">
+    <div class="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-14">
+      <div>
+        <h2 class="max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl md:text-5xl">Cuando una persona avanza, en casa también se siente.</h2>
+        <p class="mt-5 max-w-2xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">Detrás de muchas personas con discapacidad hay una familia que ha acompañado, trasladado, ayudado y aprendido durante años. Poder hacer una transferencia con menos apoyo, encontrar una forma más clara de comunicarse o participar con mayor independencia puede cambiar pequeñas escenas de todos los días.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-6 border-y border-primary/20 py-7 sm:gap-8 sm:py-9">
+        <div>
+          <p class="text-5xl font-extrabold leading-none tracking-[-0.04em] text-primary sm:text-6xl">40</p>
+          <p class="mt-3 text-sm font-bold leading-5 text-[#465574] sm:text-base">beneficiarios directos en la capacidad inicial proyectada</p>
+        </div>
+        <div>
+          <p class="text-5xl font-extrabold leading-none tracking-[-0.04em] text-primary sm:text-6xl">100</p>
+          <p class="mt-3 text-sm font-bold leading-5 text-[#465574] sm:text-base">familiares y cuidadores en el impacto aproximado</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="aporte" class="scroll-mt-28 bg-white px-5 py-16 sm:px-8 md:py-24 lg:px-12">
+    <div class="mx-auto grid max-w-7xl gap-9 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl md:text-5xl">Tu aporte puede terminar aquí.</h2>
+        <p class="mt-5 max-w-xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">Aconiño Centro Día necesita infraestructura, equipos, tecnología, adecuaciones y dotación especializada. Cada aporte ayuda a convertir un proyecto diseñado sobre el papel en un centro funcionando todos los días.</p>
+        <p class="mt-5 text-lg font-extrabold leading-snug text-secondary">Así una donación deja de ser una cifra: empieza a tener un lugar, un uso y personas que podrán aprovecharla.</p>
+      </div>
+      <div>
+        <ul class="grid gap-x-9 sm:grid-cols-2">
+          {contributionExamples.map((item) => (
+            <li class="border-t border-primary/20 py-4 text-base font-bold leading-6 text-primary sm:py-5 sm:text-lg">{item}</li>
+          ))}
+        </ul>
+        <a href={`https://wa.me/${phone}?text=${donateMessage}`} target="_blank" rel="noopener noreferrer" class="mt-7 inline-flex min-h-14 items-center justify-center rounded-full bg-primary px-7 py-4 text-center text-sm font-extrabold text-white shadow-[0_7px_20px_rgba(12,32,112,0.16)] transition-colors hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:text-base">
+          Quiero aportar al nuevo centro
+        </a>
+        <p class="mt-3 max-w-lg text-sm leading-6 text-[#5c6882]">Escríbenos para conocer cómo realizar tu aporte y resolver tus preguntas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="aportar" class="scroll-mt-28 bg-primary px-5 py-14 text-white sm:px-8 md:py-20 lg:px-12">
+    <div class="mx-auto grid max-w-7xl gap-9 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h2 class="max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl md:text-5xl">Ahora viene la parte en la que tú puedes entrar en esta historia.</h2>
+        <p class="mt-5 max-w-2xl text-base font-medium leading-7 text-white/85 sm:text-lg sm:leading-8">Queremos que sea fácil entender qué estás ayudando a construir. Con tu aporte, un equipo, un espacio o una tecnología puede abrir nuevas oportunidades de autonomía, comunicación, movimiento, aprendizaje y participación.</p>
+      </div>
+
+      <div class="self-center border-t border-white/25 pt-6 lg:border-l lg:border-t-0 lg:pl-9 lg:pt-0">
+        <p class="text-xs font-extrabold uppercase tracking-[0.13em] text-accent">Método provisional de aporte</p>
+        <h3 class="mt-2 text-2xl font-extrabold sm:text-3xl">Transferencia Bancolombia</h3>
+        <p class="mt-4 text-sm font-semibold text-white/80">Cuenta de ahorros</p>
+        <div class="mt-2 flex flex-wrap items-center gap-3">
+          <p class="text-3xl font-extrabold tracking-[0.02em] text-accent sm:text-4xl">69900010357</p>
+          <button type="button" data-copy-account data-account-number="69900010357" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/55 px-4 py-2 text-xs font-extrabold text-white transition-colors hover:border-accent hover:bg-accent hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent" aria-label="Copiar número de cuenta Bancolombia">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span data-copy-label>Copiar cuenta</span>
+          </button>
+        </div>
+        <p class="mt-4 text-sm leading-6 text-white/80">A nombre de <strong class="font-extrabold text-white">Asociación Centro de Atención para Niños TR</strong></p>
+        <p class="mt-3 min-h-5 text-xs font-bold text-accent" data-copy-status aria-live="polite"></p>
+        <a href={`https://wa.me/${phone}?text=${donateMessage}`} target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-6 py-3 text-center text-sm font-extrabold text-primary transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Consultar otras formas de aportar</a>
+        <p class="mt-3 text-xs leading-5 text-white/70">Esta transferencia es un método provisional; el pago en línea aún está en desarrollo.</p>
+        <a href="/apoyanos/gracias" class="mt-5 inline-flex text-sm font-bold text-white underline decoration-white/50 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Ya hice una transferencia</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="empresas" class="scroll-mt-28 bg-[#f8f9fc] px-5 py-16 sm:px-8 md:py-24 lg:px-12">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:gap-16">
+      <h2 class="max-w-xl text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl md:text-5xl">Para las empresas: una forma concreta de hacer impacto social.</h2>
+      <div>
+        <p class="max-w-2xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">Las empresas pueden formar parte de Aconiño Centro Día financiando espacios, tecnología, equipamiento, adecuaciones o componentes específicos del proyecto. Así, una inversión social puede conectarse con algo visible y verificable.</p>
+        <ul class="mt-6 grid gap-x-7 sm:grid-cols-2">
+          <li class="border-t border-primary/20 py-4 font-bold text-primary">Un área equipada</li>
+          <li class="border-t border-primary/20 py-4 font-bold text-primary">Una tecnología instalada</li>
+          <li class="border-t border-primary/20 py-4 font-bold text-primary">Un espacio funcionando</li>
+          <li class="border-t border-primary/20 py-4 font-bold text-primary">Resultados que pueden seguirse</li>
+        </ul>
+        <p class="mt-5 max-w-2xl text-sm font-medium leading-6 text-[#53617e] sm:text-base sm:leading-7">Para organizaciones que buscan proyectos serios de responsabilidad social, esta es una oportunidad de invertir en capacidad instalada al servicio de la comunidad. El modelo de sostenibilidad combina distintas fuentes de ingreso, aprovechamiento de la infraestructura, servicios propios, alianzas universitarias, prácticas profesionales, investigación y cooperación institucional.</p>
+        <a href={`https://wa.me/${phone}?text=${companyMessage}`} target="_blank" rel="noopener noreferrer" class="mt-7 inline-flex min-h-14 items-center justify-center rounded-full border-2 border-primary bg-white px-7 py-4 text-center text-sm font-extrabold text-primary transition-colors hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:text-base">Conocer opciones para mi empresa</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-5 py-16 sm:px-8 md:py-20 lg:px-12">
+    <div class="mx-auto grid max-w-7xl gap-7 border-y border-primary/15 py-8 md:grid-cols-[0.8fr_1.2fr] md:gap-12 md:py-10">
+      <h2 class="max-w-lg text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl">Lo que se construya tiene que durar.</h2>
+      <div class="max-w-3xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">
+        <p>El proyecto fue pensado con un modelo de sostenibilidad que reúne diferentes fuentes de ingreso, el aprovechamiento de la infraestructura, servicios propios, alianzas universitarias, prácticas profesionales, investigación y cooperación institucional.</p>
+        <p class="mt-4">A esto se suma la experiencia acumulada por Aconiño durante 36 años. Queremos que la infraestructura que hoy permita poner en marcha el centro siga generando oportunidades durante muchos años.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#f8f9fc] px-5 py-16 sm:px-8 md:py-20 lg:px-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-5 md:grid-cols-[1fr_0.9fr] md:items-end md:gap-12">
+        <div>
+          <h2 class="max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.03em] text-primary sm:text-4xl md:text-5xl">Queremos que puedas ver cómo avanza.</h2>
+          <p class="mt-5 max-w-2xl text-base font-medium leading-7 text-[#465574] sm:text-lg sm:leading-8">Una campaña de donación también se construye con transparencia. A medida que el proyecto avance, compartiremos información sobre:</p>
+        </div>
+        <p class="max-w-lg text-sm font-semibold leading-6 text-[#53617e] sm:text-base sm:leading-7">La meta total y el monto recaudado se publicarán cuando las cifras estén confirmadas.</p>
+      </div>
+      <ul class="mt-9 grid gap-x-8 border-t border-primary/20 sm:grid-cols-2 lg:grid-cols-5">
+        {updates.map((update) => (
+          <li class="border-b border-primary/20 py-4 text-sm font-extrabold leading-5 text-primary sm:text-base">{update}</li>
+        ))}
+      </ul>
+      <a href={`https://wa.me/${phone}?text=${updatesMessage}`} target="_blank" rel="noopener noreferrer" class="mt-7 inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 py-3 text-center text-sm font-extrabold text-primary shadow-[0_4px_14px_rgba(12,32,112,0.1)] transition-colors hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Quiero seguir el avance</a>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-primary px-5 py-16 text-white sm:px-8 md:py-24 lg:px-12">
+    <div class="pointer-events-none absolute -bottom-28 -right-24 h-80 w-80 rounded-full border-[36px] border-white/[0.06]" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-5xl text-center">
+      <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl md:text-6xl">Algo nuevo está tomando forma en Aconiño.</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-base font-medium leading-7 text-white/85 sm:text-lg sm:leading-8">Un lugar para jóvenes y adultos. Un equipo preparado para acompañarlos. Tecnología que podrá abrir nuevas formas de comunicación. Espacios para trabajar movilidad y autonomía. Talleres para aprender, crear y compartir. Y familias con nuevas alternativas para una etapa de la vida que también merece atención, oportunidades y futuro.</p>
+      <p class="mt-8 text-lg font-extrabold text-accent sm:text-xl">Aconiño Centro Día<br />Hagamos lugar para lo que viene.</p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+        <a href="#aportar" class="inline-flex min-h-14 items-center justify-center rounded-full bg-accent px-7 py-4 text-center text-sm font-extrabold text-primary transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base">Quiero ayudar a ponerlo en marcha</a>
+        <a href={`https://wa.me/${phone}?text=${companyMessage}`} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-14 items-center justify-center rounded-full border border-white/60 px-7 py-4 text-center text-sm font-extrabold text-white transition-colors hover:border-accent hover:bg-accent hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base">Quiero vincular a mi empresa</a>
+      </div>
+      <p class="mt-5 text-sm font-semibold text-white/80">Si este proyecto también hace sentido para ti, hay un lugar para tu aporte.</p>
+    </div>
+  </section>
+</div>
+
+<script is:inline>
+  (() => {
+    const button = document.querySelector('[data-copy-account]');
+    const status = document.querySelector('[data-copy-status]');
+    const label = button?.querySelector('[data-copy-label]');
+    const account = button?.getAttribute('data-account-number');
+    if (!button || !status || !label || !account) return;
+
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(account);
+        label.textContent = 'Cuenta copiada';
+        status.textContent = 'El número de cuenta quedó copiado en el portapapeles.';
+      } catch {
+        status.textContent = 'Selecciona y copia el número de cuenta manualmente.';
+      }
+    });
+  })();
+</script>
