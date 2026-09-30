@@ -1,9 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import { blogCategories, formatBlogDate } from '../../data/blog';
+import { blogCategories, formatBlogDate, isBlogPostPublished } from '../../data/blog';
 
-const allPosts = (await getCollection('blog')).filter((post) => !post.data.draft);
+const allPosts = (await getCollection('blog')).filter((post) =>
+  !post.data.draft && isBlogPostPublished(post.data.publishedAt)
+);
 const sortedPosts = allPosts.sort((a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime());
 const [featuredPost, ...gridPosts] = sortedPosts;
 ---

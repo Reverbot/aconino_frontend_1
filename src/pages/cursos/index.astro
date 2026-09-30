@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CoursesPage from '../../components/cursos/CoursesPage.astro';
 
 const courses = await getCollection('cursos');
+const siteUrl = Astro.site ?? new URL('https://www.aconino.org/');
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -18,7 +19,7 @@ const schema = {
       "provider": {
         "@type": "Organization",
         "name": "Asociación Aconiño",
-        "sameAs": "https://aconino.org"
+        "url": siteUrl.toString().replace(/\/$/, '')
       }
     }
   }))

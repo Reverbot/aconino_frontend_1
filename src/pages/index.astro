@@ -5,20 +5,22 @@ import { getImage } from 'astro:assets';
 import imgHeroBg from '../assets/images/hero-background-blue.png';
 
 const optimizedHeroBg = await getImage({ src: imgHeroBg, format: 'webp', width: 800 });
+const siteUrl = Astro.site ?? new URL('https://www.aconino.org/');
+const organizationUrl = new URL('/', siteUrl).toString().replace(/\/$/, '');
 
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://aconino.org/#organization",
+      "@id": `${organizationUrl}/#organization`,
       "name": "Asociación Aconiño",
-      "url": "https://aconino.org",
-      "logo": "https://aconino.org/images/logo_aconino.png",
+      "url": organizationUrl,
+      "logo": new URL('/images/logo_aconino.png', siteUrl).toString(),
       "description": "Más de 35 años apoyando la inclusión y mejorando la calidad de vida de niños y jóvenes con discapacidad.",
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+573138806283",
+        "telephone": "+573133910760",
         "contactType": "Atención al cliente",
         "areaServed": "CO",
         "availableLanguage": "Spanish"
@@ -26,11 +28,11 @@ const schema = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://aconino.org/#website",
-      "url": "https://aconino.org",
+      "@id": `${organizationUrl}/#website`,
+      "url": organizationUrl,
       "name": "Asociación Aconiño",
       "publisher": {
-        "@id": "https://aconino.org/#organization"
+        "@id": `${organizationUrl}/#organization`
       }
     }
   ]

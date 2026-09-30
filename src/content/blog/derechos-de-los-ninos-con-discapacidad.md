@@ -1,5 +1,5 @@
 ---
-title: Derechos de los niños y niñas en condición de discapacidad test
+title: Derechos de los niños y niñas en condición de discapacidad
 publishedAt: 2024-02-20
 category: neurodesarrollo
 excerpt: La inclusión comienza cuando reconocemos la participación, la autonomía

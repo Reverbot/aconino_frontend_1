@@ -9,20 +9,18 @@ image: images/niños-con-discapacidad-y-redes-sociales.webp
 imageAlt: Privacidad niños con discapacidad
 author: Asociación Aconiño
 draft: false
-seoTitle: privacidad digital de los niños
-seoDescription: sharenting, publicar fotos de hijos en redes sociales,
-  reputación digital, huella digital, seguridad en internet para niños,
-  privacidad infantil
+seoTitle: Privacidad digital de niños y familias
+seoDescription: Consejos para compartir fotos e información de niños con discapacidad cuidando su consentimiento, privacidad y huella digital.
 ---
-Una fotodespués de terapia.
+Una foto después de terapia.
 
-Un videocelebrando un avance.
+Un video celebrando un avance.
 
-Una historiacontando el diagnóstico.
+Una historia contando el diagnóstico.
 
 Una publicación agradeciendo a médicos, terapeutas o familiares.
 
-Todo puedenacer del amor, del orgullo o de las ganas de compartir un proceso importante.
+Todo puede nacer del amor, del orgullo o de las ganas de compartir un proceso importante.
 
 Pero en internet existe una pregunta que vale la pena hacer antes de tocar el botón Publicar:
 
@@ -30,7 +28,7 @@ Pero en internet existe una pregunta que vale la pena hacer antes de tocar el bo
 
 ## La infancia también tiene una huella digital
 
-Cada fotografía, nombre, ubicación, colegio, diagnóstico, tratamiento o videopublicado puede ir construyendo información sobre un niño antes de que él mismo tenga edad para decidir qué quiere compartir.
+Cada fotografía, nombre, ubicación, colegio, diagnóstico, tratamiento o video publicado puede ir construyendo información sobre un niño antes de que él mismo tenga edad para decidir qué quiere compartir.
 
 A esta práctica de publicar contenido sobre nuestros hijos se le conoce como sharenting.
 
@@ -62,7 +60,7 @@ Prueba una pregunta sencilla:
 
 ¿Me sentiría cómodo si alguien publicara esto sobre mí?
 
-Despué sagrega otra:
+Después, agrega otra:
 
 ¿Mi hijo podría sentirse cómodo encontrando esta publicación dentro de diez años?
 
@@ -80,11 +78,11 @@ Cuando pueda expresar una opinión, vale la pena incluirlo en la conversación:
 
 *“Quiero publicar esta foto, ¿te gusta?”*
 
-*“¿Está biensi cuento esto?”*
+*“¿Está bien si cuento esto?”*
 
 *“¿Prefieres que no la suba?”*
 
-En Colombia,el tratamiento de datos personales de niños y adolescentes tiene una protección especial. La Superintendencia de Industria y Comercio señala que debe respetarse su interés superior, sus derechos fundamentales y su derecho a ser escuchados, teniendo en cuenta su nivel de madurez.
+En Colombia, el tratamiento de datos personales de niños y adolescentes tiene una protección especial. La Superintendencia de Industria y Comercio señala que debe respetarse su interés superior, sus derechos fundamentales y su derecho a ser escuchados, teniendo en cuenta su nivel de madurez.
 
 La imagen de un niño tampoco debería entenderse como un recurso disponible automáticamente para publicidad o redes sociales. La SIC ha intervenido en casos de publicación de imágenes de menores sin las autorizaciones correspondientes.
 
@@ -134,12 +132,12 @@ Podemos hablar de inclusión sin exponer momentos íntimos.
 
 Podemos celebrar avances sin mostrar información clínica.
 
-Podemos contar experiencias familiares conservando espacios que pertenecen únicamenteal niño.
+Podemos contar experiencias familiares conservando espacios que pertenecen únicamente al niño.
 
 La reputación digital también empieza mucho antes de que una persona abra su primera red social.
 
-Y losadultos ayudamos a construirla.
+Y los adultos ayudamos a construirla.
 
-En@aconinoacn hablamos de discapacidad, familia, cuidado, autonomía y participación desde una mirada respetuosa.
+En @aconinoacn hablamos de discapacidad, familia, cuidado, autonomía y participación desde una mirada respetuosa.
 
-Síguenos enInstagram para encontrar más recursos y conversaciones que vale la pena tener dentro y fuera de internet.
+Síguenos en Instagram para encontrar más recursos y conversaciones que vale la pena tener dentro y fuera de internet.

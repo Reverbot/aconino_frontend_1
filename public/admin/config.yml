@@ -40,6 +40,7 @@ collections:
         format: YYYY-MM-DD
         date_format: DD/MM/YYYY
         time_format: false
+        hint: Las entradas con fecha futura no aparecen hasta que el sitio se publique de nuevo en esa fecha o después.
       - label: Categoría
         name: category
         widget: select
@@ -97,6 +98,21 @@ collections:
       - label: Contenido
         name: body
         widget: markdown
+        buttons:
+          - bold
+          - italic
+          - strikethrough
+          - link
+          - heading-one
+          - heading-two
+          - heading-three
+          - heading-four
+          - heading-five
+          - heading-six
+          - quote
+          - bulleted-list
+          - numbered-list
         modes:
           - rich_text
           - raw
+        hint: Usa los botones de encabezado para los subtítulos. El título del artículo ya es H1; usa H2 para secciones y H3 para subsecciones. El sitio muestra cada nivel con su jerarquía visual.

@@ -2,13 +2,15 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { blogCategories, formatBlogDate } from '../../data/blog';
+import { blogCategories, formatBlogDate, isBlogPostPublished } from '../../data/blog';
 
 interface Props { entry: CollectionEntry<'blog'>; slug: string; }
 const { entry, slug } = Astro.props;
 
 const allPosts = await getCollection('blog');
-const recentPosts = allPosts.filter((item) => !item.data.draft && item.id !== entry.id);
+const recentPosts = allPosts.filter((item) =>
+  !item.data.draft && isBlogPostPublished(item.data.publishedAt) && item.id !== entry.id
+);
 ---
 
 <article class="relative min-h-screen overflow-hidden bg-slate-50">
@@ -92,5 +94,42 @@ const recentPosts = allPosts.filter((item) => !item.data.draft && item.id !== en
 
   .blog-post-content :global(p + p) {
     margin-block-start: 1.25em;
+  }
+
+  .blog-post-content :global(h1),
+  .blog-post-content :global(h2),
+  .blog-post-content :global(h3),
+  .blog-post-content :global(h4),
+  .blog-post-content :global(h5),
+  .blog-post-content :global(h6) {
+    margin-block: 1.6em 0.65em;
+    color: #0c2070;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .blog-post-content :global(h1) {
+    font-size: clamp(1.875rem, 4vw, 2.5rem);
+  }
+
+  .blog-post-content :global(h2) {
+    font-size: clamp(1.625rem, 3.5vw, 2rem);
+  }
+
+  .blog-post-content :global(h3) {
+    font-size: clamp(1.375rem, 3vw, 1.625rem);
+  }
+
+  .blog-post-content :global(h4) {
+    font-size: 1.25rem;
+  }
+
+  .blog-post-content :global(h5) {
+    font-size: 1.125rem;
+  }
+
+  .blog-post-content :global(h6) {
+    font-size: 1rem;
   }
 </style>

@@ -11,12 +11,10 @@ imageAlt: Aconiño Bogotá Equipo de Fisioterapeutas, psicólogos, fonoaudiólog
   terapeutas ocupacionales
 author: Asociación Aconiño
 draft: false
-seoTitle: rehabilitación infantil en Bogotá
-seoDescription: ACONIÑO, terapias para niños con discapacidad, fisioterapia
-  pediátrica Bogotá, terapia ocupacional infantil, fonoaudiología infantil,
-  neurodesarrollo, PediaSuit Bogotá
+seoTitle: Rehabilitación infantil en Bogotá
+seoDescription: Conoce Aconiño, su equipo interdisciplinario y sus programas de rehabilitación infantil para niños y familias en Bogotá.
 ---
-Hay momentosen los que una familia llega buscando una terapia.
+Hay momentos en los que una familia llega buscando una terapia.
 
 Pero detrás de esa búsqueda casi siempre existen muchas más preguntas.
 
@@ -32,7 +30,7 @@ Pero detrás de esa búsqueda casi siempre existen muchas más preguntas.
 
 Ahí comienza buena parte de lo que hacemos en ACONIÑO.
 
-# ¿Qué es ACONIÑO?
+## ¿Qué es ACONIÑO?
 
 ACONIÑO es una entidad privada sin ánimo de lucro fundada en Bogotá en 1990, creada para acompañar a niños, jóvenes y sus familias en procesos relacionados con discapacidad y alteraciones del neurodesarrollo.
 
@@ -50,7 +48,7 @@ Por eso un proceso terapéutico no debería observar solamente un músculo, una 
 
 Importa entender al niño completo.
 
-Cómo semueve.
+Cómo se mueve.
 
 Cómo juega.
 
@@ -70,7 +68,7 @@ En ACONIÑO contamos con un equipo interdisciplinario que integra áreas como fi
 
 **¿Interdisciplinario?**
 
-Sí. Significa que diferentes profesionales pueden trabajar alrededor de objetivos comunes enlugar de mirar cada área de manera completamente separada.
+Sí. Significa que diferentes profesionales pueden trabajar alrededor de objetivos comunes en lugar de mirar cada área de manera completamente separada.
 
 La fisioterapia puede trabajar movilidad, fuerza y función.
 
@@ -84,7 +82,7 @@ Cada niño, sin embargo, necesita una valoración individual.
 
 El diagnóstico aporta información, pero no cuenta toda la historia.
 
-#### ¿A quién acompaña ACONIÑO?
+### ¿A quién acompaña ACONIÑO?
 
 Nuestros programas están dirigidos a bebés, niños y jóvenes con diferentes necesidades relacionadas con su desarrollo.
 
@@ -94,7 +92,7 @@ También trabajamos con las familias porque buena parte de la vida de un niño o
 
 Aprender cómo facilitar una transferencia, cómo acompañar una actividad, cómo favorecer la autonomía o cómo comprender determinada necesidad puede hacer que lo trabajado durante una sesión tenga sentido en la vida cotidiana.
 
-#### ¿Qué busca un proceso de rehabilitación infantil?
+### ¿Qué busca un proceso de rehabilitación infantil?
 
 Esta pregunta es importante porque el progreso no significa exactamente lo mismo para todos.
 
@@ -108,9 +106,9 @@ Para otro, participar con mayor autonomía en una actividad diaria.
 
 Por eso en ACONIÑO trabajamos con objetivos funcionales: habilidades que tengan una relación concreta con la participación y la vida cotidiana del niño.
 
-##### Miramos más allá del consultorio
+#### Miramos más allá del consultorio
 
-Una terapiapuede durar una hora.
+Una terapia puede durar una hora.
 
 La vida del niño continúa las otras veintitrés.
 
@@ -124,11 +122,11 @@ Sin dramatizar la discapacidad.
 
 Y sin prometer resultados que nadie puede garantizar.
 
-#### 36 años construyendo experiencia
+## 36 años construyendo experiencia
 
 En 2026 ACONIÑO cumple 36 años de trabajo en Colombia. Actualmente nuestra organización reporta más de 150 niños atendidos al año y más de 5.000 sesiones terapéuticas anuales.
 
-Pero detrás de esas cifras existen miles de momentos pequeños que son mucho más difícilesde medir.
+Pero detrás de esas cifras existen miles de momentos pequeños que son mucho más difíciles de medir.
 
 Una familia que aprendió algo nuevo.
 

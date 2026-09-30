@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://aconino.org',
+  site: 'https://www.aconino.org',
   trailingSlash: 'ignore',
   integrations: [sitemap()],
   vite: {

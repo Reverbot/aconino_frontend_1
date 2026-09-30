@@ -11,6 +11,8 @@ interface Props {
   description?: string;
   noindex?: boolean;
   image?: string;
+  canonical?: string;
+  ogType?: 'website' | 'article';
 }
 
 const {
@@ -18,10 +20,13 @@ const {
   description = 'Más de 35 años apoyando la inclusión y mejorando la calidad de vida.',
   noindex = false,
   image = '/images/logo_aconino.png',
+  canonical: canonicalOverride,
+  ogType = 'website',
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, 'https://aconino.org').toString();
-const imageUrl = new URL(image, 'https://aconino.org').toString();
+const siteUrl = Astro.site ?? new URL('https://www.aconino.org/');
+const canonical = canonicalOverride || new URL(Astro.url.pathname, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
 const routePath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const suppressClinicalWidget = routePath === '/transparencia' || routePath === '/reporte-etica';
 ---
@@ -58,18 +63,18 @@ const suppressClinicalWidget = routePath === '/transparencia' || routePath === '
     <ClientRouter />
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={imageUrl} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonical} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
 
     <slot name="head" />
     <title>{title}</title>
